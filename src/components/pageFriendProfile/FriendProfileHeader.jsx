@@ -12,7 +12,7 @@ import {
 } from "../../features/userLoggedData.slice";
 import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { axiosFollowUser } from "../../utils/functions/user/axiosFollowUser";
-import { axiosTellUserIsUnfollowed } from "../../utils/functions/user/axiosTellUserIsUnfollowed";
+import { axiosTellUserIsFollowed } from "../../utils/functions/user/axiosTellUserIsFollowed";
 import { axiosTellUserIsUnfollowed } from "../../utils/functions/user/axiosTellUserIsUnfollowed";
 import { axiosUnfollowUser } from "../../utils/functions/user/axiosUnfollowUser";
 import profileDefaultBg from "../../assets/images/profile-default-bg.webp";
