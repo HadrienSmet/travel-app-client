@@ -1,0 +1,33 @@
+.signin-container {
+    &__email-division {
+        position: relative;
+        left: 45px;
+        width: calc(100% - 45px);
+    }
+    &__password-division {
+        position: relative;
+        left: 45px;
+        width: calc(100% - 45px);
+    }
+    &__icons-container {
+        width: 45px;
+        height: 100%;
+        position: absolute;
+        left: -45px;
+        z-index: 10;
+        @include flexFullCenter;
+    }
+    button {
+        position: relative;
+    }
+    .signin-icon {
+        position: absolute;
+        font-size: 30px;
+    }
+}
+#signin-loader {
+    animation: none;
+    transform: none;
+    width: 100%;
+    @include flexFullCenter;
+}

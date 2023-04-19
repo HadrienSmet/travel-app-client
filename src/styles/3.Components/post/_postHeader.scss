@@ -1,0 +1,50 @@
+@media screen and (min-width: 768px) {
+    .post-header__data-side__desktop-date {
+        display: inline-block !important;
+        &-time {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .post-header__data-side__mobile-date {
+        display: inline-block !important;
+    }
+}
+
+.post-header {
+    width: 100%;
+    @include flexBetweenCentered;
+    &__user-side {
+        cursor: pointer;
+        @include flexRowReverseCentered;
+        &__img-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            overflow: hidden;
+            @include flexFullCenter;
+        }
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+    &__data-side {
+        color: $black-op5;
+        text-align: right;
+        display: flex;
+        flex-direction: column-reverse;
+        > p {
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+        &__desktop-date {
+            display: none;
+        }
+        &__mobile-date {
+            display: none;
+        }
+    }
+}

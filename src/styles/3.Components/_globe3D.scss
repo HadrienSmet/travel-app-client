@@ -1,0 +1,136 @@
+@media screen and (min-width: 1025px) {
+    .home-globe-container {
+        height: calc(100vh - 255px);
+        padding: 0 40px;
+        &__countries-list {
+            height: 580px;
+        }
+    }
+    .profile-globe-container {
+        height: 40vh;
+        padding: 0;
+        &__countries-list {
+            height: 300px;
+        }
+    }
+    .globe-container__countries-list {
+        transform: translateX(-30px);
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.9) 24%,
+            rgba(255, 255, 255, 1) 40%
+        ) !important;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .profile-globe-container {
+        height: 40vh;
+        &__countries-list {
+            height: 40vh;
+        }
+    }
+    .globe-container__countries-list {
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(255, 255, 255, 1) 100%
+        ) !important;
+    }
+    @media screen and (min-width: 768px) {
+        .home-globe-container {
+            height: calc(100vh - 451px);
+            &__countries-list {
+                height: calc(100vh - 591px);
+            }
+        }
+    }
+}
+
+.home-globe-container {
+    @media screen and (max-width: 767px) {
+        height: calc(100vh - 365px);
+    }
+    &__countries-list {
+        @media screen and (max-width: 767px) {
+            height: calc(100vh - 448px);
+        }
+        position: relative;
+        li {
+            @media screen and (min-width: 768px) {
+                font-size: 23px;
+            }
+            @media screen and (max-width: 767px) {
+                font-size: 18px;
+            }
+        }
+    }
+}
+.profile-globe-container {
+    &__countries-list {
+        position: relative;
+        li {
+            @media screen and (min-width: 768px) {
+                font-size: 15px;
+            }
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.globe-container {
+    position: relative;
+    width: 100%;
+    @include flexEndCenterY;
+    &__canvas-area {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+    &__countries-list {
+        overflow-y: scroll;
+        position: relative;
+        background: rgb(255, 255, 255);
+        &::-webkit-scrollbar {
+            width: 16px;
+            background-color: transparent;
+        }
+        &:not([no-y-overflow])::-webkit-scrollbar-thumb {
+            height: 56px;
+            border-radius: 8px;
+            border: 4px solid transparent;
+            background-clip: content-box;
+            background-color: $black-op7;
+        }
+        &::-webkit-scrollbar-thumb {
+            height: 56px;
+            border-radius: 8px;
+            border: 4px solid transparent;
+            background-clip: content-box;
+            background-color: hsl(0, 0%, 67%);
+            &:hover {
+                background-color: lighten(hsl(0, 0%, 67%), 5);
+            }
+        }
+        li {
+            text-align: right;
+            cursor: pointer;
+            position: relative;
+            text-transform: uppercase;
+            font-style: italic;
+            padding-left: 10px;
+            width: calc(100% - 25px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 3px;
+            transition: 0.2s ease-in-out;
+            a {
+                color: $black-op9;
+            }
+        }
+    }
+}
