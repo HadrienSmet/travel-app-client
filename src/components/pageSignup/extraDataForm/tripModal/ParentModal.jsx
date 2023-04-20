@@ -91,7 +91,7 @@ const useParentModal = ({ changeTrips }) => {
         if (prevTripsData.destination.match(/\$<>=\+\*/i)) {
             alert("Les caractères suivants ne sont pas tolérés. $ > < = + *");
         } else {
-            if (albumData !== []) {
+            if (albumData.length > 0 && Array.isArray(albumData)) {
                 let trip = {
                     destination: prevTripsData.destination,
                     year: prevTripsData.year,
@@ -197,7 +197,8 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
                                 onChange={(e) => handleDetails(e)}
                             />
                             <div className="trip-modal__album-container">
-                                {albumData !== [] &&
+                                {albumData.length > 0 &&
+                                    Array.isArray(albumData) &&
                                     albumData.map((album, index) => (
                                         <div
                                             key={"divsion-" + index}
