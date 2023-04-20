@@ -1,5 +1,5 @@
 import axios from "axios";
-import { process } from "../../variables";
+// import { process } from "../../variables";
 
 export const axiosPostSignupExtra = async (data) => {
     return await axios.post(

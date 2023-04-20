@@ -1,5 +1,5 @@
 import axios from "axios";
-import { process } from "../../variables";
+// import { process } from "../../variables";
 
 export const axiosGetUserPosts = async (userId, token) => {
     return await axios({

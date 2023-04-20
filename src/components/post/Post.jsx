@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { useSelector } from "react-redux";
-import { process } from "../../utils/variables";
+// import { process } from "../../utils/variables";
 
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";

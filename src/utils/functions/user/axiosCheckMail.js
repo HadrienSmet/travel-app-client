@@ -1,5 +1,5 @@
 import axios from "axios";
-import { process } from "../../variables";
+// import { process } from "../../variables";
 
 export const axiosCheckMail = async (email) => {
     return await axios.get(

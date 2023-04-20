@@ -1,5 +1,5 @@
 import axios from "axios";
-import { process } from "../../variables";
+// import { process } from "../../variables";
 
 export const axiosPatchFiles = async (res, fileData) => {
     return await axios.patch(
