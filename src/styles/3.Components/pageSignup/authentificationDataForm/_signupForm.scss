@@ -67,7 +67,7 @@
             border: 2px solid $primary-color-8;
             color: $primary-color-8;
             &:hover {
-                border-color: darken($primary-color, 15);
+                border: 2px solid darken($primary-color, 15) !important;
                 color: darken($primary-color, 15);
             }
             &:focus {
