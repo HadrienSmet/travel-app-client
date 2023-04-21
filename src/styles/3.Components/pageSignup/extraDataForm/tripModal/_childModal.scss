@@ -5,14 +5,12 @@
         &__pictures-displayer {
             height: calc(100% - 200px);
             gap: 15px;
-            @include flexBetween;
+            display: flex;
             &--absolute {
-                column-gap: calc((85% * 0.08) + 10px);
-                row-gap: 0px !important;
-                width: calc(100% + 3px);
+                width: 100%;
+                gap: 15px;
                 img {
-                    margin-bottom: calc((25% - 120px) / 3 + 1.5px);
-                    width: calc(28% - 1px);
+                    width: calc(33.3% - 10px);
                     height: 120px;
                 }
             }
@@ -58,6 +56,7 @@
     @media screen and (min-width: 768px) {
         .child-modal {
             width: 80vw !important;
+            gap: 20px !important;
             &__pictures-displayer {
                 gap: 15px;
                 height: 725px;
