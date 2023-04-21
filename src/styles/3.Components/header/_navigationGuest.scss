@@ -48,6 +48,10 @@ header nav {
         button {
             padding: 0;
             min-width: none;
+            &:hover {
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
         }
         .toggle-btn {
             width: 35px;
