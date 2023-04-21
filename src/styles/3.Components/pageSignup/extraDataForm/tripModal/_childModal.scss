@@ -1,8 +1,10 @@
 @media screen and (min-width: 1025px) {
     .child-modal {
         width: 50vw !important;
+        justify-content: space-around;
         &__pictures-displayer {
             height: calc(100% - 200px);
+            gap: 15px;
             @include flexBetween;
             &--absolute {
                 column-gap: calc((85% * 0.08) + 10px);
@@ -16,7 +18,7 @@
             }
         }
         &__picture-area-label {
-            width: 28%;
+            width: calc(33.3% - 10px);
             height: 120px;
         }
         .gradient-container {
@@ -26,6 +28,7 @@
 }
 @media screen and (max-width: 1024px) {
     .child-modal {
+        overflow: auto;
         &::-webkit-scrollbar {
             width: 16px;
             background-color: transparent;
@@ -55,7 +58,6 @@
     @media screen and (min-width: 768px) {
         .child-modal {
             width: 80vw !important;
-
             &__pictures-displayer {
                 gap: 15px;
                 height: 725px;
@@ -77,11 +79,8 @@
     }
 }
 @media screen and (min-width: 768px) {
-    .child-modal {
-        justify-content: space-around;
-        button {
-            width: calc(85% - 4px);
-        }
+    .child-modal button {
+        width: calc(85% - 4px);
     }
 }
 @media screen and (max-width: 767px) {
