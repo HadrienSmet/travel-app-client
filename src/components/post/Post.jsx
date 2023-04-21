@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { useSelector } from "react-redux";
-// import { process } from "../../utils/variables";
 
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
@@ -16,7 +15,7 @@ const usePost = ({ post }) => {
     useEffect(() => {
         if (
             userId === post.userId ||
-            userId === process.env.REACT_APP_ADMIN_ID
+            userId === JSON.stringify(import.meta.env.VITE_REACT_APP_ADMIN_ID)
         ) {
             setIsAuthor(true);
         } else {

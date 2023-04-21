@@ -1,9 +1,13 @@
 import axios from "axios";
-// import { process } from "../../variables";
 
 export const axiosPatchFiles = async (res, fileData) => {
+    const url =
+        import.meta.env.MODE === "development"
+            ? import.meta.env.VITE_REACT_DEV_API_URL
+            : import.meta.env.VITE_REACT_APP_API_URL;
+    console.log(fileData);
     return await axios.patch(
-        `${process.env.REACT_APP_API_URL}api/auth/userProfile/${res.data.userId}`,
+        `${url}api/auth/userProfile/${res.data.userId}`,
         fileData,
         {
             headers: {

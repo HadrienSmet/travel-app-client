@@ -104,9 +104,10 @@ const useSignupExtraDataForm = ({
         albumsArray.forEach((album) => {
             for (let i = 0; i < album.length; i++) {
                 fileData.append("file", album[i]);
+                console.log("picture from loop: " + JSON.stringify(album[i]));
             }
         });
-
+        console.log("profile picture: " + JSON.stringify(profilePicture));
         return {
             fileData,
         };
@@ -142,6 +143,7 @@ const useSignupExtraDataForm = ({
                 previousTrips,
                 userData: { ...userPersonalsData },
             };
+            console.log("stringified data: " + JSON.stringify(fileData));
             axiosPostSignupExtra(data).then((res) => {
                 setJwtToken(res.data);
                 axiosPatchFiles(res, fileData).then((res) => {

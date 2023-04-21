@@ -19,6 +19,7 @@ const useWelcome = () => {
 
     //This useEffect is here to clean the store redux and the localStorage when the user arrive on the page
     useEffect(() => {
+        console.log(import.meta.env);
         dispatch(setLoggedState(false));
         dispatch(setUserLoggedData(null));
         dispatch(resetAlbumObjectArray([]));
