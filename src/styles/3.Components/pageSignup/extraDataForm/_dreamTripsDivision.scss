@@ -1,7 +1,7 @@
 @media screen and (min-width: 1025px) {
     .extra-data-form {
         &__dream-trips-division {
-            height: 100% !important;
+            height: calc(100% - 168px) !important;
         }
     }
 }

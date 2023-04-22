@@ -3,7 +3,6 @@
         width: 50vw !important;
         justify-content: space-around;
         &__pictures-displayer {
-            height: calc(100% - 200px);
             gap: 15px;
             display: flex;
             &--absolute {
@@ -108,6 +107,9 @@
             &:hover {
                 background-color: lighten(hsl(0, 0%, 67%), 5);
             }
+        }
+        p {
+            text-align: center;
         }
         button {
             width: calc(90% - 4px);
