@@ -8,6 +8,7 @@
     .profile-albums-section__albums-container {
         @include flexFullStart;
         position: relative;
+        width: 100%;
     }
 }
 .profile-albums-section__albums-container {

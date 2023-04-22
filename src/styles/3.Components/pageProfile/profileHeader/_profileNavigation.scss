@@ -3,8 +3,9 @@
         padding: 0 100px;
         @include flexEndCenterY;
         div button {
-            width: 110px;
+            width: calc((100vw - 200px) / 5);
             font-size: 16px;
+            padding: 6px 0px !important;
         }
         &-bar {
             width: calc((100vw - 200px) / 5);
@@ -24,7 +25,7 @@
             padding: 6px 0px !important;
         }
         &-bar {
-            width: 20vw;
+            width: calc((100vw - 16px) / 5);
             left: 0px;
             top: 29px;
         }
@@ -33,8 +34,7 @@
 .profile-section__navigation {
     margin-bottom: 30px;
     position: relative;
-    .css-1or64il-MuiButtonGroup-root
-        .MuiButtonGroup-grouped:not(:last-of-type) {
+    .css-18v8x0m > .MuiButtonGroup-grouped:not(:last-of-type) {
         border-color: $primary-color !important;
     }
     div button {
