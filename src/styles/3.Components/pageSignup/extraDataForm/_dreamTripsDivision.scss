@@ -1,8 +1,8 @@
 @media screen and (min-width: 1025px) {
     .extra-data-form {
         &__dream-trips-division {
-            height: unset;
-            max-height: calc(70vh - 328.5px) !important;
+            height: calc(70vh - 330.5px) !important;
+            margin-bottom: 0px !important;
         }
     }
 }
@@ -53,6 +53,10 @@
             opacity: 0;
             animation: liAnim 0.3s 0.3s ease-in-out forwards;
             @include flexBetweenCentered;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            height: 23px;
             &::after {
                 content: "";
                 position: absolute;

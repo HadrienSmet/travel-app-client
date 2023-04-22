@@ -32,12 +32,17 @@
             &__description-area > div {
                 height: 250px;
             }
+            &__buttons-row button {
+                width: 45% !important;
+            }
         }
     }
 }
-@media screen and (min-width: 768px) {
-    .trip-modal__buttons-row button {
-        width: 45% !important;
+@media screen and (max-width: 767px) {
+    .trip-modal {
+        justify-content: start;
+        gap: 25px;
+        overflow: auto;
     }
 }
 .trip-modal {
