@@ -12,6 +12,12 @@
         button {
             padding: 0;
             min-width: none;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            &:hover {
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
         }
         .toggle-btn {
             width: 35px;

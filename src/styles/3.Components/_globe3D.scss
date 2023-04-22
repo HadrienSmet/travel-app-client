@@ -2,6 +2,7 @@
     .home-globe-container {
         height: calc(100vh - 255px);
         padding: 0 40px;
+        width: calc(100% - 80px) !important;
         &__countries-list {
             height: 580px;
         }
@@ -40,9 +41,9 @@
     }
     @media screen and (min-width: 768px) {
         .home-globe-container {
-            height: calc(100vh - 451px);
+            height: calc(100vh - 486px);
             &__countries-list {
-                height: calc(100vh - 591px);
+                height: calc(100vh - 498px);
             }
         }
     }

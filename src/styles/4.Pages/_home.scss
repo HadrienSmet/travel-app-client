@@ -42,9 +42,10 @@
         .home__content {
             &__header {
                 &__profile-division {
-                    height: 150px;
+                    height: 150px !important;
                     position: relative;
                     justify-content: center;
+                    gap: 55px !important;
                     &__img-container {
                         height: 125px;
                         width: 125px;
@@ -53,6 +54,9 @@
                             width: 155px;
                         }
                     }
+                    h1 {
+                        font-size: 4vw;
+                    }
                 }
             }
         }
@@ -60,7 +64,7 @@
 }
 @media screen and (min-width: 768px) {
     .home__content {
-        padding: 50px !important;
+        padding: 20px 50px !important;
     }
 }
 @media screen and (max-width: 767px) {
