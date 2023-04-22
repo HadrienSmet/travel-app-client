@@ -23,6 +23,10 @@
         position: relative;
         div {
             height: 100%;
+            > textarea {
+                height: 100% !important;
+                vertical-align: text-top;
+            }
         }
         fieldset {
             border-color: $black-op5 !important;

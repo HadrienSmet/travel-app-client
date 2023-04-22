@@ -25,7 +25,7 @@
                 width: 110px;
             }
         }
-        &__fake-btn {
+        &__fake-button {
             border-radius: 4px;
             padding: 8px 20px 7.5px;
             @include flexCenterY;
@@ -60,7 +60,7 @@
                 width: 90px;
             }
         }
-        &__buttons-container .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+        &__buttons-container .css-79xub {
             height: 65px;
             width: 65px;
             border-radius: 50%;
@@ -112,7 +112,7 @@
     &__buttons-container {
         gap: 10px;
         @include flexCenterY;
-        .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+        .css-79xub {
             background-color: $primary-color;
             color: $secondary-color !important;
             border-color: $primary-color !important;
