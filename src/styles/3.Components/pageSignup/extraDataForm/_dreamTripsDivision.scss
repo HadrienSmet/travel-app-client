@@ -53,10 +53,6 @@
             opacity: 0;
             animation: liAnim 0.3s 0.3s ease-in-out forwards;
             @include flexBetweenCentered;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            height: 23px;
             &::after {
                 content: "";
                 position: absolute;

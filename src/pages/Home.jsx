@@ -53,7 +53,8 @@ const useDefaultHome = ({
                 dispatch(setPostsData(array));
             });
         },
-        [dispatch, token, setAllPosts]
+        // [dispatch, token, setAllPosts]
+        []
     );
     //This useEffect is here to get the posts made by a specified user and then displays all the data in the redux store
     //If the app indicates by his local state that posts have to be loaded:
@@ -68,16 +69,18 @@ const useDefaultHome = ({
                 setLoadPost(true);
             }
         };
+
+        allPosts && window.addEventListener("scroll", loadMore);
+
+        return () => allPosts && window.removeEventListener("scroll", loadMore);
+    }, [allPosts]);
+    useEffect(() => {
         if (loadPost) {
             fetchAllposts(count);
             setLoadPost(() => false);
             setCount(() => count + 5);
         }
-
-        allPosts && window.addEventListener("scroll", loadMore);
-
-        return () => allPosts && window.removeEventListener("scroll", loadMore);
-    }, [loadPost, count, allPosts, fetchAllposts, setLoadPost]);
+    }, [loadPost]);
 
     return {
         fetchAllposts,
@@ -117,7 +120,8 @@ const useSpecifiedHome = ({
                 }
             });
         },
-        [setAllPosts, selectedCountry, token, dispatch, setNoResult]
+        // [setAllPosts, selectedCountry, token, dispatch, setNoResult]
+        []
     );
 
     //This useEffect is here to get the posts made from a specified country and then displays all the data in the redux store
@@ -132,23 +136,19 @@ const useSpecifiedHome = ({
                 setSpecifiedLoadPost(true);
             }
         };
-        if (specifiedLoadPost) {
-            fetchSpecifiedPosts(specifiedCount);
-            setSpecifiedLoadPost(() => false);
-            setSpecifiedCount(() => specifiedCount + 5);
-        }
 
         !allPosts && window.addEventListener("scroll", loadSpecified);
 
         return () =>
             !allPosts && window.removeEventListener("scroll", loadSpecified);
-    }, [
-        allPosts,
-        fetchSpecifiedPosts,
-        specifiedCount,
-        specifiedLoadPost,
-        setSpecifiedLoadPost,
-    ]);
+    }, [allPosts, fetchSpecifiedPosts, specifiedCount, setSpecifiedLoadPost]);
+    useEffect(() => {
+        if (specifiedLoadPost) {
+            fetchSpecifiedPosts(specifiedCount);
+            setSpecifiedLoadPost(() => false);
+            setSpecifiedCount(() => specifiedCount + 5);
+        }
+    }, [specifiedLoadPost]);
 
     return {
         changeSelectedCountry,
