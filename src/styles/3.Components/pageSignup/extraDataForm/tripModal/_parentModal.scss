@@ -93,6 +93,9 @@
             margin-top: 15px;
             > div {
                 height: 100%;
+                > textarea {
+                    height: 100%;
+                }
             }
         }
     }
