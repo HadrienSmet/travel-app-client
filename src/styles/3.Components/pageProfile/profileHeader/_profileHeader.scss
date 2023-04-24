@@ -112,7 +112,8 @@
     &__buttons-container {
         gap: 10px;
         @include flexCenterY;
-        .css-79xub {
+        button {
+            cursor: pointer;
             background-color: $primary-color;
             color: $secondary-color !important;
             border-color: $primary-color !important;
@@ -124,7 +125,7 @@
                 color: $tertiary-color !important;
                 border-color: $tertiary-color !important;
             }
-            > span {
+            span {
                 cursor: pointer;
             }
         }
