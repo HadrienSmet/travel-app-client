@@ -17,6 +17,7 @@
     margin-bottom: 30px;
     @include flexFullCenter;
     flex-direction: column;
+    gap: 20px;
     &__posts-div {
         width: 100%;
         gap: 10px;

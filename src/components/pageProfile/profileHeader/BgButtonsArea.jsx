@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { FaCheck, FaEdit, FaTimes } from "react-icons/fa";
+import MUIClassicLoader from "../../mui/MUIClassicLoader";
 
 const useBgButtonsArea = () => {
     const pictureCheckRef = useRef(null);
@@ -21,6 +22,7 @@ const useBgButtonsArea = () => {
 };
 
 const BgButtonsArea = ({
+    isLoading,
     startEditCoverPicture,
     handleEditCoverPicture,
     handleCancelCoverPicture,
@@ -42,27 +44,36 @@ const BgButtonsArea = ({
                     id="cover-picture"
                     onChange={(e) => startEditCoverPicture(e)}
                 />
-                <span
-                    id="cover-picture-validation"
-                    ref={pictureCheckRef}
-                    onClick={() =>
-                        handleEditCoverPicture(pictureCheckRef, pictureTimesRef)
-                    }
-                >
-                    <FaCheck />
-                </span>
-                <span
-                    id="cover-picture-cancel"
-                    ref={pictureTimesRef}
-                    onClick={() =>
-                        handleCancelCoverPicture(
-                            pictureCheckRef,
-                            pictureTimesRef
-                        )
-                    }
-                >
-                    <FaTimes />
-                </span>
+                {isLoading ? (
+                    <MUIClassicLoader dynamicId="cover-picture-loader" />
+                ) : (
+                    <>
+                        <span
+                            id="cover-picture-validation"
+                            ref={pictureCheckRef}
+                            onClick={() =>
+                                handleEditCoverPicture(
+                                    pictureCheckRef,
+                                    pictureTimesRef
+                                )
+                            }
+                        >
+                            <FaCheck />
+                        </span>
+                        <span
+                            id="cover-picture-cancel"
+                            ref={pictureTimesRef}
+                            onClick={() =>
+                                handleCancelCoverPicture(
+                                    pictureCheckRef,
+                                    pictureTimesRef
+                                )
+                            }
+                        >
+                            <FaTimes />
+                        </span>
+                    </>
+                )}
             </form>
         </div>
     );

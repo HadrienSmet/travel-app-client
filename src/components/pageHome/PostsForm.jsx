@@ -9,7 +9,10 @@ import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { axiosCreatePost } from "../../utils/functions/posts/axiosCreatePost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 
+import MUIClassicLoader from "../mui/MUIClassicLoader";
+
 const usePostForm = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [postText, setPostText] = useState("");
     const [postFile, setPostFile] = useState("");
     const [postFileUrl, setPostFileUrl] = useState("");
@@ -56,13 +59,14 @@ const usePostForm = () => {
     const handlePostSubmission = () => {
         let { userId, token } = getJwtToken();
         const post = handlePostFormData(userId);
-
+        setIsLoading((curr) => !curr);
         axiosCreatePost(post, token).then(() => {
             setPostFile("");
             setPostFileUrl("");
             setPostText("");
             axiosGetPosts(token)
                 .then((res) => {
+                    setIsLoading((curr) => !curr);
                     dispatch(setPostsData(res.data));
                 })
                 .catch((err) => console.log(err));
@@ -70,6 +74,7 @@ const usePostForm = () => {
     };
 
     return {
+        isLoading,
         userData,
         postText,
         postFileUrl,
@@ -81,6 +86,7 @@ const usePostForm = () => {
 
 const PostsForm = () => {
     const {
+        isLoading,
         userData,
         postText,
         postFileUrl,
@@ -122,15 +128,19 @@ const PostsForm = () => {
                     id="post-file"
                     onChange={(e) => handlePostFile(e)}
                 />
-                <Button
-                    name="post-comment"
-                    aria-label="post-comment"
-                    className="posts-form__buttons-row-post"
-                    variant="outlined"
-                    onClick={() => handlePostSubmission()}
-                >
-                    Poster
-                </Button>
+                {isLoading ? (
+                    <MUIClassicLoader dynamicId="posts-loader" />
+                ) : (
+                    <Button
+                        name="post-comment"
+                        aria-label="post-comment"
+                        className="posts-form__buttons-row-post"
+                        variant="outlined"
+                        onClick={() => handlePostSubmission()}
+                    >
+                        Poster
+                    </Button>
+                )}
             </div>
         </form>
     );

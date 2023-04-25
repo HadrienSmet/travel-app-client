@@ -2,22 +2,22 @@
     .add-album-modal {
         &__pictures-displayer {
             min-height: calc(100% - 200px);
-            @include flexBetween;
+            display: flex;
             flex-wrap: wrap;
             width: 100%;
             gap: 15px;
             &--absolute {
-                width: calc(100% + 3px);
+                width: 100%;
                 gap: 15px;
                 max-height: 100%;
                 img {
-                    width: calc(33% - 8px);
+                    width: calc(33.3% - 10px);
                     height: 120px;
                 }
             }
         }
         &__picture-area-label {
-            width: calc(33% - 8px);
+            width: calc(33.3% - 10px);
             height: 120px;
         }
     }

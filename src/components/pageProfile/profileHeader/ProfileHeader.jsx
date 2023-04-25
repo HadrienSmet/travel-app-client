@@ -14,6 +14,7 @@ const useProfileHeader = ({ userProfile }) => {
     const [coverPicture, setCoverPicture] = useState("");
     const [coverPictureUrl, setCoverPictureUrl] = useState("");
     const [isEditing, setIsEditing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [defaultPicture, setDefaultPicture] = useState(true);
     let { token, userId } = getJwtToken();
     const dispatch = useDispatch();
@@ -39,12 +40,14 @@ const useProfileHeader = ({ userProfile }) => {
     const handleEditCoverPicture = (checkRef, timesRef) => {
         const data = new FormData();
         data.append("file", coverPicture);
+        setIsLoading((curr) => !curr);
         axiosPutCoverPicture(userId, data, token)
             .then((res) => {
                 dispatch(
                     setCoverPictureInUserLoggedData(res.data.coverPicture)
                 );
                 handleIsEditing(false);
+                setIsLoading((curr) => !curr);
                 checkRef.current.classList.remove("active");
                 timesRef.current.classList.remove("active");
             })
@@ -66,6 +69,7 @@ const useProfileHeader = ({ userProfile }) => {
     }, [userProfile.coverPicture]);
 
     return {
+        isLoading,
         isEditing,
         coverPicture,
         coverPictureUrl,
@@ -78,6 +82,7 @@ const useProfileHeader = ({ userProfile }) => {
 
 const ProfileHeader = ({ userProfile }) => {
     const {
+        isLoading,
         isEditing,
         coverPictureUrl,
         defaultPicture,
@@ -96,6 +101,7 @@ const ProfileHeader = ({ userProfile }) => {
                     userProfile={userProfile}
                 />
                 <BgButtonsArea
+                    isLoading={isLoading}
                     startEditCoverPicture={startEditCoverPicture}
                     handleEditCoverPicture={handleEditCoverPicture}
                     handleCancelCoverPicture={handleCancelCoverPicture}

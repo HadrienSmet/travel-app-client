@@ -21,6 +21,8 @@ import { axiosDeletePost } from "../../utils/functions/posts/axiosDeletePost";
 import { axiosEditPost } from "../../utils/functions/posts/axiosEditPost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 
+import MUIClassicLoader from "../mui/MUIClassicLoader";
+
 const useLikesButtons = ({ post, token, userId }) => {
     const [likesData, setLikesData] = useState({
         liked: false,
@@ -104,6 +106,7 @@ const useLikesButtons = ({ post, token, userId }) => {
 };
 
 const useCrudButtons = ({ post, token, newImage, newText, setIsEditing }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
 
     //This function is here to handle the suppresion of a post
@@ -118,8 +121,10 @@ const useCrudButtons = ({ post, token, newImage, newText, setIsEditing }) => {
             postId = e.target.id.split("-")[1];
         }
         axiosDeletePost(postId, token).then(() => {
+            setIsLoading((curr) => !curr);
             dispatch(deletePost(postId));
             axiosGetPosts(token).then((res) => {
+                setIsLoading((curr) => !curr);
                 dispatch(setPostsData(res.data));
             });
         });
@@ -156,16 +161,19 @@ const useCrudButtons = ({ post, token, newImage, newText, setIsEditing }) => {
         } else {
             postId = e.target.id.split("-")[1];
         }
+        setIsLoading((curr) => !curr);
 
         axiosEditPost(postId, data, token).then(() => {
             setIsEditing(false);
             axiosGetPosts(token).then((res) => {
+                setIsLoading((curr) => !curr);
                 dispatch(setPostsData(res.data));
             });
         });
     };
 
     return {
+        isLoading,
         handleDeletePost,
         handleEditPost,
     };
@@ -186,7 +194,7 @@ const PostButtonsRow = ({
             token,
             userId,
         });
-    const { handleDeletePost, handleEditPost } = useCrudButtons({
+    const { isLoading, handleDeletePost, handleEditPost } = useCrudButtons({
         post,
         token,
         newImage,
@@ -213,42 +221,46 @@ const PostButtonsRow = ({
                     )}
                 </div>
             </div>
-            <div className="post__buttons-row__crud-side">
-                {isAuthor && (
-                    <Button
-                        name="handle-edit-post"
-                        aria-label="handle-edit-post"
-                        onClick={() => setIsEditing(!isEditing)}
-                    >
-                        <FaEdit />
-                    </Button>
-                )}
-                {isAuthor && (
-                    <Button
-                        name="handle-delete-post"
-                        aria-label="handle-delete-post"
-                        className="post__delete-div"
-                        id={"deletediv-" + post._id}
-                    >
-                        <FaTimes
-                            id={"delete-" + post._id}
-                            onClick={(e) => handleDeletePost(e)}
-                        />
-                    </Button>
-                )}
-                {isEditing && (
-                    <Button
-                        name="post-edited-post"
-                        aria-label="post-edited-post"
-                        id={"editpostdiv-" + post._id}
-                    >
-                        <FaPaperPlane
-                            id={"editpost-" + post._id}
-                            onClick={(e) => handleEditPost(e)}
-                        />
-                    </Button>
-                )}
-            </div>
+            {isLoading ? (
+                <MUIClassicLoader dynamicId="post-edit-loader" />
+            ) : (
+                <div className="post__buttons-row__crud-side">
+                    {isAuthor && (
+                        <>
+                            <Button
+                                name="handle-edit-post"
+                                aria-label="handle-edit-post"
+                                onClick={() => setIsEditing(!isEditing)}
+                            >
+                                <FaEdit />
+                            </Button>
+                            <Button
+                                name="handle-delete-post"
+                                aria-label="handle-delete-post"
+                                className="post__delete-div"
+                                id={"deletediv-" + post._id}
+                            >
+                                <FaTimes
+                                    id={"delete-" + post._id}
+                                    onClick={(e) => handleDeletePost(e)}
+                                />
+                            </Button>
+                        </>
+                    )}
+                    {isEditing && (
+                        <Button
+                            name="post-edited-post"
+                            aria-label="post-edited-post"
+                            id={"editpostdiv-" + post._id}
+                        >
+                            <FaPaperPlane
+                                id={"editpost-" + post._id}
+                                onClick={(e) => handleEditPost(e)}
+                            />
+                        </Button>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

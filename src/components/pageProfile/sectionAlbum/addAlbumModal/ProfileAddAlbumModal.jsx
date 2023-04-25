@@ -1,12 +1,14 @@
 import { useState, Fragment } from "react";
-import { Button, Modal, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { FaPlus } from "react-icons/fa";
-import { BsXLg } from "react-icons/bs";
-import MUIGradientBorder from "../../../mui/MUIGradientBorder";
 import { getJwtToken } from "../../../../utils/functions/tools/getJwtToken";
 import { pushAlbumInUserLoggedData } from "../../../../features/userLoggedData.slice";
 import { axiosCreateAlbum } from "../../../../utils/functions/user/axiosCreateAlbum";
+
+import { FaPlus } from "react-icons/fa";
+import { BsXLg } from "react-icons/bs";
+import { Button, Modal, Box } from "@mui/material";
+import MUIGradientBorder from "../../../mui/MUIGradientBorder";
+import MUIClassicLoader from "../../../mui/MUIClassicLoader";
 import AlbumForm from "./AlbumForm";
 
 const style = {
@@ -22,6 +24,7 @@ const style = {
 };
 
 const useProfileAlbumModal = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const [albumPicture, setAlbumPicture] = useState(undefined);
     const [albumPictureUrl, setAlbumPictureUrl] = useState(undefined);
@@ -50,9 +53,11 @@ const useProfileAlbumModal = () => {
     //And it gives the name of the album and the urls of the blop links by the redux store.
     //And it also changes the state of the component in purpose to close the child modal.
     const handleClose = () => {
+        setIsLoading((curr) => !curr);
         const data = handleAlbumFormData();
         axiosCreateAlbum(userId, data, token)
             .then((res) => {
+                setIsLoading((curr) => !curr);
                 setOpen(false);
                 dispatch(pushAlbumInUserLoggedData(res.data.newAlbum));
             })
@@ -97,6 +102,7 @@ const useProfileAlbumModal = () => {
     };
 
     return {
+        isLoading,
         open,
         destination,
         year,
@@ -112,6 +118,7 @@ const useProfileAlbumModal = () => {
 
 const ProfileAlbumModal = () => {
     const {
+        isLoading,
         open,
         destination,
         year,
@@ -159,9 +166,13 @@ const ProfileAlbumModal = () => {
                         destination={destination}
                         year={year}
                     />
-                    <MUIGradientBorder onClick={handleClose}>
-                        <span onClick={handleClose}>Confirmer</span>
-                    </MUIGradientBorder>
+                    {isLoading ? (
+                        <MUIClassicLoader dynamicId="add-album-loader" />
+                    ) : (
+                        <MUIGradientBorder onClick={handleClose}>
+                            <span onClick={handleClose}>Confirmer</span>
+                        </MUIGradientBorder>
+                    )}
                 </Box>
             </Modal>
         </Fragment>

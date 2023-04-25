@@ -5,10 +5,10 @@
     .add-album-modal__same-row {
         @include flexBetween;
         > div {
-            width: 40%;
-            > div {
-                margin: 8px;
-                > div > div {
+            width: 48%;
+            > div > div {
+                margin: 8px 0px;
+                > div {
                     padding: 8px !important;
                     padding-left: 22px;
                 }
