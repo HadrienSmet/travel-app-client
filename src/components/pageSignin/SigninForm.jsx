@@ -49,7 +49,6 @@ const useSigninForm = () => {
             email: mail,
             password,
         };
-        console.log(data);
         axiosSignIn(data)
             .then((res) => {
                 if (res.status === 401) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -28,9 +28,6 @@ const FriendProfile = () => {
         (state) => state.friendDataStore.friendData
     );
     const { friendProfileState, changeFriendProfileState } = useFriendProfile();
-    useEffect(() => {
-        console.log(friendProfile);
-    }, []);
 
     return (
         <main className="profile-section">

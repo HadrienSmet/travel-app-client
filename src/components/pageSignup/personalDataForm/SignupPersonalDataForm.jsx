@@ -57,8 +57,6 @@ const usePersonalData = ({
     const handleProfilePicture = (e) => {
         changeProfilePictureUrl(URL.createObjectURL(e.target.files[0]));
         changeProfilePicture(e.target.files[0]);
-        console.log(e.target.files[0]);
-        console.log(URL.createObjectURL(e.target.files[0]));
     };
 
     //This function handles the submission of second step of the signup form

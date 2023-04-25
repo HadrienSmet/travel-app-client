@@ -5,7 +5,6 @@ export const axiosPatchFiles = async (res, fileData) => {
         import.meta.env.MODE === "development"
             ? import.meta.env.VITE_REACT_DEV_API_URL
             : import.meta.env.VITE_REACT_APP_API_URL;
-    console.log(fileData);
     return await axios.patch(
         `${url}api/auth/userProfile/${res.data.userId}`,
         fileData,

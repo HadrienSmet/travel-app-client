@@ -25,8 +25,6 @@ import MUIClassicLoader from "../mui/MUIClassicLoader";
 
 const useLikesButtons = ({ post, token, userId }) => {
     const [likesData, setLikesData] = useState({
-        liked: false,
-        disliked: false,
         likes: post.likes,
         dislikes: post.dislikes,
         usersLiking: post.usersLiked,
