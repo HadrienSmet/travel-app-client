@@ -44,7 +44,7 @@ git clone https://github.com/HadrienSmet/travel-app.git
 
 ### 3. Launch the client! :grinning:
 
--Run `npm run dev` to launch your app locally during the development phase.
--Run `npm run build` to build your app for the production phase.
+- Run `npm run dev` to launch your app locally during the development phase.
+- Run `npm run build` to build your app for the production phase.
 
 I hope that everything worked fine for you have a good day :innocent:
