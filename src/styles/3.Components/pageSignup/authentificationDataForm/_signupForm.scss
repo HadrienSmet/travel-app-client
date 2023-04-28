@@ -32,14 +32,8 @@
         @include flexColumnAround;
         > div {
             position: relative;
-            transform: translateX(140%);
+            transform: translateX(240%);
             animation: startFormAnim 0.8s ease-in-out forwards;
-            .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-                width: 100%;
-            }
-            fieldset {
-                width: calc(100% - 20px);
-            }
         }
         @for $i from 2 to 4 {
             $delay: $i * 0.2s;
@@ -49,43 +43,24 @@
         }
         h2 {
             position: relative;
-            transform: translateX(140%);
+            transform: translateX(240%);
             animation: startFormAnim 0.8s 0.2s ease-in-out forwards;
             text-transform: uppercase;
             color: darken($primary-color, 15);
         }
+        .mui-input-text {
+            height: 50px;
+        }
         button {
+            position: relative;
             margin-top: 5px;
-            transform: translateX(140%);
+            transform: translateX(240%);
             animation: startFormAnim 0.6s 1s ease-in-out forwards;
-            width: calc(100% - 47px);
-            left: 33px;
-        }
-        fieldset,
-        button {
-            font-size: 1.2em;
-            border: 2px solid $primary-color-8;
-            color: $primary-color-8;
-            &:hover {
-                border: 2px solid darken($primary-color, 15) !important;
-                color: darken($primary-color, 15);
-            }
-            &:focus {
-                border-color: $primary-color-8;
-            }
-        }
-        .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root,
-        label {
-            border-color: $primary-color-8;
-            font-size: 1.35em;
-            color: $primary-color-8;
-            &:hover {
-                border-color: darken($primary-color, 15);
-                color: darken($primary-color, 15);
-            }
-            &:focus {
-                border-color: $primary-color-8;
-            }
+            height: 50px;
+            width: 50%;
+            left: 29%;
+            background-color: transparent;
+            text-transform: uppercase;
         }
     }
 }
@@ -131,11 +106,4 @@
 #password__progress-bar.progressGreen::after {
     transform: translateX(0%);
     background-color: $primary-color;
-}
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover
-    .MuiOutlinedInput-notchedOutline {
-    border-color: darken($primary-color, 15) !important;
-}
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover + label {
-    color: darken($primary-color, 15);
 }

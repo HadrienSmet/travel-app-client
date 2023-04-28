@@ -2,18 +2,10 @@
     &__email-division {
         position: relative;
         left: 45px;
-        width: calc(100% - 45px);
-        .css-i44wyl {
-            width: 100%;
-        }
     }
     &__password-division {
         position: relative;
         left: 45px;
-        width: calc(100% - 45px);
-        .css-i44wyl {
-            width: 100%;
-        }
     }
     &__icons-container {
         width: 45px;
@@ -22,6 +14,9 @@
         left: -45px;
         z-index: 10;
         @include flexFullCenter;
+    }
+    .mui-input-text {
+        height: 50px;
     }
     button {
         position: relative;

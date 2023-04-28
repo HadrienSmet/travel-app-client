@@ -1,5 +1,5 @@
-import { TextField } from "@mui/material";
 import { FaCheck } from "react-icons/fa";
+import MuiInputText from "../mui/MuiInputText";
 
 const PasswordDivision = ({ password, handlePassword }) => {
     return (
@@ -7,13 +7,12 @@ const PasswordDivision = ({ password, handlePassword }) => {
             <div className="signin-container__icons-container">
                 {password !== "" && <FaCheck className="signin-icon check" />}
             </div>
-            <TextField
-                id="outlined-password"
-                label="Mot de passe"
-                variant="outlined"
-                type="password"
-                required={true}
-                onChange={(e) => handlePassword(e.target.value)}
+            <MuiInputText
+                inputType="password"
+                value={password}
+                dynamicName="password"
+                inputHandler={handlePassword}
+                isRequired={true}
             />
         </div>
     );

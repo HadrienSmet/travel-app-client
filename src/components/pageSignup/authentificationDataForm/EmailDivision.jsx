@@ -1,9 +1,8 @@
 import { useRef } from "react";
-
-import { TextField } from "@mui/material";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
 import { axiosCheckMail } from "../../../utils/functions/user/axiosCheckMail";
+import MuiInputText from "../../mui/MuiInputText";
 
 const useEmailDivision = ({ email, changeIsEmailOk }) => {
     const mailMsgRef = useRef(null);
@@ -72,14 +71,13 @@ const EmailDivision = ({ email, changeEmail, changeIsEmailOk }) => {
                     <FaTimes className="signup-form__email-division__times-icon signup-icon" />
                 </div>
             </div>
-            <TextField
-                id="outlined-mail"
-                label="Email"
-                variant="outlined"
-                type="email"
-                required={true}
-                onChange={(e) => changeEmail(e.target.value)}
-                onBlur={() => handleMail()}
+            <MuiInputText
+                inputType="email"
+                value={email}
+                dynamicName="email"
+                inputHandler={changeEmail}
+                isRequired={true}
+                dataHandler={handleMail}
             />
             <span ref={mailMsgRef} id="outlined-mail-msg"></span>
         </div>

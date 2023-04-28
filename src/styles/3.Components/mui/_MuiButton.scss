@@ -1,0 +1,15 @@
+.mui-button {
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border: 2px solid $primary-color-8;
+    color: $primary-color-8;
+    &:hover {
+        border: 2px solid darken($primary-color, 15) !important;
+        color: darken($primary-color, 15);
+    }
+    &:focus {
+        border-color: $primary-color-8;
+    }
+}

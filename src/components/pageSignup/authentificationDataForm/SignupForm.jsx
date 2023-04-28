@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../../../features/signupData.slice";
 
-import { Button } from "@mui/material";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
+import MuiButton from "../../mui/MuiButton";
 
 const useSignupForm = () => {
     const navigate = useNavigate();
@@ -17,12 +17,14 @@ const useSignupForm = () => {
         isPasswordOk: false,
         password: "",
     });
-    const changeEmail = (email) => setAuthData({ ...authData, email });
+    const changeEmail = (e) =>
+        setAuthData({ ...authData, email: e.target.value });
     const changeIsEmailOk = (boolean) =>
         setAuthData({ ...authData, isEmailOk: boolean });
     const changeIsPasswordOk = (boolean) =>
         setAuthData({ ...authData, isPasswordOk: boolean });
-    const changePassword = (password) => setAuthData({ ...authData, password });
+    const changePassword = (e) =>
+        setAuthData({ ...authData, password: e.target.value });
 
     //This function handles the submission of the first signup form
     //@Params { Type: Object } --> the param of the onSubmit event
@@ -63,11 +65,7 @@ const SignupForm = () => {
 
     return (
         <div id="signup" className="signup-container start-form">
-            <form
-                action=""
-                className="signup-form"
-                onSubmit={(e) => handleSubmission(e)}
-            >
+            <form action="" className="signup-form" onSubmit={handleSubmission}>
                 <h2>Inscrivez-vous!</h2>
                 <EmailDivision
                     email={email}
@@ -79,9 +77,10 @@ const SignupForm = () => {
                     changePassword={changePassword}
                     changeIsPasswordOk={changeIsPasswordOk}
                 />
-                <Button variant="outlined" onClick={(e) => handleSubmission(e)}>
-                    Inscription
-                </Button>
+                <MuiButton
+                    buttonContent="Inscription"
+                    buttonHandler={handleSubmission}
+                />
             </form>
         </div>
     );

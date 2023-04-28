@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { TextField } from "@mui/material";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import MuiInputText from "../../mui/MuiInputText";
 
 const usePasswordDivision = ({ password, changeIsPasswordOk }) => {
     const progressBarRef = useRef(null);
@@ -86,14 +86,13 @@ const PasswordDivision = ({ password, changePassword, changeIsPasswordOk }) => {
                     <FaTimes className="signup-form__password-division__times-icon signup-icon" />
                 </div>
             </div>
-            <TextField
-                id="outlined-password"
-                label="Mot de passe"
-                variant="outlined"
-                type="password"
-                required={true}
-                onChange={(e) => changePassword(e.target.value)}
-                onBlur={() => handlePassword()}
+            <MuiInputText
+                inputType="password"
+                value={password}
+                dynamicName="password"
+                inputHandler={changePassword}
+                isRequired={true}
+                dataHandler={handlePassword}
             />
             <span ref={passwordMsgRef} id="outlined-password-msg"></span>
             <div ref={progressBarRef} id="password__progress-bar"></div>

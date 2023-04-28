@@ -1,5 +1,5 @@
-import { TextField } from "@mui/material";
 import { FaCheck } from "react-icons/fa";
+import MuiInputText from "../mui/MuiInputText";
 
 const EmailDivision = ({ mail, handleMail }) => {
     return (
@@ -9,13 +9,12 @@ const EmailDivision = ({ mail, handleMail }) => {
                     <FaCheck className="signin-icon check" />
                 )}
             </div>
-            <TextField
-                id="outlined-mail"
-                label="Email"
-                variant="outlined"
-                type="email"
-                required={true}
-                onChange={(e) => handleMail(e.target.value)}
+            <MuiInputText
+                inputType="email"
+                value={mail}
+                dynamicName="Email"
+                inputHandler={handleMail}
+                isRequired={true}
             />
         </div>
     );

@@ -5,11 +5,10 @@ import { useDispatch } from "react-redux";
 import { setUserLoggedData } from "../../features/userLoggedData.slice";
 import { setLoggedState } from "../../features/loggedState.slice";
 
-import { Button } from "@mui/material";
-import MUIClassicLoader from "../mui/MUIClassicLoader";
-
 import { setJwtToken } from "../../utils/functions/tools/setJwtToken";
 import { axiosSignIn } from "../../utils/functions/user/axiosSignin";
+import MUIClassicLoader from "../mui/MUIClassicLoader";
+import MuiButton from "../mui/MuiButton";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
 
@@ -24,13 +23,26 @@ const useSigninForm = () => {
     const spanRef = useRef(null);
     const { mail, password } = signinData;
 
-    const handleMail = (mail) => setSigninData({ ...signinData, mail });
-    const handlePassword = (password) =>
-        setSigninData({ ...signinData, password });
+    const handleMail = (e) => {
+        setSigninData({ ...signinData, mail: e.target.value });
+    };
+    const handlePassword = (e) =>
+        setSigninData({ ...signinData, password: e.target.value });
 
     const handleError = () => {
+        setIsLoading(false);
         spanRef.current.textContent =
             "Paire d'email et de mot de passe incorrect";
+    };
+    const handleSuccess = (res) => {
+        setIsLoading(false);
+        dispatch(setLoggedState(true));
+        dispatch(setUserLoggedData(res.data));
+        setJwtToken({
+            userId: res.data.userId,
+            token: res.data.token,
+        });
+        navigate("/home");
     };
 
     //This function is called when the user is trying to get connected to the app
@@ -54,14 +66,7 @@ const useSigninForm = () => {
                 if (res.status === 401) {
                     handleError();
                 } else {
-                    dispatch(setLoggedState(true));
-                    dispatch(setUserLoggedData(res.data));
-                    setJwtToken({
-                        userId: res.data.userId,
-                        token: res.data.token,
-                    });
-                    navigate("/home");
-                    setIsLoading(false);
+                    handleSuccess(res);
                 }
             })
             .catch(() => {
@@ -92,11 +97,7 @@ const SigninForm = () => {
     } = useSigninForm();
     return (
         <div id="signin" className="signin-container start-form">
-            <form
-                action=""
-                className="signin-form"
-                onSubmit={(e) => handleSubmission(e)}
-            >
+            <form action="" className="signin-form" onSubmit={handleSubmission}>
                 <h2>Connectez-vous!</h2>
                 <EmailDivision mail={mail} handleMail={handleMail} />
                 <PasswordDivision
@@ -105,12 +106,10 @@ const SigninForm = () => {
                 />
                 <span id="signin-msg" ref={spanRef}></span>
                 {isLoading === false && (
-                    <Button
-                        variant="outlined"
-                        onClick={(e) => handleSubmission(e)}
-                    >
-                        Connexion
-                    </Button>
+                    <MuiButton
+                        buttonHandler={handleSubmission}
+                        buttonContent="Connexion"
+                    />
                 )}
                 {isLoading !== false && (
                     <MUIClassicLoader dynamicId="signin-loader" />
