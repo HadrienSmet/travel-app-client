@@ -2,13 +2,13 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { setUserLoggedData } from "../../features/userLoggedData.slice";
-import { setLoggedState } from "../../features/loggedState.slice";
+import { setUserLoggedData } from "../../../features/userLoggedData.slice";
+import { setLoggedState } from "../../../features/loggedState.slice";
 
-import { setJwtToken } from "../../utils/functions/tools/setJwtToken";
-import { axiosSignIn } from "../../utils/functions/user/axiosSignin";
-import MUIClassicLoader from "../mui/MUIClassicLoader";
-import MuiButton from "../mui/MuiButton";
+import { setJwtToken } from "../../../utils/functions/tools/setJwtToken";
+import { axiosSignIn } from "../../../utils/functions/user/axiosSignin";
+import MUIClassicLoader from "../../mui/MUIClassicLoader";
+import MuiButton from "../../mui/MuiButton";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
 

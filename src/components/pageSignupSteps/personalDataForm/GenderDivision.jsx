@@ -1,5 +1,6 @@
 import { FaCheck } from "react-icons/fa";
 import MUIInputSelect from "../../mui/MUIInputSelect";
+import MuiSelect from "../../mui/MuiSelect";
 
 const GenderDivision = ({ gender, changeChoice }) => {
     const genders = ["Homme", "Femme", "Transexuel", "Non-binaire"];
@@ -10,7 +11,13 @@ const GenderDivision = ({ gender, changeChoice }) => {
                     <FaCheck className="personal-data-form__gender-division__check-icon signup-perso-icon check" />
                 )}
             </div>
-            <MUIInputSelect
+            {/* <MUIInputSelect
+                dynamicClass="personal-data-form__input"
+                dynamicPlaceholder="Genre"
+                choices={genders}
+                changeChoice={changeChoice}
+            /> */}
+            <MuiSelect
                 dynamicClass="personal-data-form__input"
                 dynamicPlaceholder="Genre"
                 choices={genders}

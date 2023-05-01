@@ -34,3 +34,17 @@ export const useScrollTop = () => {
         window.scrollTo(0, 0);
     }, []);
 };
+
+export const useCountry = () => {
+    const options = useMemo(() => countryList().getData(), []);
+    const fillCountryArray = () => {
+        let countries = [];
+        for (let i = 0; i < options.length; i++) {
+            countries.push(options[i].label);
+        }
+        return countries;
+    };
+    const countriesArray = fillCountryArray();
+
+    return { countriesArray };
+};

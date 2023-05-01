@@ -1,4 +1,4 @@
-import MUIInputCountry from "../../../mui/MUIInputCountry";
+import { useCountry } from "../../../../utils/hooks/hooks";
 import MUIInputNumbers from "../../../mui/MUIInputNumbers";
 import PicturesDisplayer from "./PicturesDisplayer";
 
@@ -10,15 +10,18 @@ const AlbumForm = ({
     destination,
     year,
 }) => {
+    const { countriesArray } = useCountry();
     return (
         <form action="" encType="multipart/form-data">
             <div className="add-album-modal__same-row">
                 <div className="add-album-modal__country-field">
                     <p>Dans quel pays êtiez-vous parti?</p>
-                    <MUIInputCountry
+                    <MuiSelect
                         dynamicClass="add-album-modal__input-country"
                         dynamicPlaceholder="Pays"
-                        changeCountry={changeCountry}
+                        choices={countriesArray}
+                        changeChoice={changeCountry}
+                        maxHeight={400}
                     />
                 </div>
                 <div className="add-album-modal__input-year">

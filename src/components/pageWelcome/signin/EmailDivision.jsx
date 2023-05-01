@@ -1,5 +1,5 @@
 import { FaCheck } from "react-icons/fa";
-import MuiInputText from "../mui/MuiInputText";
+import MuiInputText from "../../mui/MuiInputText";
 
 const EmailDivision = ({ mail, handleMail }) => {
     return (

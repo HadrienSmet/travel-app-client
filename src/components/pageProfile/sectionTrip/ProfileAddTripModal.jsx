@@ -7,10 +7,12 @@ import { axiosCreateTrip } from "../../../utils/functions/user/axiosCreateTrip";
 import { Button, Modal, Box, TextField } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
-import MUIInputCountry from "../../mui/MUIInputCountry";
+// import MUIInputCountry from "../../mui/MUIInputCountry";
 import MUIInputNumbers from "../../mui/MUIInputNumbers";
 import MUIInputSelect from "../../mui/MUIInputSelect";
 import MUIGradientBorder from "../../mui/MUIGradientBorder";
+import { useCountry } from "../../../utils/hooks/hooks";
+import MuiSelect from "../../mui/MuiSelect";
 
 const style = {
     position: "absolute",
@@ -89,6 +91,7 @@ const ProfileAddTripModal = () => {
         changeChoice,
         changeDetails,
     } = useProfileAddTripModal();
+    const { countriesArray } = useCountry();
 
     const durations = [
         "1 Mois",
@@ -135,10 +138,12 @@ const ProfileAddTripModal = () => {
                     <div className="trip-modal__content">
                         <div className="trip-modal__inputs-area">
                             <span>Quelle était la destination?</span>
-                            <MUIInputCountry
-                                dynamicClass={"trip-modal__input-destination"}
-                                dynamicPlaceholder={"Destination"}
-                                changeCountry={changeCountry}
+                            <MuiSelect
+                                dynamicClass="trip-modal__input-destination"
+                                dynamicPlaceholder="Destination"
+                                choices={countriesArray}
+                                changeChoice={changeCountry}
+                                maxHeight={400}
                             />
                             <span>Pendant combien de temps?</span>
                             <MUIInputSelect

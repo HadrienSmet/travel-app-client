@@ -2,24 +2,27 @@ import { useState } from "react";
 import { useParallax } from "react-scroll-parallax";
 import { useWindowSize } from "../utils/hooks/hooks";
 
-import SignupPersonalDataForm from "../components/pageSignup/personalDataForm/SignupPersonalDataForm";
-import SignupExtraDataForm from "../components/pageSignup/extraDataForm/SignupExtraDataForm";
+import SignupPersonalDataForm from "../components/pageSignupSteps/personalDataForm/SignupPersonalDataForm";
+import SignupExtraDataForm from "../components/pageSignupSteps/extraDataForm/SignupExtraDataForm";
 import signupBanner from "../assets/images/signup-steps-bg.webp";
-import StepsIndicator from "../components/pageSignup/StepsIndicator";
+import StepsIndicator from "../components/pageSignupSteps/stepsIndicator/StepsIndicator";
 
 const useSignupSteps = () => {
-    const [stepState, setStepState] = useState("just-started");
-    const [profilePicture, setProfilePicture] = useState(undefined);
-    const [userPersonals, setUserPersonals] = useState(undefined);
+    const [signStepState, setSignStepState] = useState({
+        stepState: "just-started",
+        profilePicture: undefined,
+        userPersonals: undefined,
+    });
 
-    const changeStepState = (newState) => setStepState(newState);
-    const changeProfilePicture = (file) => setProfilePicture(file);
-    const changeUserPersonals = (data) => setUserPersonals(data);
+    const changeStepState = (newState) =>
+        setSignStepState({ ...signStepState, stepState: newState });
+    const changeProfilePicture = (file) =>
+        setSignStepState({ ...signStepState, profilePicture: file });
+    const changeUserPersonals = (data) =>
+        setSignStepState({ ...signStepState, userPersonals: data });
 
     return {
-        stepState,
-        profilePicture,
-        userPersonals,
+        signStepState,
         changeProfilePicture,
         changeStepState,
         changeUserPersonals,
@@ -47,14 +50,13 @@ const useSignupStepsParallax = () => {
 
 const SignupSteps = () => {
     const {
-        stepState,
-        profilePicture,
-        userPersonals,
+        signStepState,
         changeProfilePicture,
         changeStepState,
         changeUserPersonals,
     } = useSignupSteps();
     const { parallax, elemParallax } = useSignupStepsParallax();
+    const { stepState, profilePicture, userPersonals } = signStepState;
 
     return (
         <main className="signup-steps">

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { Button } from "@mui/material";
-import PictureDivision from "./PictureDivision";
+import PictureDivision from "./pictureDivision/PictureDivision";
 import AgeDivision from "./AgeDivision";
 import FirstnameDivision from "./FirstnameDivision";
 import LastnameDivision from "./LastnameDivision";
 import GenderDivision from "./GenderDivision";
 import CountryDivision from "./CountryDivision";
+import MuiButton from "../../mui/MuiButton";
 
 const usePersonalData = ({
     changeProfilePicture,
@@ -147,7 +147,6 @@ const SignupPersonalDataForm = ({
                     />
                     <AgeDivision age={age} changeAge={changeAge} />
                 </div>
-
                 <div className="personal-data-form__inputs-container">
                     <FirstnameDivision
                         firstName={firstName}
@@ -169,9 +168,10 @@ const SignupPersonalDataForm = ({
                     />
                 </div>
             </div>
-            <Button variant="outlined" onClick={handleSubmission}>
-                Continuer
-            </Button>
+            <MuiButton
+                buttonContent="Continuer"
+                buttonHandler={handleSubmission}
+            />
         </form>
     );
 };

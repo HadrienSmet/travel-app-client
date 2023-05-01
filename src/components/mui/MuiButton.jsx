@@ -1,8 +1,9 @@
-import React from "react";
-
-const MuiButton = ({ buttonHandler, buttonContent }) => {
+const MuiButton = ({ buttonHandler, buttonContent, dynamicClass }) => {
     return (
-        <button className="mui-button" onClick={buttonHandler}>
+        <button
+            className={`mui-button ${dynamicClass}`}
+            onClick={buttonHandler}
+        >
             {buttonContent}
         </button>
     );

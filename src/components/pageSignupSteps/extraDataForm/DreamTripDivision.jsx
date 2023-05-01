@@ -1,8 +1,10 @@
 import { FaCheck, FaTimes } from "react-icons/fa";
-import MUIInputCountry from "../../mui/MUIInputCountry";
+import { useCountry } from "../../../utils/hooks/hooks";
+import MuiSelect from "../../mui/MuiSelect";
 
 const DreamTripDivision = ({ extraData, changeDreamTrip, changeCountry }) => {
     const { dreamTrips } = extraData;
+    const { countriesArray } = useCountry();
     const removeDreamDestination = (e) => {
         let selectedDestination;
         if (e.target.id === "") {
@@ -26,10 +28,12 @@ const DreamTripDivision = ({ extraData, changeDreamTrip, changeCountry }) => {
                         <FaCheck className="extra-data-form__dream-trips-division__check-icon last-step-icon check" />
                     )}
                 </div>
-                <MUIInputCountry
-                    dynamicClass={"extra-data-form__input-destination"}
-                    dynamicPlaceholder={"Destination"}
-                    changeCountry={(value) => changeCountry(value)}
+                <MuiSelect
+                    dynamicClass="extra-data-form__input-destination"
+                    dynamicPlaceholder="Destination"
+                    choices={countriesArray}
+                    changeChoice={(value) => changeCountry(value)}
+                    maxHeight={400}
                 />
                 <div className="countries-list__division">
                     <ul id="countries-list">

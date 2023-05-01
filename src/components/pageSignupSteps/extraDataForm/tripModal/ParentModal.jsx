@@ -5,10 +5,11 @@ import { Button, Modal, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { BsXLg } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
-import MUIInputCountry from "../../../mui/MUIInputCountry";
 import MUIInputNumbers from "../../../mui/MUIInputNumbers";
 import MUIInputSelect from "../../../mui/MUIInputSelect";
 import ChildModal from "./ChildModal";
+import MuiSelect from "../../../mui/MuiSelect";
+import { useCountry } from "../../../../utils/hooks/hooks";
 
 const style = {
     position: "absolute",
@@ -138,6 +139,7 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
         handleDetails,
         handleClose,
     } = useParentModal({ changeTrips });
+    const { countriesArray } = useCountry();
 
     return (
         <div>
@@ -159,10 +161,12 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
                     <div className="trip-modal__content">
                         <div className="trip-modal__inputs-area">
                             <span>Quelle était la destination?</span>
-                            <MUIInputCountry
-                                dynamicClass={"trip-modal__input-destination"}
-                                dynamicPlaceholder={"Destination"}
-                                changeCountry={changeCountry}
+                            <MuiSelect
+                                dynamicClass="trip-modal__input-destination"
+                                dynamicPlaceholder="Destination"
+                                choices={countriesArray}
+                                changeChoice={changeCountry}
+                                maxHeight={400}
                             />
                             <span>Pendant combien de temps?</span>
                             <MUIInputSelect

@@ -3,13 +3,22 @@
     font-size: 1.2em;
     font-weight: 600;
     letter-spacing: 1.5px;
-    border: 2px solid $primary-color-8;
-    color: $primary-color-8;
+    border: 2px solid $primary-color;
+    color: $primary-color;
     &:hover {
         border: 2px solid darken($primary-color, 15) !important;
         color: darken($primary-color, 15);
     }
     &:focus {
         border-color: $primary-color-8;
+    }
+    &.plain {
+        background-color: $primary-color;
+        color: $clr-1;
+        &:hover {
+            border: 2px solid $primary-color;
+            background-color: transparent;
+            color: $primary-color;
+        }
     }
 }
