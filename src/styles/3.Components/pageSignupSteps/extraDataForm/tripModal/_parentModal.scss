@@ -19,6 +19,10 @@
             height: 100% !important;
             .mui-textarea {
                 min-height: calc(100% - 36px);
+                &.shrink {
+                    min-height: unset;
+                    height: calc(100% - 154px);
+                }
                 label {
                     top: 8%;
                 }

@@ -1,15 +1,32 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
 import { FaPlus } from "react-icons/fa";
+
 import ParentModalHeader from "./ParentModalHeader";
 import ParentModalContent from "./ParentModalContent";
 import ParentModalButtonsRow from "./ParentModalButtonsRow";
 import MuiButton from "../../../../mui/MuiButton";
 import MuiModal from "../../../../mui/MuiModal";
 
-const useParentModal = ({ changeTrips }) => {
+const useParentModal = () => {
     const [isParentOpen, setIsParentOpen] = useState(false);
+    const openModal = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = "hidden";
+        setIsParentOpen(true);
+    };
+    const closeModal = () => {
+        document.body.style.overflow = "auto";
+        setIsParentOpen(false);
+    };
+    return {
+        isParentOpen,
+        openModal,
+        closeModal,
+    };
+};
+
+const useParentModalData = ({ changeTrips, closeModal }) => {
     const [prevTripsData, setPrevTripsData] = useState({
         destination: "",
         duration: "",
@@ -21,11 +38,6 @@ const useParentModal = ({ changeTrips }) => {
         (state) => state.albumObjectArrayStore.albumObjectArray
     );
 
-    const openModal = (e) => {
-        e.preventDefault();
-        setIsParentOpen(true);
-    };
-    const closeModal = () => setIsParentOpen(false);
     const changeCountry = (country) =>
         setPrevTripsData({ ...prevTripsData, destination: country });
     const changeDuration = (duration) =>
@@ -70,10 +82,7 @@ const useParentModal = ({ changeTrips }) => {
     };
 
     return {
-        isParentOpen,
         prevTripsData,
-        openModal,
-        closeModal,
         changeCountry,
         changeDuration,
         changeNumber,
@@ -84,18 +93,16 @@ const useParentModal = ({ changeTrips }) => {
 };
 
 const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
+    const { isParentOpen, openModal, closeModal } = useParentModal();
     const {
-        isParentOpen,
         prevTripsData,
-        openModal,
-        closeModal,
         changeCountry,
         changeDuration,
         changeNumber,
         changeChoice,
         handleDetails,
         handleClose,
-    } = useParentModal({ changeTrips });
+    } = useParentModalData({ changeTrips, closeModal });
 
     return (
         <>

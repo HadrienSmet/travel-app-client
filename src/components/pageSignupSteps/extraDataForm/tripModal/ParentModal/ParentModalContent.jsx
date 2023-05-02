@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useCountry, useYears } from "../../../../../utils/hooks/hooks";
 import MuiSelect from "../../../../mui/MuiSelect";
 import MuiTextarea from "../../../../mui/MuiTextarea";
+import { useRef } from "react";
 
 export const durations = [
     "1 Mois",
@@ -28,6 +29,16 @@ export const withFriendsChoices = [
     "En famille",
 ];
 
+const useParentModalContent = ({ albumData }) => {
+    const txtRef = useRef(null);
+    if (albumData.length > 0) {
+        txtRef.current?.classList.add("shrink");
+    } else {
+        txtRef.current?.classList.remove("shrink");
+    }
+    return { txtRef };
+};
+
 const ParentModalContent = ({
     prevTripsData,
     changeCountry,
@@ -36,11 +47,12 @@ const ParentModalContent = ({
     changeChoice,
     handleDetails,
 }) => {
-    const { countriesArray } = useCountry();
-    const { yearsArray } = useYears();
     const albumData = useSelector(
         (state) => state.albumObjectArrayStore.albumObjectArray
     );
+    const { txtRef } = useParentModalContent({ albumData });
+    const { countriesArray } = useCountry();
+    const { yearsArray } = useYears();
     return (
         <div className="trip-modal__content">
             <div className="trip-modal__inputs-area">
@@ -80,6 +92,7 @@ const ParentModalContent = ({
             <div className="trip-modal__description-area">
                 <span>Donne nous des détails!</span>
                 <MuiTextarea
+                    dynamicRef={txtRef}
                     dynamicClass=""
                     dynamicName="trip-details"
                     dynamicLabel="Lieux, expériences, ..."

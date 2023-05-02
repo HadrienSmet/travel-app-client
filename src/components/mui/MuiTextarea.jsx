@@ -16,13 +16,14 @@ const MuiTextarea = ({
     dynamicClass,
     dynamicName,
     dynamicLabel,
+    dynamicRef,
     value,
     changeHandler,
     blurHandler,
 }) => {
     const { labelRef } = useMuiTextarea({ value });
     return (
-        <div className={`mui-textarea ${dynamicClass}`}>
+        <div ref={dynamicRef} className={`mui-textarea ${dynamicClass}`}>
             <textarea
                 name={dynamicName}
                 onChange={changeHandler}
