@@ -1,0 +1,68 @@
+@media screen and (min-width: 1025px) {
+    .signup-steps__content__steps-indicator {
+        width: 20%;
+        min-width: 320px;
+        gap: 50px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .signup-steps__content {
+        &__steps-indicator {
+            @include flexSpacedAndAlign;
+            flex-direction: row !important;
+            gap: 5px;
+        }
+        &__step {
+            height: 42px;
+            padding: 5px;
+            width: 30%;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .signup-steps__content__steps-indicator {
+        gap: 10px;
+    }
+}
+.signup-steps__content {
+    &__steps-indicator {
+        @include flexColumn;
+    }
+    &__step {
+        position: relative;
+        border: 2px solid $primary-color;
+        border-radius: 3px;
+        padding: 15px 25px;
+        display: flex;
+        gap: 15px;
+        &__icons-container {
+            position: absolute;
+            svg {
+                position: absolute;
+                font-size: 34px;
+                transform: translate(-18%, -18%);
+                transition: 0.4s;
+                z-index: 2;
+            }
+        }
+        &__check-icon {
+            opacity: 0;
+            color: $primary-color;
+        }
+        &__times-icon {
+            color: $tertiary-color;
+            opacity: 0;
+        }
+        &-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid $primary-color;
+        }
+        p {
+            color: $primary-color;
+            margin-left: 30px;
+        }
+    }
+}

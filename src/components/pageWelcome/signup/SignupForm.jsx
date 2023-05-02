@@ -78,6 +78,7 @@ const SignupForm = () => {
                     changeIsPasswordOk={changeIsPasswordOk}
                 />
                 <MuiButton
+                    dynamicClass=""
                     buttonContent="Inscription"
                     buttonHandler={handleSubmission}
                 />

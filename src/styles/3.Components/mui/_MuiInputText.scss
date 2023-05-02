@@ -10,7 +10,7 @@
     align-items: center;
     border-radius: 5px;
     &:hover {
-        border: 2px solid darken($primary-color, 15) !important;
+        border: 1px solid darken($primary-color, 15) !important;
         color: darken($primary-color, 15);
     }
     &:focus {
@@ -31,6 +31,7 @@
         }
     }
     label {
+        pointer-events: none;
         transition: 0.2s ease-in-out;
         position: absolute;
         left: 8%;
@@ -38,6 +39,22 @@
         &.filled {
             transform: translateX(-300px);
             opacity: 0;
+        }
+    }
+    &.signup {
+        height: 56px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        background-color: transparent;
+        color: $black-op6;
+        font-weight: normal;
+        input,
+        label {
+            font-size: 14px;
+        }
+        label {
+            font-size: 100;
+            text-transform: uppercase;
         }
     }
 }

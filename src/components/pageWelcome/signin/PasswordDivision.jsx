@@ -10,6 +10,7 @@ const PasswordDivision = ({ password, handlePassword }) => {
             <MuiInputText
                 inputType="password"
                 value={password}
+                dynamicClass=""
                 dynamicName="password"
                 inputHandler={handlePassword}
                 isRequired={true}

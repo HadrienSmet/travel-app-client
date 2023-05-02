@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import { TextField } from "@mui/material";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import MuiInputText from "../../mui/MuiInputText";
 
 const useFirstnameDivision = ({ firstName, changeIsFirstNameOk }) => {
     const firstnameMsgRef = useRef(null);
@@ -79,12 +79,14 @@ const FirstnameDivision = ({
                     <FaTimes className="personal-data-form__first-name-division__times-icon signup-perso-icon times js-handled" />
                 </div>
             </div>
-            <TextField
-                id="outlined-first-name"
-                label="Prénom"
-                variant="outlined"
-                onChange={(e) => changeFirstName(e.target.value)}
-                onBlur={() => handleFirstName()}
+            <MuiInputText
+                inputType="text"
+                value={firstName}
+                dynamicClass="signup"
+                dynamicName="Prénom"
+                inputHandler={changeFirstName}
+                isRequired={true}
+                dataHandler={handleFirstName}
             />
             <span
                 ref={firstnameMsgRef}

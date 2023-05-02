@@ -1,0 +1,49 @@
+#signup-file {
+    display: none;
+}
+.personal-data-form {
+    &__picture-area {
+        padding: 10px;
+        border: 1px solid $black-op2;
+        border-radius: 4px;
+        width: calc(100% - 22px);
+        height: calc(100% - 71px);
+        margin-bottom: 15px;
+        gap: 25px;
+        @include flexColumnCenter;
+        button {
+            padding: 5px 8px;
+            border-radius: 16px;
+            label {
+                cursor: pointer;
+            }
+        }
+    }
+    &__picture-container {
+        width: 200px;
+        @include flexFullCenter;
+    }
+    &__profile-picture {
+        height: 150px;
+        width: 150px;
+        @include translateToCenter;
+    }
+    &__profile-picture-container {
+        height: 120px;
+        width: 120px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    &__icon-background {
+        height: 120px;
+        width: 120px;
+        background-color: $primary-color;
+        border-radius: 50%;
+        @include flexFullCenter;
+        svg {
+            font-size: 70px;
+            color: $secondary-color;
+        }
+    }
+}

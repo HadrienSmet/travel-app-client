@@ -1,0 +1,61 @@
+.mui-textarea {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+        pointer-events: none;
+        position: absolute;
+        color: $black-op6;
+        text-transform: uppercase;
+        font-size: 14px;
+        left: 8%;
+        transition: 0.2s;
+        &.filled {
+            transform: translateX(-200%);
+            opacity: 0;
+        }
+    }
+    textarea {
+        resize: none;
+        background-color: transparent;
+        padding: 16.5px 14px;
+        width: calc(100% - 30px);
+        height: calc(100% - 35px);
+        border: 1px solid $black-op3;
+        border-radius: 4px;
+        &:hover {
+            border: 1px solid darken($primary-color, 15) !important;
+            color: darken($primary-color, 15);
+        }
+        &:focus-within {
+            + label {
+                transform: translateX(-200%);
+                opacity: 0;
+            }
+        }
+        &::-webkit-scrollbar {
+            width: 16px;
+            background-color: transparent;
+        }
+        &:not([no-y-overflow])::-webkit-scrollbar-thumb {
+            height: 56px;
+            border-radius: 8px;
+            border: 4px solid transparent;
+            background-clip: content-box;
+            background-color: $black-op7;
+        }
+        &::-webkit-scrollbar-thumb {
+            height: 56px;
+            border-radius: 8px;
+            border: 4px solid transparent;
+            background-clip: content-box;
+            background-color: hsl(0, 0%, 67%);
+            &:hover {
+                background-color: lighten(hsl(0, 0%, 67%), 5);
+            }
+        }
+    }
+}

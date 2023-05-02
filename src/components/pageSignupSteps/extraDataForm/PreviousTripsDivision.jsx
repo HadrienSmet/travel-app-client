@@ -1,5 +1,5 @@
 import MUIPreviousTripsAccordion from "../../mui/MUIPreviousTripsAccordion";
-import ParentModal from "./tripModal/ParentModal";
+import ParentModal from "./tripModal/ParentModal/ParentModal";
 
 const PreviousTripsDivision = ({
     extraData,

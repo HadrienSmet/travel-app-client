@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { axiosCheckPseudo } from "../../../utils/functions/user/axiosCheckPseudo";
 
-import { TextField } from "@mui/material";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import MuiInputText from "../../mui/MuiInputText";
 
 const usePseudoDivision = ({ extraData, changeIsPseudoOk }) => {
     const pseudoMsgRef = useRef(null);
@@ -76,13 +76,14 @@ const PseudoDivision = ({ extraData, changePseudo, changeIsPseudoOk }) => {
                     <FaTimes className="extra-data-form__pseudo-division__times-icon last-step-icon times" />
                 </div>
             </div>
-            <TextField
-                id="outlined-pseudo"
-                label="Pseudo"
-                variant="outlined"
-                required={true}
-                onChange={(e) => changePseudo(e.target.value)}
-                onBlur={() => handlePseudo()}
+            <MuiInputText
+                inputType="text"
+                value={extraData.pseudo}
+                dynamicClass="signup"
+                dynamicName="Pseudo"
+                inputHandler={changePseudo}
+                isRequired={true}
+                dataHandler={handlePseudo}
             />
             <span ref={pseudoMsgRef} id="extra-pseudo-msg"></span>
         </div>

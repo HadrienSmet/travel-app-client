@@ -1,24 +1,9 @@
 import { FaCheck } from "react-icons/fa";
-import countryList from "react-select-country-list";
 import MuiSelect from "../../mui/MuiSelect";
-import { useMemo } from "react";
-
-const useCountryDivision = () => {
-    const options = useMemo(() => countryList().getData(), []);
-    const fillCountryArray = () => {
-        let countries = [];
-        for (let i = 0; i < options.length; i++) {
-            countries.push(options[i].label);
-        }
-        return countries;
-    };
-    const countriesArray = fillCountryArray();
-
-    return { countriesArray };
-};
+import { useCountry } from "../../../utils/hooks/hooks";
 
 const CountryDivision = ({ country, changeCountry }) => {
-    const { countriesArray } = useCountryDivision();
+    const { countriesArray } = useCountry();
 
     return (
         <div className="personal-data-form__country-division">

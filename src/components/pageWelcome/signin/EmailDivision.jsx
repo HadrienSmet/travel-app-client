@@ -12,6 +12,7 @@ const EmailDivision = ({ mail, handleMail }) => {
             <MuiInputText
                 inputType="email"
                 value={mail}
+                dynamicClass=""
                 dynamicName="Email"
                 inputHandler={handleMail}
                 isRequired={true}

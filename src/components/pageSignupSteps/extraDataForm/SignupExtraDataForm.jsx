@@ -9,7 +9,7 @@ import { setJwtToken } from "../../../utils/functions/tools/setJwtToken";
 import { axiosPostSignupExtra } from "../../../utils/functions/user/axiosPostSignupExtra";
 import { axiosPatchFiles } from "../../../utils/functions/user/axiosPatchFiles";
 
-import { Button } from "@mui/material";
+import MuiButton from "../../mui/MuiButton";
 import MUIClassicLoader from "../../mui/MUIClassicLoader";
 import PseudoDivision from "./PseudoDivision";
 import DescriptionDivision from "./DescriptionDivision";
@@ -28,11 +28,11 @@ const useExtraState = () => {
     const changeIsPseudoOk = (boolean) => {
         setExtraData({ ...extraData, isPseudoOk: boolean });
     };
-    const changePseudo = (pseudo) => {
-        setExtraData({ ...extraData, pseudo });
+    const changePseudo = (e) => {
+        setExtraData({ ...extraData, pseudo: e.target.value });
     };
-    const changeDescription = (description) => {
-        setExtraData({ ...extraData, description });
+    const changeDescription = (e) => {
+        setExtraData({ ...extraData, description: e.target.value });
     };
 
     const changeDreamTrip = (countriesArr) =>
@@ -207,13 +207,11 @@ const SignupExtraDataForm = ({ profilePicture, userPersonals }) => {
                 </div>
             </div>
             {isLoading === false && (
-                <Button
-                    className="extra-data-form__btn-submit"
-                    variant="outlined"
-                    onClick={handleSubmission}
-                >
-                    Confirmer
-                </Button>
+                <MuiButton
+                    buttonHandler={handleSubmission}
+                    buttonContent="Confirmer"
+                    dynamicClass="plain-reverse"
+                />
             )}
             {isLoading === true && (
                 <MUIClassicLoader dynamicId="extra-data-loader" />

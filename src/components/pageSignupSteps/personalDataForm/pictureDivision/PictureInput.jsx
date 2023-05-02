@@ -13,14 +13,8 @@ const PictureInput = ({ profilePictureUrl, handleProfilePicture }) => {
                     )
                 }
                 buttonHandler={undefined}
-                dynamicClass={"plain"}
+                dynamicClass={"signup"}
             />
-
-            {/* {profilePictureUrl === "" ? (
-                <label htmlFor="signup-file">Choisir une photo</label>
-            ) : (
-                <label htmlFor="signup-file">Changer de photo</label>
-            )} */}
             <input
                 type="file"
                 name="file"

@@ -19,13 +19,6 @@ const AgeDivision = ({ age, changeAge }) => {
                     <FaCheck className="personal-data-form__age-division__check-icon signup-perso-icon check" />
                 )}
             </div>
-            {/* <MUIInputNumbers
-                minNumber={16}
-                maxNumber={100}
-                dynamicClass="personal-data-form__input"
-                dynamicPlaceholder="Age"
-                changeNumber={changeAge}
-            /> */}
             <MuiSelect
                 dynamicClass="personal-data-form__input"
                 dynamicPlaceholder="Age"

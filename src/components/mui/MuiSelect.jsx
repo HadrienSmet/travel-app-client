@@ -7,9 +7,7 @@ import {
     Select,
     SelectValue,
 } from "react-aria-components";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useMuiSelect = ({ changeChoice }) => {
     const [choice, setChoice] = useState("");
@@ -24,7 +22,6 @@ const useMuiSelect = ({ changeChoice }) => {
     };
 
     useEffect(() => {
-        console.log(choice);
         if (choice !== "") {
             labelRef.current.classList.add("filled");
             valueRef.current.classList.add("visible");

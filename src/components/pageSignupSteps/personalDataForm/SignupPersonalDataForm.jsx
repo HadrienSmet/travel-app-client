@@ -40,14 +40,14 @@ const usePersonalData = ({
         setPersonalData({ ...personalData, gender });
     const changeCountry = (country) =>
         setPersonalData({ ...personalData, country });
-    const changeFirstName = (firstName) =>
-        setPersonalData({ ...personalData, firstName });
+    const changeFirstName = (e) =>
+        setPersonalData({ ...personalData, firstName: e.target.value });
     const changeIsFirstNameOk = (boolean) =>
         setPersonalData({ ...personalData, isFirstNameOk: boolean });
     const changeIsLastNameOk = (boolean) =>
         setPersonalData({ ...personalData, isLastNameOk: boolean });
-    const changeLastname = (lastName) =>
-        setPersonalData({ ...personalData, lastName });
+    const changeLastname = (e) =>
+        setPersonalData({ ...personalData, lastName: e.target.value });
     const changeProfilePictureUrl = (url) =>
         setPersonalData({ ...personalData, profilePictureUrl: url });
     // This function change the states of this component
@@ -67,35 +67,35 @@ const usePersonalData = ({
     //The first one is creating a new user in the data base
     //If everything went fine it makes the second call to upload the picture in the back and to modificate the user to add the picture url
     const handleSubmission = (e) => {
-        e.preventDefault();
-        const { email, password } = userData;
-        if (
-            profilePictureUrl !== "" &&
-            age !== "" &&
-            isFirstNameOk === true &&
-            isLastNameOk === true &&
-            gender !== "" &&
-            country !== ""
-        ) {
-            let authData = {
-                email,
-                password,
-            };
+        // e.preventDefault();
+        // const { email, password } = userData;
+        // if (
+        //     profilePictureUrl !== "" &&
+        //     age !== "" &&
+        //     isFirstNameOk === true &&
+        //     isLastNameOk === true &&
+        //     gender !== "" &&
+        //     country !== ""
+        // ) {
+        //     let authData = {
+        //         email,
+        //         password,
+        //     };
 
-            let userData = {
-                firstName: firstName,
-                lastName: lastName,
-                age: age,
-                gender: gender,
-                country: country,
-            };
-            let data = {
-                userAuth: { ...authData },
-                userData: { ...userData },
-            };
-            changeUserPersonals(data);
-            changeStepState("almost-done");
-        }
+        //     let userData = {
+        //         firstName: firstName,
+        //         lastName: lastName,
+        //         age: age,
+        //         gender: gender,
+        //         country: country,
+        //     };
+        //     let data = {
+        //         userAuth: { ...authData },
+        //         userData: { ...userData },
+        //     };
+        //     changeUserPersonals(data);
+        changeStepState("almost-done");
+        // }
     };
 
     return {

@@ -74,6 +74,7 @@ const EmailDivision = ({ email, changeEmail, changeIsEmailOk }) => {
             <MuiInputText
                 inputType="email"
                 value={email}
+                dynamicClass=""
                 dynamicName="email"
                 inputHandler={changeEmail}
                 isRequired={true}

@@ -1,6 +1,7 @@
 @media screen and (min-width: 1025px) {
     .child-modal {
-        width: 50vw !important;
+        padding: 2vh 2.5vw;
+        width: 55vw !important;
         justify-content: space-around;
         &__pictures-displayer {
             gap: 15px;

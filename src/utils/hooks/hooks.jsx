@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import countryList from "react-select-country-list";
 
 export const useWindowSize = () => {
     const isClient = typeof window === "object";
@@ -47,4 +48,19 @@ export const useCountry = () => {
     const countriesArray = fillCountryArray();
 
     return { countriesArray };
+};
+
+export const useYears = () => {
+    const fillYearsArray = () => {
+        const today = new Date();
+        const thisYear = today.getFullYear();
+        const options = [];
+        for (let i = 1950; i < thisYear + 1; i++) {
+            options.push(i);
+        }
+        return options;
+    };
+    const yearsArray = fillYearsArray();
+
+    return { yearsArray };
 };

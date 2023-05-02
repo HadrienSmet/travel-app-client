@@ -23,6 +23,7 @@ const useMuiInputText = ({ value }) => {
 const MuiInputText = ({
     inputType,
     value,
+    dynamicClass,
     dynamicName,
     inputHandler,
     isRequired,
@@ -35,7 +36,7 @@ const MuiInputText = ({
     };
 
     return (
-        <div className="mui-input-text">
+        <div className={`mui-input-text ${dynamicClass}`}>
             <input
                 type={inputType}
                 name={dynamicName}

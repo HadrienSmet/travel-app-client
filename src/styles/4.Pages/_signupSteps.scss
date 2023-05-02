@@ -9,11 +9,6 @@
             top: 25vh !important;
             @include flexSpacedAndAlign;
             flex-direction: row !important;
-            &__steps-indicator {
-                width: 20%;
-                min-width: 320px;
-                gap: 50px;
-            }
             &__form-container {
                 width: calc(80% - 150px);
                 max-width: 1120px;
@@ -29,16 +24,6 @@
         }
         &__content {
             top: 20vh;
-            &__steps-indicator {
-                @include flexSpacedAndAlign;
-                flex-direction: row !important;
-                gap: 5px;
-            }
-            &__step {
-                height: 42px;
-                padding: 5px;
-                width: 30%;
-            }
             &__form-container {
                 width: 100%;
             }
@@ -46,15 +31,8 @@
     }
 }
 @media screen and (max-width: 767px) {
-    .signup-steps {
-        &__background-img {
-            height: 1431px;
-        }
-        &__content {
-            &__steps-indicator {
-                gap: 10px;
-            }
-        }
+    .signup-steps__background-img {
+        height: 1431px;
     }
 }
 .signup-steps {
@@ -72,46 +50,6 @@
         transform: translateY(-50%);
         gap: 20px;
         @include flexColumn;
-        &__steps-indicator {
-            @include flexColumn;
-        }
-        &__step {
-            position: relative;
-            border: 2px solid $primary-color;
-            border-radius: 3px;
-            padding: 15px 25px;
-            display: flex;
-            gap: 15px;
-            &__icons-container {
-                position: absolute;
-                svg {
-                    position: absolute;
-                    font-size: 34px;
-                    transform: translate(-18%, -18%);
-                    transition: 0.4s;
-                    z-index: 2;
-                }
-            }
-            &__check-icon {
-                opacity: 0;
-                color: $primary-color;
-            }
-            &__times-icon {
-                color: $tertiary-color;
-                opacity: 0;
-            }
-            &-dot {
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: 1px solid $primary-color;
-            }
-            p {
-                color: $primary-color;
-                margin-left: 30px;
-            }
-        }
         &__form-container {
             position: relative;
             height: 100%;

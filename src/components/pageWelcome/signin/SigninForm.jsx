@@ -107,6 +107,7 @@ const SigninForm = () => {
                 <span id="signin-msg" ref={spanRef}></span>
                 {isLoading === false && (
                     <MuiButton
+                        dynamicClass=""
                         buttonHandler={handleSubmission}
                         buttonContent="Connexion"
                     />

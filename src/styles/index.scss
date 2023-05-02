@@ -18,9 +18,12 @@
 @import "./3.Components/mui/MuiButton";
 @import "./3.Components/mui/MUIGradientBorder";
 @import "./3.Components/mui/MuiInputText";
+@import "./3.Components/mui/MuiModal";
+@import "./3.Components/mui/MuiOverlay";
 @import "./3.Components/mui/MUIPicturesCarousel";
 @import "./3.Components/mui/MUIPreviousTripsAccordion";
 @import "./3.Components/mui/MuiSelect";
+@import "./3.Components/mui/MuiTextarea";
 
 @import "./3.Components/post/post";
 @import "./3.Components/post/postButtonsRow";
@@ -32,7 +35,6 @@
 @import "./3.Components/pageProfile/profileHeader/profileHeader";
 @import "./3.Components/pageProfile/profileHeader/profileHeaderBg";
 @import "./3.Components/pageProfile/profileHeader/profileNavigation";
-
 @import "./3.Components/pageProfile/sectionAlbum/addAlbumModal/albumForm";
 @import "./3.Components/pageProfile/sectionAlbum/addAlbumModal/picturesDisplayer";
 @import "./3.Components/pageProfile/sectionAlbum/addAlbumModal/profileAddAlbumModal";
@@ -40,31 +42,28 @@
 @import "./3.Components/pageProfile/sectionAlbum/albumsContainer";
 @import "./3.Components/pageProfile/sectionAlbum/profileAlbumModal";
 @import "./3.Components/pageProfile/sectionAlbum/profileAlbumsSection";
-
 @import "./3.Components/pageProfile/sectionInfo/profileInfosSection";
-
 @import "./3.Components/pageProfile/sectionFriends/profileFriendsSection";
-
 @import "./3.Components/pageProfile/sectionPosts/profilePostsSection";
-
 @import "./3.Components/pageProfile/sectionTrips/profileTripsSection";
 
-@import "./3.Components/pageSignin/signinForm";
+@import "./3.Components/pageSignupSteps/extraDataForm/descriptionDivision";
+@import "./3.Components/pageSignupSteps/extraDataForm/dreamTripsDivision";
+@import "./3.Components/pageSignupSteps/extraDataForm/previousTripsDivision";
+@import "./3.Components/pageSignupSteps/extraDataForm/pseudoDivision";
+@import "./3.Components/pageSignupSteps/extraDataForm/signupExtraDataForm";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/childModal";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/tripModal";
+@import "./3.Components/pageSignupSteps/personalDataForm/signupPersonalDataForm";
+@import "./3.Components/pageSignupSteps/personalDataForm/personalPictureDivision";
+@import "./3.Components/pageSignupSteps/stepsIndicator";
 
-@import "./3.Components/pageSignup/authentificationDataForm/signupForm";
-@import "./3.Components/pageSignup/authentificationDataForm/emailDivision";
-@import "./3.Components/pageSignup/authentificationDataForm/passwordDivision";
-
-@import "./3.Components/pageSignup/extraDataForm/descriptionDivision";
-@import "./3.Components/pageSignup/extraDataForm/dreamTripsDivision";
-@import "./3.Components/pageSignup/extraDataForm/previousTripsDivision";
-@import "./3.Components/pageSignup/extraDataForm/pseudoDivision";
-@import "./3.Components/pageSignup/extraDataForm/signupExtraDataForm";
-@import "./3.Components/pageSignup/extraDataForm/tripModal/childModal";
-@import "./3.Components/pageSignup/extraDataForm/tripModal/parentModal";
-@import "./3.Components/pageSignup/extraDataForm/tripModal/tripModal";
-
-@import "./3.Components/pageSignup/personalDataForm/signupPersonalDataForm";
+@import "./3.Components/pageWelcome/signin/signinForm";
+@import "./3.Components/pageWelcome/signup/signupForm";
+@import "./3.Components/pageWelcome/signup/emailDivision";
+@import "./3.Components/pageWelcome/signup/passwordDivision";
+@import "./3.Components/pageWelcome/startForm";
 
 @import "./4.Pages/error";
 @import "./4.Pages/home";

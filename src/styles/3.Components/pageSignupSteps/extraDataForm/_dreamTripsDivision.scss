@@ -34,10 +34,6 @@
                 height: 100%;
             }
         }
-        fieldset {
-            width: calc(100% - 18px);
-            border: 1px solid $black-op5;
-        }
     }
     ul#countries-list {
         position: relative;
@@ -80,7 +76,7 @@
     position: relative;
     height: calc(100% - 66px);
     overflow: auto;
-    border: 1px solid $black-op5;
+    border: 1px solid $black-op3;
     border-radius: 4px;
     &::-webkit-scrollbar {
         color: $black-op8;

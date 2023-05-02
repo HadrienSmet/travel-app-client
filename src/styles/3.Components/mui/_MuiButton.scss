@@ -5,9 +5,12 @@
     letter-spacing: 1.5px;
     border: 2px solid $primary-color;
     color: $primary-color;
+    background-color: transparent;
+    transition: 0.2s ease-in-out;
     &:hover {
-        border: 2px solid darken($primary-color, 15) !important;
+        border: 2px solid darken($primary-color, 15);
         color: darken($primary-color, 15);
+        transform: scale(1.05, 0.95);
     }
     &:focus {
         border-color: $primary-color-8;
@@ -19,6 +22,24 @@
             border: 2px solid $primary-color;
             background-color: transparent;
             color: $primary-color;
+        }
+    }
+    &.plain-reverse {
+        border: 2px solid $primary-color;
+        background-color: transparent;
+        color: $primary-color;
+        &:hover {
+            background-color: $primary-color;
+            color: $clr-1;
+        }
+    }
+    &.signup {
+        border: 1px solid $black-op3;
+        border-radius: 4px;
+        color: $black-op4;
+        &:hover {
+            border: 1px solid $tertiary-color;
+            color: $tertiary-color;
         }
     }
 }
