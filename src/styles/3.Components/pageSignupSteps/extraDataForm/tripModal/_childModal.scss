@@ -19,9 +19,6 @@
             width: calc(33.3% - 10px);
             height: 120px;
         }
-        .gradient-container {
-            width: 85%;
-        }
     }
 }
 @media screen and (max-width: 1024px) {
@@ -47,9 +44,6 @@
             &:hover {
                 background-color: lighten(hsl(0, 0%, 67%), 5);
             }
-        }
-        .gradient-container {
-            width: 100%;
         }
     }
 

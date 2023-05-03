@@ -32,19 +32,19 @@
         @include flexColumnAround;
         > div {
             position: relative;
-            transform: translateX(240%);
-            animation: startFormAnim 0.8s ease-in-out forwards;
+            transform: translateX(200%);
+            animation: startFormAnim 0.3s ease-out forwards;
         }
         @for $i from 2 to 4 {
-            $delay: $i * 0.2s;
+            $delay: $i * 0.1s;
             > div:nth-child(#{$i}) {
                 animation-delay: $delay;
             }
         }
         h2 {
             position: relative;
-            transform: translateX(240%);
-            animation: startFormAnim 0.8s 0.2s ease-in-out forwards;
+            transform: translateX(200%);
+            animation: startFormAnim 0.3s 0.1s ease-out forwards;
             text-transform: uppercase;
             color: darken($primary-color, 15);
         }
@@ -55,7 +55,7 @@
             position: relative;
             margin-top: 5px;
             transform: translateX(240%);
-            animation: startFormAnim 0.6s 1s ease-in-out forwards;
+            animation: startFormAnim 0.3s 0.5s ease-in-out forwards;
             height: 50px;
             width: 50%;
             left: 29%;

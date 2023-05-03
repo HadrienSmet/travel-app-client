@@ -9,7 +9,7 @@ import {
 } from "react-aria-components";
 import { useState, useEffect, useRef } from "react";
 
-const useMuiSelect = ({ changeChoice }) => {
+const useSelectUI = ({ changeChoice }) => {
     const [choice, setChoice] = useState("");
     const labelRef = useRef(null);
     const valueRef = useRef(null);
@@ -38,14 +38,14 @@ const useMuiSelect = ({ changeChoice }) => {
     };
 };
 
-const MuiSelect = ({
+const SelectUI = ({
     dynamicClass,
     dynamicPlaceholder,
     choices,
     changeChoice,
     maxHeight,
 }) => {
-    const { labelRef, valueRef, handleChange } = useMuiSelect({ changeChoice });
+    const { labelRef, valueRef, handleChange } = useSelectUI({ changeChoice });
     return (
         <div className={dynamicClass}>
             <Select onSelectionChange={handleChange}>
@@ -81,4 +81,4 @@ const MuiSelect = ({
     );
 };
 
-export default MuiSelect;
+export default SelectUI;

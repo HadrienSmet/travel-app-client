@@ -1,5 +1,5 @@
 import { FaCheck } from "react-icons/fa";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const EmailDivision = ({ mail, handleMail }) => {
     return (
@@ -9,7 +9,7 @@ const EmailDivision = ({ mail, handleMail }) => {
                     <FaCheck className="signin-icon check" />
                 )}
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="email"
                 value={mail}
                 dynamicClass=""

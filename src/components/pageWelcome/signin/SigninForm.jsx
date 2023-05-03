@@ -7,8 +7,8 @@ import { setLoggedState } from "../../../features/loggedState.slice";
 
 import { setJwtToken } from "../../../utils/functions/tools/setJwtToken";
 import { axiosSignIn } from "../../../utils/functions/user/axiosSignin";
-import MUIClassicLoader from "../../mui/MUIClassicLoader";
-import MuiButton from "../../mui/MuiButton";
+import MUIClassicLoader from "../../ui/MUIClassicLoader";
+import ButtonUI from "../../ui/ButtonUI";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
 
@@ -106,7 +106,7 @@ const SigninForm = () => {
                 />
                 <span id="signin-msg" ref={spanRef}></span>
                 {isLoading === false && (
-                    <MuiButton
+                    <ButtonUI
                         dynamicClass=""
                         buttonHandler={handleSubmission}
                         buttonContent="Connexion"

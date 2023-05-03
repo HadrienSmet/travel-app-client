@@ -15,21 +15,6 @@
 @import "./3.Components/header/navigationGuest";
 @import "./3.Components/header/navigationUser";
 
-@import "./3.Components/mui/MuiButton";
-@import "./3.Components/mui/MUIGradientBorder";
-@import "./3.Components/mui/MuiInputText";
-@import "./3.Components/mui/MuiModal";
-@import "./3.Components/mui/MuiOverlay";
-@import "./3.Components/mui/MUIPicturesCarousel";
-@import "./3.Components/mui/MUIPreviousTripsAccordion";
-@import "./3.Components/mui/MuiSelect";
-@import "./3.Components/mui/MuiTextarea";
-
-@import "./3.Components/post/post";
-@import "./3.Components/post/postButtonsRow";
-@import "./3.Components/post/postContent";
-@import "./3.Components/post/postHeader";
-
 @import "./3.Components/pageHome/postsForm";
 
 @import "./3.Components/pageProfile/profileHeader/profileHeader";
@@ -46,6 +31,11 @@
 @import "./3.Components/pageProfile/sectionFriends/profileFriendsSection";
 @import "./3.Components/pageProfile/sectionPosts/profilePostsSection";
 @import "./3.Components/pageProfile/sectionTrips/profileTripsSection";
+
+@import "./3.Components/post/post";
+@import "./3.Components/post/postButtonsRow";
+@import "./3.Components/post/postContent";
+@import "./3.Components/post/postHeader";
 
 @import "./3.Components/pageSignupSteps/extraDataForm/descriptionDivision";
 @import "./3.Components/pageSignupSteps/extraDataForm/dreamTripsDivision";
@@ -64,6 +54,17 @@
 @import "./3.Components/pageWelcome/signup/emailDivision";
 @import "./3.Components/pageWelcome/signup/passwordDivision";
 @import "./3.Components/pageWelcome/startForm";
+
+@import "./3.Components/ui/buttonUI";
+@import "./3.Components/ui/MUIGradientBorder";
+@import "./3.Components/ui/inputTextUI";
+@import "./3.Components/ui/modalUI";
+@import "./3.Components/ui/overlayUI";
+@import "./3.Components/ui/MUIPicturesCarousel";
+@import "./3.Components/ui/MUIPreviousTripsAccordion";
+@import "./3.Components/ui/selectUI";
+@import "./3.Components/ui/textareaUI";
+@import "./3.Components/ui/tripsAccordionUI";
 
 @import "./4.Pages/error";
 @import "./4.Pages/home";

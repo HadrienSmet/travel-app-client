@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const usePasswordDivision = ({ password, changeIsPasswordOk }) => {
     const progressBarRef = useRef(null);
@@ -86,7 +86,7 @@ const PasswordDivision = ({ password, changePassword, changeIsPasswordOk }) => {
                     <FaTimes className="signup-form__password-division__times-icon signup-icon" />
                 </div>
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="password"
                 value={password}
                 dynamicClass=""

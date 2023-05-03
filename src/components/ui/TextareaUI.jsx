@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const useMuiTextarea = ({ value }) => {
+const useTextareaUI = ({ value }) => {
     const labelRef = useRef(null);
     if (value !== "") {
         labelRef.current?.classList.add("filled");
@@ -12,7 +12,7 @@ const useMuiTextarea = ({ value }) => {
     };
 };
 
-const MuiTextarea = ({
+const TextareaUI = ({
     dynamicClass,
     dynamicName,
     dynamicLabel,
@@ -21,7 +21,7 @@ const MuiTextarea = ({
     changeHandler,
     blurHandler,
 }) => {
-    const { labelRef } = useMuiTextarea({ value });
+    const { labelRef } = useTextareaUI({ value });
     return (
         <div ref={dynamicRef} className={`mui-textarea ${dynamicClass}`}>
             <textarea
@@ -36,4 +36,4 @@ const MuiTextarea = ({
     );
 };
 
-export default MuiTextarea;
+export default TextareaUI;

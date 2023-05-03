@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import { FaCheck, FaTimes } from "react-icons/fa";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const useLastnameDivision = ({ lastName, changeIsLastNameOk }) => {
     const lastnameMsgRef = useRef(null);
@@ -75,7 +75,7 @@ const LastnameDivision = ({ lastName, changeLastName, changeIsLastNameOk }) => {
                     <FaTimes className="personal-data-form__last-name-division__times-icon signup-perso-icon times js-handled" />
                 </div>
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="text"
                 value={lastName}
                 dynamicClass="signup"

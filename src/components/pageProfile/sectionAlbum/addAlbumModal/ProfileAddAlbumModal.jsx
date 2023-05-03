@@ -7,8 +7,8 @@ import { axiosCreateAlbum } from "../../../../utils/functions/user/axiosCreateAl
 import { FaPlus } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Button, Modal, Box } from "@mui/material";
-import MUIGradientBorder from "../../../mui/MUIGradientBorder";
-import MUIClassicLoader from "../../../mui/MUIClassicLoader";
+import MUIGradientBorder from "../../../ui/MUIGradientBorder";
+import MUIClassicLoader from "../../../ui/MUIClassicLoader";
 import AlbumForm from "./AlbumForm";
 
 const style = {

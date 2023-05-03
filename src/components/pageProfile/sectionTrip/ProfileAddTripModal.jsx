@@ -8,11 +8,11 @@ import { Button, Modal, Box, TextField } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 // import MUIInputCountry from "../../mui/MUIInputCountry";
-import MUIInputNumbers from "../../mui/MUIInputNumbers";
-import MUIInputSelect from "../../mui/MUIInputSelect";
-import MUIGradientBorder from "../../mui/MUIGradientBorder";
+import MUIInputNumbers from "../../ui/MUIInputNumbers";
+import MUIInputSelect from "../../ui/MUIInputSelect";
+import MUIGradientBorder from "../../ui/MUIGradientBorder";
 import { useCountry } from "../../../utils/hooks/hooks";
-import MuiSelect from "../../mui/MuiSelect";
+import SelectUI from "../../ui/SelectUI";
 
 const style = {
     position: "absolute",
@@ -138,7 +138,7 @@ const ProfileAddTripModal = () => {
                     <div className="trip-modal__content">
                         <div className="trip-modal__inputs-area">
                             <span>Quelle était la destination?</span>
-                            <MuiSelect
+                            <SelectUI
                                 dynamicClass="trip-modal__input-destination"
                                 dynamicPlaceholder="Destination"
                                 choices={countriesArray}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Globe3D from "../../Globe3D";
-import MUIGradientBorder from "../../mui/MUIGradientBorder";
-import MUIPreviousTripsAccordion from "../../mui/MUIPreviousTripsAccordion";
+import MUIGradientBorder from "../../ui/MUIGradientBorder";
+import MUIPreviousTripsAccordion from "../../ui/MUIPreviousTripsAccordion";
 import ProfileAddTripModal from "./ProfileAddTripModal";
 
 const useProfileTripsSection = () => {

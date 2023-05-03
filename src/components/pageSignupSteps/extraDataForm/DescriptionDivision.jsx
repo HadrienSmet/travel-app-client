@@ -1,8 +1,7 @@
 import { useRef } from "react";
 
-import { TextField } from "@mui/material";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import MuiTextarea from "../../mui/MuiTextarea";
+import TextareaUI from "../../ui/TextareaUI";
 
 const useDescriptionDivision = ({ extraData }) => {
     const descriptionMsgRef = useRef(null);
@@ -54,16 +53,7 @@ const DescriptionDivision = ({ extraData, changeDescription }) => {
                     <FaTimes className="extra-data-form__description-division__times-icon last-step-icon times" />
                 </div>
             </div>
-            {/* <TextField
-                id="outlined-textarea"
-                className="extra-data-form__text-area"
-                label="Présentes-toi!"
-                placeholder=""
-                multiline
-                onChange={(e) => changeDescription(e.target.value)}
-                onBlur={() => handleDescription()}
-            /> */}
-            <MuiTextarea
+            <TextareaUI
                 dynamicClass="extra-data-form__text-area"
                 dynamicLabel="Présentes-toi!"
                 dynamicName="description"

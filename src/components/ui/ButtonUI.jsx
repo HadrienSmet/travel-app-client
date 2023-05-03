@@ -1,4 +1,4 @@
-const MuiButton = ({ buttonHandler, buttonContent, dynamicClass }) => {
+const ButtonUI = ({ buttonHandler, buttonContent, dynamicClass }) => {
     return (
         <button
             className={`mui-button ${dynamicClass}`}
@@ -9,4 +9,4 @@ const MuiButton = ({ buttonHandler, buttonContent, dynamicClass }) => {
     );
 };
 
-export default MuiButton;
+export default ButtonUI;

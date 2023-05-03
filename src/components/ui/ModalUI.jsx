@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-const MuiModal = ({ isOpen, closeModal, children, dynamicClass, portal }) => {
+const ModalUI = ({ isOpen, closeModal, children, dynamicClass, portal }) => {
     if (!isOpen) return null;
     return ReactDOM.createPortal(
         <div className="mui-modal">
@@ -13,4 +13,4 @@ const MuiModal = ({ isOpen, closeModal, children, dynamicClass, portal }) => {
     );
 };
 
-export default MuiModal;
+export default ModalUI;

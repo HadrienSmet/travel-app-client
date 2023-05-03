@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { FaPlus, FaTimes } from "react-icons/fa";
-import MUIPicturesCarousel from "../../mui/MUIPicturesCarousel";
+import MUIPicturesCarousel from "../../ui/MUIPicturesCarousel";
 
 const style = {
     position: "absolute",

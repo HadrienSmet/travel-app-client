@@ -9,8 +9,8 @@ import { setJwtToken } from "../../../utils/functions/tools/setJwtToken";
 import { axiosPostSignupExtra } from "../../../utils/functions/user/axiosPostSignupExtra";
 import { axiosPatchFiles } from "../../../utils/functions/user/axiosPatchFiles";
 
-import MuiButton from "../../mui/MuiButton";
-import MUIClassicLoader from "../../mui/MUIClassicLoader";
+import ButtonUI from "../../ui/ButtonUI";
+import MUIClassicLoader from "../../ui/MUIClassicLoader";
 import PseudoDivision from "./PseudoDivision";
 import DescriptionDivision from "./DescriptionDivision";
 import DreamTripDivision from "./DreamTripDivision";
@@ -207,7 +207,7 @@ const SignupExtraDataForm = ({ profilePicture, userPersonals }) => {
                 </div>
             </div>
             {isLoading === false && (
-                <MuiButton
+                <ButtonUI
                     buttonHandler={handleSubmission}
                     buttonContent="Confirmer"
                     dynamicClass="plain-reverse"

@@ -9,7 +9,7 @@ const MUIPreviousTripsAccordion = ({
     signingUp,
 }) => {
     return (
-        <div className={dynamicClass + "__accordion"}>
+        <div className={`${dynamicClass}__accordion ui-accordion`}>
             {previousTrips.map((trip, index) => (
                 <Accordion key={"trip-" + trip.destination + "-accordion"}>
                     <AccordionSummary

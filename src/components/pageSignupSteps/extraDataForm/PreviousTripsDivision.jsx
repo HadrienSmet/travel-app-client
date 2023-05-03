@@ -1,4 +1,4 @@
-import MUIPreviousTripsAccordion from "../../mui/MUIPreviousTripsAccordion";
+import TripsAccordionUI from "../../ui/TripsAccordionUI";
 import ParentModal from "./tripModal/ParentModal/ParentModal";
 
 const PreviousTripsDivision = ({
@@ -21,7 +21,7 @@ const PreviousTripsDivision = ({
                     <p>Listez vos précédents voyages!</p>
                 )}
                 {previousTrips !== undefined && (
-                    <MUIPreviousTripsAccordion
+                    <TripsAccordionUI
                         previousTrips={previousTrips}
                         dynamicClass="extra-form"
                         signingUp={true}

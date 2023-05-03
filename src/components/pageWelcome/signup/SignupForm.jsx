@@ -6,7 +6,7 @@ import { setSignupData } from "../../../features/signupData.slice";
 
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
-import MuiButton from "../../mui/MuiButton";
+import ButtonUI from "../../ui/ButtonUI";
 
 const useSignupForm = () => {
     const navigate = useNavigate();
@@ -77,7 +77,7 @@ const SignupForm = () => {
                     changePassword={changePassword}
                     changeIsPasswordOk={changeIsPasswordOk}
                 />
-                <MuiButton
+                <ButtonUI
                     dynamicClass=""
                     buttonContent="Inscription"
                     buttonHandler={handleSubmission}

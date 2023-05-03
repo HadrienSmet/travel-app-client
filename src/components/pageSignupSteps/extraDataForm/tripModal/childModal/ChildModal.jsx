@@ -6,8 +6,8 @@ import { setAlbumObjectArrayStore } from "../../../../../features/albumObjectArr
 import { FaPlus } from "react-icons/fa";
 import ChildModalHeader from "./ChildModalHeader";
 import ChildModalPicturesDisplayer from "./ChildModalPicturesDisplayer";
-import MuiButton from "../../../../mui/MuiButton";
-import MuiModal from "../../../../mui/MuiModal";
+import ButtonUI from "../../../../ui/ButtonUI";
+import ModalUI from "../../../../ui/ModalUI";
 
 const useChildModal = () => {
     const [isChildOpen, setChildOpen] = useState(false);
@@ -85,7 +85,7 @@ const ChildModal = ({ prevTripsData, changeAlbumsArray }) => {
 
     return (
         <>
-            <MuiButton
+            <ButtonUI
                 buttonContent={
                     <>
                         <span>Créer un album</span>
@@ -95,7 +95,7 @@ const ChildModal = ({ prevTripsData, changeAlbumsArray }) => {
                 buttonHandler={openModal}
                 dynamicClass="plain"
             />
-            <MuiModal
+            <ModalUI
                 isOpen={isChildOpen}
                 closeModal={closeModal}
                 dynamicClass={"child-modal"}
@@ -110,12 +110,12 @@ const ChildModal = ({ prevTripsData, changeAlbumsArray }) => {
                     prevTripsData={prevTripsData}
                     albumPictureUrl={albumPictureUrl}
                 />
-                <MuiButton
+                <ButtonUI
                     buttonContent="Confirmer"
                     buttonHandler={handleClose}
                     dynamicClass="plain"
                 />
-            </MuiModal>
+            </ModalUI>
         </>
     );
 };

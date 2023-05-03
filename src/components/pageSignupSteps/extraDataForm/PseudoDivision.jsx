@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { axiosCheckPseudo } from "../../../utils/functions/user/axiosCheckPseudo";
 
 import { FaCheck, FaTimes } from "react-icons/fa";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const usePseudoDivision = ({ extraData, changeIsPseudoOk }) => {
     const pseudoMsgRef = useRef(null);
@@ -76,7 +76,7 @@ const PseudoDivision = ({ extraData, changePseudo, changeIsPseudoOk }) => {
                     <FaTimes className="extra-data-form__pseudo-division__times-icon last-step-icon times" />
                 </div>
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="text"
                 value={extraData.pseudo}
                 dynamicClass="signup"

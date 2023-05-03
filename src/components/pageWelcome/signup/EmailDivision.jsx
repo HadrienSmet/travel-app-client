@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
 import { axiosCheckMail } from "../../../utils/functions/user/axiosCheckMail";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const useEmailDivision = ({ email, changeIsEmailOk }) => {
     const mailMsgRef = useRef(null);
@@ -71,7 +71,7 @@ const EmailDivision = ({ email, changeEmail, changeIsEmailOk }) => {
                     <FaTimes className="signup-form__email-division__times-icon signup-icon" />
                 </div>
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="email"
                 value={email}
                 dynamicClass=""

@@ -21,7 +21,7 @@ import { axiosDeletePost } from "../../utils/functions/posts/axiosDeletePost";
 import { axiosEditPost } from "../../utils/functions/posts/axiosEditPost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 
-import MUIClassicLoader from "../mui/MUIClassicLoader";
+import MUIClassicLoader from "../ui/MUIClassicLoader";
 
 const useLikesButtons = ({ post, token, userId }) => {
     const [likesData, setLikesData] = useState({

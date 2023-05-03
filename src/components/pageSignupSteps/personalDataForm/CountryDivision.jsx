@@ -1,5 +1,5 @@
 import { FaCheck } from "react-icons/fa";
-import MuiSelect from "../../mui/MuiSelect";
+import MuiSelect from "../../ui/SelectUI";
 import { useCountry } from "../../../utils/hooks/hooks";
 
 const CountryDivision = ({ country, changeCountry }) => {

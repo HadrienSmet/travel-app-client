@@ -8,7 +8,7 @@ import { axiosGetPostsFromCountry } from "../utils/functions/posts/axiosGetPosts
 import { axiosGetPosts } from "../utils/functions/posts/axiosGetPosts";
 
 import Globe3D from "../components/Globe3D";
-import MUIGradientBorder from "../components/mui/MUIGradientBorder";
+import MUIGradientBorder from "../components/ui/MUIGradientBorder";
 import HomeContent from "../components/pageHome/HomeContent";
 import { useScrollTop } from "../utils/hooks/hooks";
 

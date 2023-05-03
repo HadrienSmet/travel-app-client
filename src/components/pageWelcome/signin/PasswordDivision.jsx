@@ -1,5 +1,5 @@
 import { FaCheck } from "react-icons/fa";
-import MuiInputText from "../../mui/MuiInputText";
+import InputTextUI from "../../ui/InputTextUI";
 
 const PasswordDivision = ({ password, handlePassword }) => {
     return (
@@ -7,7 +7,7 @@ const PasswordDivision = ({ password, handlePassword }) => {
             <div className="signin-container__icons-container">
                 {password !== "" && <FaCheck className="signin-icon check" />}
             </div>
-            <MuiInputText
+            <InputTextUI
                 inputType="password"
                 value={password}
                 dynamicClass=""

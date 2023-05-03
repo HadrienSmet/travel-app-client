@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MuiButton from "../../../../mui/MuiButton";
+import ButtonUI from "../../../../ui/ButtonUI";
 import ChildModal from "../childModal/ChildModal";
 
 const ParentModalButtonsRow = ({
@@ -13,7 +13,7 @@ const ParentModalButtonsRow = ({
     return (
         <div className="trip-modal__buttons-row">
             {albumData[0] !== undefined ? (
-                <MuiButton
+                <ButtonUI
                     buttonContent="Confirmer"
                     buttonHandler={handleClose}
                     dynamicClass=""

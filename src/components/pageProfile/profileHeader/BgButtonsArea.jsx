@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { FaCheck, FaEdit, FaTimes } from "react-icons/fa";
-import MUIClassicLoader from "../../mui/MUIClassicLoader";
+import MUIClassicLoader from "../../ui/MUIClassicLoader";
 
 const useBgButtonsArea = () => {
     const pictureCheckRef = useRef(null);

@@ -9,7 +9,7 @@ import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { axiosCreatePost } from "../../utils/functions/posts/axiosCreatePost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 
-import MUIClassicLoader from "../mui/MUIClassicLoader";
+import MUIClassicLoader from "../ui/MUIClassicLoader";
 
 const usePostForm = () => {
     const [isLoading, setIsLoading] = useState(false);

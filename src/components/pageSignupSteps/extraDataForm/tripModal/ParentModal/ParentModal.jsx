@@ -5,8 +5,8 @@ import { FaPlus } from "react-icons/fa";
 import ParentModalHeader from "./ParentModalHeader";
 import ParentModalContent from "./ParentModalContent";
 import ParentModalButtonsRow from "./ParentModalButtonsRow";
-import MuiButton from "../../../../mui/MuiButton";
-import MuiModal from "../../../../mui/MuiModal";
+import ButtonUI from "../../../../ui/ButtonUI";
+import ModalUI from "../../../../ui/ModalUI";
 
 const useParentModal = () => {
     const [isParentOpen, setIsParentOpen] = useState(false);
@@ -106,7 +106,7 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
 
     return (
         <>
-            <MuiButton
+            <ButtonUI
                 buttonContent={
                     <>
                         <span>Ajouter un voyage</span>
@@ -116,7 +116,7 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
                 buttonHandler={openModal}
                 dynamicClass="plain"
             />
-            <MuiModal
+            <ModalUI
                 isOpen={isParentOpen}
                 closeModal={closeModal}
                 dynamicClass="trip-modal"
@@ -136,7 +136,7 @@ const ParentModal = ({ changeAlbumsArray, changeTrips }) => {
                     prevTripsData={prevTripsData}
                     changeAlbumsArray={changeAlbumsArray}
                 />
-            </MuiModal>
+            </ModalUI>
         </>
     );
 };

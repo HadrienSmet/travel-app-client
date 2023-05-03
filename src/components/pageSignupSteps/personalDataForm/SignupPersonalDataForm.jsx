@@ -7,7 +7,7 @@ import FirstnameDivision from "./FirstnameDivision";
 import LastnameDivision from "./LastnameDivision";
 import GenderDivision from "./GenderDivision";
 import CountryDivision from "./CountryDivision";
-import MuiButton from "../../mui/MuiButton";
+import ButtonUI from "../../ui/ButtonUI";
 
 const usePersonalData = ({
     changeProfilePicture,
@@ -67,35 +67,35 @@ const usePersonalData = ({
     //The first one is creating a new user in the data base
     //If everything went fine it makes the second call to upload the picture in the back and to modificate the user to add the picture url
     const handleSubmission = (e) => {
-        // e.preventDefault();
-        // const { email, password } = userData;
-        // if (
-        //     profilePictureUrl !== "" &&
-        //     age !== "" &&
-        //     isFirstNameOk === true &&
-        //     isLastNameOk === true &&
-        //     gender !== "" &&
-        //     country !== ""
-        // ) {
-        //     let authData = {
-        //         email,
-        //         password,
-        //     };
+        e.preventDefault();
+        const { email, password } = userData;
+        if (
+            profilePictureUrl !== "" &&
+            age !== "" &&
+            isFirstNameOk === true &&
+            isLastNameOk === true &&
+            gender !== "" &&
+            country !== ""
+        ) {
+            let authData = {
+                email,
+                password,
+            };
 
-        //     let userData = {
-        //         firstName: firstName,
-        //         lastName: lastName,
-        //         age: age,
-        //         gender: gender,
-        //         country: country,
-        //     };
-        //     let data = {
-        //         userAuth: { ...authData },
-        //         userData: { ...userData },
-        //     };
-        //     changeUserPersonals(data);
-        changeStepState("almost-done");
-        // }
+            let userData = {
+                firstName: firstName,
+                lastName: lastName,
+                age: age,
+                gender: gender,
+                country: country,
+            };
+            let data = {
+                userAuth: { ...authData },
+                userData: { ...userData },
+            };
+            changeUserPersonals(data);
+            changeStepState("almost-done");
+        }
     };
 
     return {
@@ -168,7 +168,7 @@ const SignupPersonalDataForm = ({
                     />
                 </div>
             </div>
-            <MuiButton
+            <ButtonUI
                 buttonContent="Continuer"
                 buttonHandler={handleSubmission}
             />

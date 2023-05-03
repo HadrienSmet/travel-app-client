@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-const useMuiInputText = ({ value }) => {
+const useInputTextUI = ({ value }) => {
     const labelRef = useRef(null);
     useEffect(() => {
         const handleLabel = () => {
@@ -20,7 +20,7 @@ const useMuiInputText = ({ value }) => {
     };
 };
 
-const MuiInputText = ({
+const InputTextUI = ({
     inputType,
     value,
     dynamicClass,
@@ -29,7 +29,7 @@ const MuiInputText = ({
     isRequired,
     dataHandler,
 }) => {
-    const { labelRef } = useMuiInputText({ value });
+    const { labelRef } = useInputTextUI({ value });
 
     const handleBlur = () => {
         if (dataHandler) dataHandler();
@@ -51,8 +51,8 @@ const MuiInputText = ({
     );
 };
 
-MuiInputText.defaultProps = {
+InputTextUI.defaultProps = {
     dataHandler: null,
 };
 
-export default MuiInputText;
+export default InputTextUI;

@@ -1,7 +1,7 @@
 import { FaCheck } from "react-icons/fa";
 
-import MuiSelect from "../../mui/MuiSelect";
 import { useMemo } from "react";
+import SelectUI from "../../ui/SelectUI";
 
 const AgeDivision = ({ age, changeAge }) => {
     const fillAgeArray = () => {
@@ -19,7 +19,7 @@ const AgeDivision = ({ age, changeAge }) => {
                     <FaCheck className="personal-data-form__age-division__check-icon signup-perso-icon check" />
                 )}
             </div>
-            <MuiSelect
+            <SelectUI
                 dynamicClass="personal-data-form__input"
                 dynamicPlaceholder="Age"
                 choices={filler}

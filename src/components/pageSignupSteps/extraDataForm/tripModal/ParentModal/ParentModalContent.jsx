@@ -1,8 +1,8 @@
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { useCountry, useYears } from "../../../../../utils/hooks/hooks";
-import MuiSelect from "../../../../mui/MuiSelect";
-import MuiTextarea from "../../../../mui/MuiTextarea";
-import { useRef } from "react";
+import TextareaUI from "../../../../ui/TextareaUI";
+import SelectUI from "../../../../ui/SelectUI";
 
 export const durations = [
     "1 Mois",
@@ -57,7 +57,7 @@ const ParentModalContent = ({
         <div className="trip-modal__content">
             <div className="trip-modal__inputs-area">
                 <span>Quelle était la destination?</span>
-                <MuiSelect
+                <SelectUI
                     dynamicClass="trip-modal__input-destination"
                     dynamicPlaceholder="Destination"
                     choices={countriesArray}
@@ -65,7 +65,7 @@ const ParentModalContent = ({
                     maxHeight={400}
                 />
                 <span>Pendant combien de temps?</span>
-                <MuiSelect
+                <SelectUI
                     dynamicClass="trip-modal__input-duration"
                     dynamicPlaceholder="Durée"
                     choices={durations}
@@ -73,7 +73,7 @@ const ParentModalContent = ({
                     maxHeight={400}
                 />
                 <span>En quelle année?</span>
-                <MuiSelect
+                <SelectUI
                     dynamicClass="trip-modal__input-year"
                     dynamicPlaceholder="Année"
                     choices={yearsArray}
@@ -81,7 +81,7 @@ const ParentModalContent = ({
                     maxHeight={400}
                 />
                 <span>Avec qui?</span>
-                <MuiSelect
+                <SelectUI
                     dynamicClass="trip-modal__input-accompanied"
                     dynamicPlaceholder="Accompagné(e)"
                     choices={withFriendsChoices}
@@ -91,7 +91,7 @@ const ParentModalContent = ({
             </div>
             <div className="trip-modal__description-area">
                 <span>Donne nous des détails!</span>
-                <MuiTextarea
+                <TextareaUI
                     dynamicRef={txtRef}
                     dynamicClass=""
                     dynamicName="trip-details"

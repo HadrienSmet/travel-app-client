@@ -1,5 +1,5 @@
 import { useCountry } from "../../../../utils/hooks/hooks";
-import MUIInputNumbers from "../../../mui/MUIInputNumbers";
+import MUIInputNumbers from "../../../ui/MUIInputNumbers";
 import PicturesDisplayer from "./PicturesDisplayer";
 
 const AlbumForm = ({

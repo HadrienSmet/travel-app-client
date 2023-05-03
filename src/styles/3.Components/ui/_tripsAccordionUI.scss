@@ -1,0 +1,52 @@
+.extra-form__accordion {
+    display: flex;
+    flex-direction: column;
+    &__element {
+        display: flex;
+        flex-direction: column;
+        &-container {
+            height: 28px;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px 0px $black-op2;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: $clr-1;
+            padding: 15px;
+            transition: 0.2s;
+            * {
+                pointer-events: none;
+            }
+            &.open {
+                height: unset;
+                .extra-form__accordion__element-header svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        &-header {
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            svg {
+                transform-origin: center;
+                transition: 0.2s ease-in-out;
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        &-album {
+            display: flex;
+            gap: 10px;
+            img {
+                border-radius: 4px;
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+}
