@@ -61,7 +61,28 @@
         > div {
             position: relative;
             > span {
+                transition: 0.1s;
                 position: absolute;
+                pointer-events: none;
+                transform: translateY(12px);
+                border-radius: 4px;
+                box-shadow: 0px 1px 5px 1px $black-op2;
+                opacity: 0;
+                z-index: 10;
+                padding: 25px;
+                width: calc(100% - 50px);
+                background-color: $clr-1;
+                font-size: 1.2em;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    background-color: $clr-1;
+                    transform: rotate(45deg);
+                    top: -7px;
+                    left: 15px;
+                }
             }
         }
     }

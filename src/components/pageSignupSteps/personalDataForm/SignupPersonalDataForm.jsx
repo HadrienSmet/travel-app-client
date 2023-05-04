@@ -10,6 +10,7 @@ import CountryDivision from "./CountryDivision";
 import ButtonUI from "../../ui/ButtonUI";
 
 const usePersonalData = ({
+    signStepState,
     changeProfilePicture,
     changeStepState,
     changeUserPersonals,
@@ -94,7 +95,6 @@ const usePersonalData = ({
                 userData: { ...userData },
             };
             changeUserPersonals(data);
-            changeStepState("almost-done");
         }
     };
 
@@ -113,6 +113,7 @@ const usePersonalData = ({
 };
 
 const SignupPersonalDataForm = ({
+    signStepState,
     changeStepState,
     changeProfilePicture,
     changeUserPersonals,
@@ -129,6 +130,7 @@ const SignupPersonalDataForm = ({
         handleProfilePicture,
         handleSubmission,
     } = usePersonalData({
+        signStepState,
         changeProfilePicture,
         changeStepState,
         changeUserPersonals,

@@ -1,6 +1,5 @@
 .mui-textarea {
     position: relative;
-    min-height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -12,6 +11,7 @@
         text-transform: uppercase;
         font-size: 14px;
         left: 8%;
+        top: 8%;
         transition: 0.2s;
         &.filled {
             transform: translateX(-200%);
@@ -26,6 +26,8 @@
         height: calc(100% - 35px);
         border: 1px solid $black-op3;
         border-radius: 4px;
+        font-size: 1.2em;
+        padding-left: 8%;
         &:hover {
             border: 1px solid darken($primary-color, 15) !important;
             color: darken($primary-color, 15);

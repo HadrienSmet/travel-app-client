@@ -1,0 +1,21 @@
+.trip-modal {
+    &__header {
+        width: 100%;
+        @include flexBetween;
+        h3 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            width: 100%;
+        }
+        svg {
+            cursor: pointer;
+            font-size: 25px;
+            color: $black-op5;
+            @include standardTransi;
+            &:hover {
+                color: $tertiary-color;
+            }
+        }
+    }
+}

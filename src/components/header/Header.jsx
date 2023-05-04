@@ -5,12 +5,15 @@ import { useSelector } from "react-redux";
 import NavigationGuest from "./navigationGuest/NavigationGuest";
 import Logo from "./Logo";
 import NavigationUser from "./navigationUser/NavigationUser";
+import { useWindowSize } from "../../utils/hooks/hooks";
 
 const useHeader = () => {
     const [scrollY, setScrollY] = useState(0);
     const headerRef = useRef(null);
+    const screenWidth = useWindowSize().width;
 
     useEffect(() => {
+        console.log(screenWidth);
         const handleScroll = () => {
             if (window.scrollY < scrollY) {
                 headerRef.current.style.top = 0;
@@ -19,12 +22,13 @@ const useHeader = () => {
             }
             setScrollY(window.scrollY);
         };
-
-        window.addEventListener("scroll", handleScroll);
+        if (screenWidth >= 1025) {
+            window.addEventListener("scroll", handleScroll);
+        }
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [scrollY]);
+    }, [scrollY, screenWidth]);
 
     return {
         headerRef,

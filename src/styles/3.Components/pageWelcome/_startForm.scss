@@ -1,6 +1,6 @@
 @media screen and (min-width: 1025px) {
     .start-form {
-        min-width: 40%;
+        // min-width: 40%;
         height: 65%;
         form {
             gap: 15px;
@@ -11,8 +11,10 @@
     }
 }
 @media screen and (min-width: 768px) {
-    .start-form form h2 {
-        left: 26px;
+    .start-form form {
+        button {
+            width: 50%;
+        }
     }
 }
 @media screen and (max-width: 767px) {
@@ -23,13 +25,17 @@
 
 .start-form {
     padding: 20px;
-    width: 90%;
+    padding-left: 40px;
+    width: calc(100% - 60px);
     overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
     form {
         height: 100%;
         position: relative;
         gap: 30px;
         @include flexColumnAround;
+        align-items: center;
         > div {
             position: relative;
             transform: translateX(200%);
@@ -50,6 +56,7 @@
         }
         .mui-input-text {
             height: 50px;
+            width: calc(100% - 4px);
         }
         button {
             position: relative;
@@ -57,8 +64,6 @@
             transform: translateX(240%);
             animation: startFormAnim 0.3s 0.5s ease-in-out forwards;
             height: 50px;
-            width: 50%;
-            left: 29%;
             background-color: transparent;
             text-transform: uppercase;
         }

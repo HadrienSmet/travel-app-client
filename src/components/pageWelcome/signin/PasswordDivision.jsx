@@ -3,8 +3,8 @@ import InputTextUI from "../../ui/InputTextUI";
 
 const PasswordDivision = ({ password, handlePassword }) => {
     return (
-        <div className="signin-container__password-division">
-            <div className="signin-container__icons-container">
+        <div className="signin-form__password-division">
+            <div className="signin-form__password-division__icons-container">
                 {password !== "" && <FaCheck className="signin-icon check" />}
             </div>
             <InputTextUI

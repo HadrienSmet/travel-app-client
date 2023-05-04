@@ -3,8 +3,8 @@ import InputTextUI from "../../ui/InputTextUI";
 
 const EmailDivision = ({ mail, handleMail }) => {
     return (
-        <div className="signin-container__email-division">
-            <div className="signin-container__icons-container">
+        <div className="signin-form__email-division">
+            <div className="signin-form__email-division__icons-container">
                 {mail.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/) && (
                     <FaCheck className="signin-icon check" />
                 )}

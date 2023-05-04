@@ -22,6 +22,16 @@
         margin-bottom: 15px;
     }
 }
+@media screen and (min-width: 768px) {
+    .extra-data-form__fields-displayer {
+        width: calc(100% - 40px);
+    }
+}
+@media screen and (max-width: 767px) {
+    .extra-data-form__fields-displayer {
+        width: 100%;
+    }
+}
 .extra-data-form {
     position: relative;
     height: calc(100% - 35px);
@@ -33,7 +43,6 @@
     align-items: center;
     gap: 20px;
     &__fields-displayer {
-        width: calc(100% - 40px);
         @include flexColumnCenter;
         &__left-column {
             width: 90%;
@@ -47,6 +56,7 @@
         background-color: transparent;
         color: $primary-color !important;
         border: 2px solid $primary-color !important;
+        text-transform: uppercase;
         @include standardTransi;
         &:hover {
             color: $secondary-color !important;

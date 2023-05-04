@@ -7,12 +7,14 @@ import ParentModalContent from "./ParentModalContent";
 import ParentModalButtonsRow from "./ParentModalButtonsRow";
 import ButtonUI from "../../../../ui/ButtonUI";
 import ModalUI from "../../../../ui/ModalUI";
+import { useWindowSize } from "../../../../../utils/hooks/hooks";
 
 const useParentModal = () => {
+    const screenWidth = useWindowSize().width;
     const [isParentOpen, setIsParentOpen] = useState(false);
     const openModal = (e) => {
         e.preventDefault();
-        document.body.style.overflow = "hidden";
+        if (screenWidth > 1024) document.body.style.overflow = "hidden";
         setIsParentOpen(true);
     };
     const closeModal = () => {

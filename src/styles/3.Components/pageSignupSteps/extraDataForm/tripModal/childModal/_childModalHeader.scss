@@ -1,0 +1,24 @@
+@media screen and (max-width: 767px) {
+    .child-modal p {
+        text-align: center;
+    }
+}
+.child-modal {
+    &__header {
+        width: 100%;
+        color: $primary-color;
+        @include flexBetween;
+        svg {
+            font-size: 30px;
+            cursor: pointer;
+            @include standardTransi;
+            &:hover {
+                color: $black-op5;
+            }
+        }
+    }
+    &__same-row {
+        width: 85%;
+        @include flexBetween;
+    }
+}

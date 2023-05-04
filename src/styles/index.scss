@@ -42,8 +42,13 @@
 @import "./3.Components/pageSignupSteps/extraDataForm/previousTripsDivision";
 @import "./3.Components/pageSignupSteps/extraDataForm/pseudoDivision";
 @import "./3.Components/pageSignupSteps/extraDataForm/signupExtraDataForm";
-@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/childModal";
-@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/childModal/childModal";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/childModal/childModalHeader";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/childModal/childModalPictures";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal/parentModal";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal/parentModalButtonsRow";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal/parentModalContent";
+@import "./3.Components/pageSignupSteps/extraDataForm/tripModal/parentModal/parentModalHeader";
 @import "./3.Components/pageSignupSteps/extraDataForm/tripModal/tripModal";
 @import "./3.Components/pageSignupSteps/personalDataForm/signupPersonalDataForm";
 @import "./3.Components/pageSignupSteps/personalDataForm/personalPictureDivision";

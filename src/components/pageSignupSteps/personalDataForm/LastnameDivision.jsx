@@ -10,6 +10,7 @@ const useLastnameDivision = ({ lastName, changeIsLastNameOk }) => {
 
     const handleWrongLastname = (message) => {
         changeIsLastNameOk(false);
+        lastnameMsgRef.current.style.opacity = 1;
         lastnameMsgRef.current.textContent = message;
         lastnameCheckRef.current.classList.remove("visible");
         lastnameCheckRef.current.classList.add("invisible");
@@ -19,6 +20,7 @@ const useLastnameDivision = ({ lastName, changeIsLastNameOk }) => {
 
     const handleFineLastname = () => {
         changeIsLastNameOk(true);
+        lastnameMsgRef.current.style.opacity = 0;
         lastnameMsgRef.current.textContent = "";
         lastnameCheckRef.current.classList.remove("invisible");
         lastnameCheckRef.current.classList.add("visible");

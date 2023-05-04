@@ -1,11 +1,5 @@
-.signup-form {
-    button {
-        width: calc(100% - 26px);
-    }
-}
 .signup-icon {
-    position: absolute;
-    top: 20px;
+    font-size: 30px;
     opacity: 0;
     transition: 0.3s ease-in-out;
 }

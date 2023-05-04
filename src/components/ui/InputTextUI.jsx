@@ -1,6 +1,4 @@
-import React from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const useInputTextUI = ({ value }) => {
     const labelRef = useRef(null);

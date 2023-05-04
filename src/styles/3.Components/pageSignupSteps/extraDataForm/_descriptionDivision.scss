@@ -12,13 +12,19 @@
     &__description-division {
         width: 100%;
         position: relative;
-        svg {
+        display: flex;
+        &__icons-container {
+            position: absolute;
             left: -30px;
+            width: 30px;
+            height: 100%;
         }
     }
-    &__text-area div > textarea {
-        height: 100% !important;
-        vertical-align: text-top;
+    &__text-area {
+        min-height: 100%;
+        > textarea {
+            vertical-align: text-top;
+        }
     }
 }
 #extra-description-msg {

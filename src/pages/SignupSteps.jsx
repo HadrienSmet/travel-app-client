@@ -6,28 +6,7 @@ import SignupPersonalDataForm from "../components/pageSignupSteps/personalDataFo
 import SignupExtraDataForm from "../components/pageSignupSteps/extraDataForm/SignupExtraDataForm";
 import signupBanner from "../assets/images/signup-steps-bg.webp";
 import StepsIndicator from "../components/pageSignupSteps/stepsIndicator/StepsIndicator";
-
-const useSignupSteps = () => {
-    const [signStepState, setSignStepState] = useState({
-        stepState: "just-started",
-        profilePicture: undefined,
-        userPersonals: undefined,
-    });
-
-    const changeStepState = (newState) =>
-        setSignStepState({ ...signStepState, stepState: newState });
-    const changeProfilePicture = (file) =>
-        setSignStepState({ ...signStepState, profilePicture: file });
-    const changeUserPersonals = (data) =>
-        setSignStepState({ ...signStepState, userPersonals: data });
-
-    return {
-        signStepState,
-        changeProfilePicture,
-        changeStepState,
-        changeUserPersonals,
-    };
-};
+import { useEffect } from "react";
 
 const useSignupStepsParallax = () => {
     const screenWidth = useWindowSize().width;
@@ -48,14 +27,68 @@ const useSignupStepsParallax = () => {
     };
 };
 
+const useSignupSteps = ({ parallax }) => {
+    const screenWidth = useWindowSize().width;
+    const [signStepState, setSignStepState] = useState({
+        stepState: "just-started",
+        profilePicture: undefined,
+        userPersonals: {
+            userAuth: undefined,
+            userData: undefined,
+        },
+    });
+
+    const changeStepState = (newState) =>
+        setSignStepState({ ...signStepState, stepState: newState });
+    const changeProfilePicture = (file) =>
+        setSignStepState({ ...signStepState, profilePicture: file });
+    const changeUserPersonals = (data) => {
+        console.log(data);
+        setSignStepState((curr) => ({
+            ...curr,
+            userPersonals: {
+                userAuth: data.userAuth,
+                userData: data.userData,
+            },
+        }));
+    };
+
+    useEffect(() => {
+        if (signStepState.stepState === "just-started") {
+            if (screenWidth < 1025 && screenWidth > 767)
+                parallax.ref.current.style.height = "1180px";
+            if (screenWidth < 768) parallax.ref.current.style.height = "1300px";
+        } else {
+            if (screenWidth < 1025)
+                parallax.ref.current.style.height = "1550px";
+        }
+    }, [signStepState.stepState, screenWidth]);
+
+    useEffect(() => {
+        if (
+            signStepState.userPersonals.userAuth &&
+            signStepState.userPersonals.userData
+        ) {
+            changeStepState("almost-done");
+        }
+    }, [signStepState]);
+
+    return {
+        signStepState,
+        changeProfilePicture,
+        changeStepState,
+        changeUserPersonals,
+    };
+};
+
 const SignupSteps = () => {
+    const { parallax, elemParallax } = useSignupStepsParallax();
     const {
         signStepState,
         changeProfilePicture,
         changeStepState,
         changeUserPersonals,
-    } = useSignupSteps();
-    const { parallax, elemParallax } = useSignupStepsParallax();
+    } = useSignupSteps({ parallax });
     const { stepState, profilePicture, userPersonals } = signStepState;
 
     return (
@@ -71,9 +104,12 @@ const SignupSteps = () => {
                 <section className="signup-steps__content__form-container">
                     {stepState === "just-started" && (
                         <SignupPersonalDataForm
+                            signStepState={signStepState}
                             changeStepState={changeStepState}
                             changeProfilePicture={changeProfilePicture}
-                            changeUserPersonals={changeUserPersonals}
+                            changeUserPersonals={(data) =>
+                                changeUserPersonals(data)
+                            }
                         />
                     )}
                     {stepState === "almost-done" && (
