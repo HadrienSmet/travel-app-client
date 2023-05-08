@@ -5,20 +5,17 @@
         display: flex;
         flex-direction: column;
         &-container {
-            height: 28px;
-            overflow: hidden;
             box-shadow: 0px 1px 3px 0px $black-op2;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-rows: 37px 0fr 0fr;
+            transition: grid-template-rows 0.2s ease-in-out;
             background-color: $clr-1;
             padding: 15px;
-            transition: 0.2s;
             * {
                 pointer-events: none;
             }
             &.open {
-                height: unset;
+                grid-template-rows: 37px 1fr 1fr;
                 .extra-form__accordion__element-header svg {
                     transform: rotate(180deg);
                 }
@@ -28,18 +25,23 @@
             padding: 8px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            // margin-bottom: 5px;
             svg {
                 transform-origin: center;
                 transition: 0.2s ease-in-out;
             }
         }
         &-content {
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            > span:last-of-type {
+                margin-bottom: 15px;
+            }
         }
         &-album {
+            overflow: hidden;
             display: flex;
             gap: 10px;
             img {

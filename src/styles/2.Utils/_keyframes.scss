@@ -80,3 +80,13 @@
         transform: rotate(1turn);
     }
 }
+@keyframes scaleAndAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-100%, 60px) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-100%, 60px) scale(1);
+    }
+}

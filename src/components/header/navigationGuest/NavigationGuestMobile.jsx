@@ -1,19 +1,18 @@
 import { useRef, useState } from "react";
-
-import { Button, Popover } from "@mui/material";
-
 import { useDispatch } from "react-redux";
 import { setWelcomeState } from "../../../features/welcomeState.slice";
+import ButtonUI from "../../ui/ButtonUI";
+import PopoverUI from "../../ui/PopoverUI";
 
 const useNavigationGuestMobile = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
     const ref = useRef();
 
     //This function is called when the user clicks on the menu button on the mobile version
     //@Params { type: Object } => the param from the onClick event
     //It just open the menu
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    const handleClick = () => {
+        setIsOpen(true);
         ref.current.classList.add("active");
     };
 
@@ -21,12 +20,12 @@ const useNavigationGuestMobile = () => {
     //@Params { type: Object } => the param from the onClick event
     //It just close the menu
     const handleClose = () => {
-        setAnchorEl(null);
+        setIsOpen(false);
         ref.current.classList.remove("active");
     };
 
     return {
-        anchorEl,
+        isOpen,
         ref,
         handleClick,
         handleClose,
@@ -35,56 +34,41 @@ const useNavigationGuestMobile = () => {
 
 const NavigationGuestMobile = () => {
     const dispatch = useDispatch();
-    const { anchorEl, ref, handleClick, handleClose } =
+    const { isOpen, ref, handleClick, handleClose } =
         useNavigationGuestMobile();
-    const open = Boolean(anchorEl);
-    const id = open ? "simple-popover" : undefined;
+    const dispatchState = (state) => dispatch(setWelcomeState(state));
 
     return (
         <div className="guest-mobile-nav">
-            <Button
-                aria-describedby={id}
-                variant="contained"
-                onClick={handleClick}
-            >
-                <div ref={ref} className="toggle-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </Button>
-            <Popover
-                className="mobile-guest-popover"
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: "center",
-                    horizontal: "left",
-                }}
-                transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                }}
-            >
-                <Button
-                    onClick={() => {
-                        dispatch(setWelcomeState("signup"));
+            <ButtonUI
+                buttonContent={
+                    <div ref={ref} className="toggle-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                }
+                buttonHandler={handleClick}
+                dynamicClass="mobile-nav"
+            />
+            <PopoverUI dynamicClass="mobile-nav-popover" isOpen={isOpen}>
+                <ButtonUI
+                    dynamicClass=""
+                    buttonContent="Inscription"
+                    buttonHandler={() => {
+                        dispatchState("signup");
                         handleClose();
                     }}
-                >
-                    Inscription
-                </Button>
-                <Button
-                    onClick={() => {
-                        dispatch(setWelcomeState("signin"));
+                />
+                <ButtonUI
+                    dynamicClass=""
+                    buttonContent="Connexion"
+                    buttonHandler={() => {
+                        dispatchState("signin");
                         handleClose();
                     }}
-                >
-                    Connexion
-                </Button>
-            </Popover>
+                />
+            </PopoverUI>
         </div>
     );
 };

@@ -42,4 +42,10 @@
             color: $tertiary-color;
         }
     }
+    &.nav {
+        border: none;
+        &:hover {
+            border: none;
+        }
+    }
 }

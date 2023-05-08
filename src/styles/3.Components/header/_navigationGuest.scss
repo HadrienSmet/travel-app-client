@@ -1,5 +1,21 @@
 @media screen and (min-width: 1025px) {
     header nav div button {
+        padding: 5px;
+        text-transform: uppercase;
+        font-weight: 100 !important;
+        font-size: 1.05em !important;
+        &::before {
+            content: "";
+            position: absolute;
+            right: -3px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: $clr-1;
+        }
+        &:last-of-type::before {
+            display: none;
+        }
         &:hover {
             &::after {
                 animation: navRodAnim 0.1s 0.1s ease-in-out forwards;
@@ -9,14 +25,14 @@
             animation-delay: 0.4s;
             &::after {
                 transform-origin: right;
-                left: 0;
+                left: 2px;
             }
         }
         &:nth-child(2) {
             animation-delay: 0.6s;
             &::after {
                 transform-origin: left;
-                left: 5px;
+                left: 2px;
             }
         }
         &::after {
@@ -25,34 +41,43 @@
             height: 2px;
             background-color: $clr-1;
             position: absolute;
-            bottom: 8px;
+            bottom: 4px;
             transition: 0.3s ease-in-out;
             transform: scaleX(0);
         }
     }
 }
+.guest-navigation {
+    div button {
+        color: $clr-1;
+    }
+}
 header nav {
-    div {
+    > div {
+        position: relative;
+        display: flex;
+        gap: 5px;
         button {
             position: relative;
-            color: $clr-1 !important;
             cursor: pointer;
             transition: 0.2s ease-in;
             transform: translateY(-100%);
             opacity: 0;
             animation: navAnim 1s ease-in-out forwards;
-            border-color: $clr-1 !important;
+            border-color: $clr-1;
         }
     }
     .guest-mobile-nav {
         button {
             padding: 0;
             min-width: none;
-            background-color: transparent !important;
-            box-shadow: none !important;
+            background-color: transparent;
+            box-shadow: none;
+            border: none;
             &:hover {
-                background-color: transparent !important;
-                box-shadow: none !important;
+                border: none;
+                background-color: transparent;
+                box-shadow: none;
             }
         }
         .toggle-btn {
@@ -93,10 +118,6 @@ header nav {
                 transform: rotate(-45deg);
             }
         }
-        .css-sghohy-MuiButtonBase-root-MuiButton-root {
-            background-color: transparent;
-            box-shadow: none;
-        }
     }
 }
 .mobile-guest-popover {
@@ -111,7 +132,7 @@ header nav {
         button {
             position: relative;
             font-size: 24px;
-            color: $tertiary-color !important;
+            color: $tertiary-color;
             &:first-child::after {
                 content: "";
                 position: absolute;
