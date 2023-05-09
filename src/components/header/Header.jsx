@@ -13,7 +13,6 @@ const useHeader = () => {
     const screenWidth = useWindowSize().width;
 
     useEffect(() => {
-        console.log(screenWidth);
         const handleScroll = () => {
             if (window.scrollY < scrollY) {
                 headerRef.current.style.top = 0;

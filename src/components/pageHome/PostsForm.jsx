@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import { TextField, Button } from "@mui/material";
-
 import { useDispatch, useSelector } from "react-redux";
 import { setPostsData } from "../../features/postsData.slice";
 
@@ -10,24 +8,46 @@ import { axiosCreatePost } from "../../utils/functions/posts/axiosCreatePost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 
 import MUIClassicLoader from "../ui/MUIClassicLoader";
+import ButtonUI from "../ui/ButtonUI";
+import TextareaUI from "../ui/TextareaUI";
 
 const usePostForm = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [postText, setPostText] = useState("");
-    const [postFile, setPostFile] = useState("");
-    const [postFileUrl, setPostFileUrl] = useState("");
+    const [postFormState, setPostFormState] = useState({
+        postText: "",
+        postFile: "",
+        postFileUrl: "",
+    });
+
     const dispatch = useDispatch();
     const userData = useSelector(
         (state) => state.userLoggedDataStore.userLoggedData
     );
+
+    const changePostText = (e) =>
+        setPostFormState((curr) => ({ ...curr, postText: e.target.value }));
+    const changePostFile = (e) =>
+        setPostFormState((curr) => ({ ...curr, postFile: e.target.files[0] }));
+    const changePostFileUrl = (e) =>
+        setPostFormState((curr) => ({
+            ...curr,
+            postFileUrl: URL.createObjectURL(e.target.files[0]),
+        }));
+    const resetPostState = () => {
+        setPostFormState({
+            postText: "",
+            postFile: "",
+            postFileUrl: "",
+        });
+    };
 
     //This function handles the file that is meant to be posted
     //@Params { type: Object } => the param of the onChange event listening the file input
     //The first local state is here to create a blop url in order to display the file directly on the DOM
     //The second local state is here to contain the file that will be send to the data base
     const handlePostFile = (e) => {
-        setPostFileUrl(URL.createObjectURL(e.target.files[0]));
-        setPostFile(e.target.files[0]);
+        changePostFile(e);
+        changePostFileUrl(e);
     };
 
     //This function handles the data to send to the API
@@ -46,8 +66,9 @@ const usePostForm = () => {
         post.append("date", date);
         post.append("pseudo", userData.pseudo);
         post.append("profilePicture", userData.profilePicture);
-        post.append("text", postText);
-        postFile !== "" && post.append("file", postFile);
+        post.append("text", postFormState.postText);
+        postFormState.postFile !== "" &&
+            post.append("file", postFormState.postFile);
 
         return post;
     };
@@ -56,14 +77,14 @@ const usePostForm = () => {
     //Then this function makes two calls API
     //The first one posts the data to the data base and clears the local states
     //The second (called by the first) is getting all the posts from the data base and places them in the redux store
-    const handlePostSubmission = () => {
+    const handlePostSubmission = (e) => {
+        e.preventDefault();
         let { userId, token } = getJwtToken();
         const post = handlePostFormData(userId);
+
         setIsLoading((curr) => !curr);
         axiosCreatePost(post, token).then(() => {
-            setPostFile("");
-            setPostFileUrl("");
-            setPostText("");
+            resetPostState();
             axiosGetPosts(token)
                 .then((res) => {
                     setIsLoading((curr) => !curr);
@@ -76,9 +97,8 @@ const usePostForm = () => {
     return {
         isLoading,
         userData,
-        postText,
-        postFileUrl,
-        setPostText,
+        postFormState,
+        changePostText,
         handlePostFile,
         handlePostSubmission,
     };
@@ -88,33 +108,28 @@ const PostsForm = () => {
     const {
         isLoading,
         userData,
-        postText,
-        postFileUrl,
-        setPostText,
+        postFormState,
+        changePostText,
         handlePostFile,
         handlePostSubmission,
     } = usePostForm();
+    const { postText, postFileUrl } = postFormState;
 
     return (
         <form action="" className="posts-form" encType="multipart/form-data">
-            <TextField
-                id="outlined-textarea"
-                label="Quoi de neuf?"
-                placeholder=""
-                multiline
+            <TextareaUI
+                inputType="text"
                 value={postText}
-                onChange={(e) => setPostText(e.target.value)}
+                dynamicClass=""
+                dynamicName="post"
+                dynamicLabel="Exprime-toi!"
+                changeHandler={changePostText}
+                isRequired={false}
+                dataHandler={null}
             />
             <div className="posts-form__buttons-row">
                 {postFileUrl === "" ? (
-                    <Button
-                        name="handle-post-img"
-                        aria-label="handle-post-img"
-                        className="posts-form__buttons-row-img"
-                        variant="outlined"
-                    >
-                        <label htmlFor="post-file">Ajouter une image</label>
-                    </Button>
+                    <label htmlFor="post-file">Ajouter une image</label>
                 ) : (
                     <img
                         src={postFileUrl}
@@ -126,20 +141,16 @@ const PostsForm = () => {
                     type="file"
                     name="file"
                     id="post-file"
-                    onChange={(e) => handlePostFile(e)}
+                    onChange={handlePostFile}
                 />
                 {isLoading ? (
                     <MUIClassicLoader dynamicId="posts-loader" />
                 ) : (
-                    <Button
-                        name="post-comment"
-                        aria-label="post-comment"
-                        className="posts-form__buttons-row-post"
-                        variant="outlined"
-                        onClick={() => handlePostSubmission()}
-                    >
-                        Poster
-                    </Button>
+                    <ButtonUI
+                        buttonContent="Poster"
+                        buttonHandler={handlePostSubmission}
+                        dynamicClass="posts-form__buttons-row-post"
+                    />
                 )}
             </div>
         </form>

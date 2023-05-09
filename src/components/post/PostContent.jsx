@@ -52,10 +52,10 @@ const PostContent = ({
                     <input
                         id="edit-post-file"
                         type="file"
-                        onChange={(e) => handleEditFile(e)}
+                        onChange={handleEditFile}
                     />
                     <span>
-                        <FaTimes onClick={() => handleDeleteFile()} />
+                        <FaTimes onClick={handleDeleteFile} />
                     </span>
                 </div>
             )}
@@ -63,13 +63,11 @@ const PostContent = ({
             {isEditing && post.text !== "" && (
                 <textarea
                     defaultValue={post.text}
-                    onChange={(e) => setNewText(e.target.value)}
+                    onChange={setNewText}
                 ></textarea>
             )}
             {isEditing && post.text === "" && (
-                <textarea
-                    onChange={(e) => setNewText(e.target.value)}
-                ></textarea>
+                <textarea onChange={setNewText}></textarea>
             )}
         </div>
     );

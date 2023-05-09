@@ -1,12 +1,16 @@
+import { useEffect } from "react";
 import { useRef } from "react";
 
 const useTextareaUI = ({ value }) => {
     const labelRef = useRef(null);
-    if (value !== "") {
-        labelRef.current?.classList.add("filled");
-    } else {
-        labelRef.current?.classList.remove("filled");
-    }
+    useEffect(() => {
+        value;
+        if (value !== "") {
+            labelRef.current?.classList.add("filled");
+        } else {
+            labelRef.current?.classList.remove("filled");
+        }
+    }, [value]);
     return {
         labelRef,
     };
@@ -22,6 +26,9 @@ const TextareaUI = ({
     blurHandler,
 }) => {
     const { labelRef } = useTextareaUI({ value });
+    useEffect(() => {
+        console.log(value);
+    }, []);
     return (
         <div ref={dynamicRef} className={`mui-textarea ${dynamicClass}`}>
             <textarea
