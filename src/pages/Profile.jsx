@@ -16,7 +16,10 @@ const useProfile = () => {
     const [profileState, setProfileState] = useState("actuality");
     useScrollTop();
 
-    const handleProfileState = (state) => setProfileState(state);
+    const handleProfileState = (e) => {
+        console.log(e.target.id);
+        setProfileState(e.target.id);
+    };
 
     return {
         profileState,

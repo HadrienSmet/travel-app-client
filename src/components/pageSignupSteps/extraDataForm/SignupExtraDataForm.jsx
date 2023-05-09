@@ -113,7 +113,6 @@ const useSignupExtraDataForm = ({
 
     const handleSubmission = (e) => {
         e.preventDefault();
-        console.log(userPersonals);
         const { fileData } = handleSubmissionFormData();
         const { userAuth, userData } = userPersonals;
         const { email, password } = userAuth;

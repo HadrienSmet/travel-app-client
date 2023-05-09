@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FaRegEnvelope, FaUserCheck, FaUserPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,8 @@ import { axiosTellUserIsFollowed } from "../../utils/functions/user/axiosTellUse
 import { axiosTellUserIsUnfollowed } from "../../utils/functions/unfollow/axiosTellUserIsUnfollowed";
 import { axiosUnfollowUser } from "../../utils/functions/user/axiosUnfollowUser";
 import profileDefaultBg from "../../assets/images/profile-default-bg.webp";
+import HeaderBackground from "./HeaderBackground";
+import UserIntro from "./UserIntro";
 
 const useFriendProfileHeader = ({ friendProfile, userProfile }) => {
     const [isFriend, setIsFriend] = useState(false);
@@ -121,23 +123,9 @@ const FriendProfileHeader = () => {
     });
     return (
         <div className="profile-section__header">
-            <div className="profile-section__header-background">
-                {defaultBg === true ? (
-                    <img
-                        src={profileDefaultBg}
-                        alt={
-                            "Photo de couverture par défaut de " +
-                            friendProfile.pseudo
-                        }
-                    />
-                ) : (
-                    <img
-                        src={friendProfile.coverPicture}
-                        alt={"Photo de couverture de " + friendProfile.pseudo}
-                    />
-                )}
-            </div>
-            <div className="profile-section__header__user-intro">
+            <HeaderBackground defaultBg={defaultBg} />
+            <UserIntro />
+            {/* <div className="profile-section__header__user-intro">
                 <div className="profile-section__header__user-data">
                     <div className="profile-section__header__profilePicture-container">
                         <img
@@ -171,7 +159,7 @@ const FriendProfileHeader = () => {
                         <FaRegEnvelope />
                     </Button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

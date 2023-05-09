@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const useTextareaUI = ({ value }) => {
     const labelRef = useRef(null);
@@ -26,9 +25,6 @@ const TextareaUI = ({
     blurHandler,
 }) => {
     const { labelRef } = useTextareaUI({ value });
-    useEffect(() => {
-        console.log(value);
-    }, []);
     return (
         <div ref={dynamicRef} className={`mui-textarea ${dynamicClass}`}>
             <textarea

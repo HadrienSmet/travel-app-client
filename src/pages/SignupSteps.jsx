@@ -43,7 +43,6 @@ const useSignupSteps = ({ parallax }) => {
     const changeProfilePicture = (file) =>
         setSignStepState({ ...signStepState, profilePicture: file });
     const changeUserPersonals = (data) => {
-        console.log(data);
         setSignStepState((curr) => ({
             ...curr,
             userPersonals: {

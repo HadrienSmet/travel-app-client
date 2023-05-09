@@ -114,9 +114,13 @@
         @include flexCenterY;
         button {
             cursor: pointer;
-            background-color: $primary-color;
-            color: $secondary-color !important;
-            border-color: $primary-color !important;
+            border-radius: 4px;
+            padding: 7px 12px;
+
+            font-size: 1em;
+            font-weight: normal;
+            text-transform: uppercase;
+
             gap: 5px;
             @include flexCenterY;
             @include standardTransi;
