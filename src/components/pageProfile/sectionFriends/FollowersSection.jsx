@@ -22,17 +22,17 @@ const UserFollowersSection = ({ followers, goToProfilePage, isAuthor }) => {
                             id={follower + "-li"}
                             key={follower + "-li"}
                             className="profile-contact-section__border-wrapper"
-                            onClick={(e) => goToProfilePage(e)}
+                            onClick={goToProfilePage}
                         >
                             <div
                                 id={follower + "-div"}
                                 className="profile-contact-section__border-line"
-                                onClick={(e) => goToProfilePage(e)}
+                                onClick={goToProfilePage}
                             ></div>
                             <span
                                 id={follower + "-span"}
                                 className="profile-contact-section__follow"
-                                onClick={(e) => goToProfilePage(e)}
+                                onClick={goToProfilePage}
                             >
                                 {follower}
                             </span>

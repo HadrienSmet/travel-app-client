@@ -12,7 +12,7 @@ const UserBanner = ({ userProfile }) => {
                         alt={"Photo de profil de " + userProfile.pseudo}
                     />
                 </div>
-                <h1>{userProfile.pseudo}</h1>
+                <span>{userProfile.pseudo}</span>
             </div>
             <div className="profile-section__header__buttons-container">
                 <ButtonUI

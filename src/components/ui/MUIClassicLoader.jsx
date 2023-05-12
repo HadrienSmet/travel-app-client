@@ -1,11 +1,10 @@
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
-
 const MUIClassicLoader = ({ dynamicId }) => {
     return (
-        <Box id={dynamicId} sx={{ display: "flex" }}>
-            <CircularProgress />
-        </Box>
+        <div className="gradient-container">
+            <div className="gradient" id={dynamicId}>
+                <div className="element"></div>
+            </div>
+        </div>
     );
 };
 

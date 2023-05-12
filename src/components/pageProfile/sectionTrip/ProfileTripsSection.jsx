@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Globe3D from "../../Globe3D";
-import MUIGradientBorder from "../../ui/MUIGradientBorder";
-import MUIPreviousTripsAccordion from "../../ui/MUIPreviousTripsAccordion";
-import ProfileAddTripModal from "./ProfileAddTripModal";
+import PreviousTrips from "./PreviousTrips";
+import PlanTrip from "./PlanTrip";
 
 const useProfileTripsSection = () => {
     const [selectedCountry, setSelectedCountry] = useState("");
@@ -28,37 +26,12 @@ const ProfileTripsSection = ({ isAuthor, dataFrom }) => {
 
     return (
         <section className="profile-trips-section">
-            <div className="profile-trips-section__previous-trips">
-                {isAuthor === true ? (
-                    <h2>Mes précédents voyages.</h2>
-                ) : (
-                    <h2>Ses précédents voyages.</h2>
-                )}
-                <div className="profile-trips-section__previous-trips-container">
-                    <MUIPreviousTripsAccordion
-                        previousTrips={dataFrom.previousTrips}
-                        dynamicClass="profile-trips-section"
-                        signingUp={false}
-                    />
-                </div>
-                {isAuthor === true && <ProfileAddTripModal />}
-            </div>
-            {isAuthor === true && (
-                <div className="profile-trips-section__plan-a-trip">
-                    <h2>Plannifier un voyage</h2>
-                    <h3>Ou souhaitez vous partir?</h3>
-                    <Globe3D
-                        dynamicClassName="profile"
-                        changeSelectedCountry={changeSelectedCountry}
-                        forHome={false}
-                    />
-                    <MUIGradientBorder onClick={() => handleFutureTrip()}>
-                        <span onClick={() => handleFutureTrip()}>
-                            Faire une recherche
-                        </span>
-                    </MUIGradientBorder>
-                </div>
-            )}
+            <PreviousTrips isAuthor={isAuthor} dataFrom={dataFrom} />
+            <PlanTrip
+                isAuthor={isAuthor}
+                changeSelectedCountry={changeSelectedCountry}
+                handleFutureTrip={handleFutureTrip}
+            />
         </section>
     );
 };

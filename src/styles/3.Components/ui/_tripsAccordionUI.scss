@@ -1,6 +1,12 @@
-.extra-form__accordion {
+.accordion {
     display: flex;
     flex-direction: column;
+    &.profile .accordion__element-container {
+        grid-template-rows: 37px 0fr;
+        &.open {
+            grid-template-rows: 37px 1fr;
+        }
+    }
     &__element {
         display: flex;
         flex-direction: column;
@@ -16,7 +22,7 @@
             }
             &.open {
                 grid-template-rows: 37px 1fr 1fr;
-                .extra-form__accordion__element-header svg {
+                .accordion__element-header svg {
                     transform: rotate(180deg);
                 }
             }

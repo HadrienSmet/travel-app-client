@@ -5,30 +5,24 @@ const TripsAccordionUI = ({ dynamicClass, previousTrips, signingUp }) => {
         e.target.classList.toggle("open");
     };
     return (
-        <div className={`${dynamicClass}__accordion accordion-ui`}>
+        <div className={`${dynamicClass} accordion accordion-ui`}>
             {previousTrips.map((trip, index) => (
                 <div
                     key={trip.destination + "-accordion"}
-                    className={`${dynamicClass}__accordion__element-container`}
+                    className={`accordion__element-container`}
                     onClick={toggleOpen}
                 >
-                    <div
-                        className={`${dynamicClass}__accordion__element-header`}
-                    >
+                    <div className={`accordion__element-header`}>
                         <h3>{trip.destination + " " + trip.year}</h3>
                         <FaChevronDown />
                     </div>
-                    <div
-                        className={`${dynamicClass}__accordion__element-content`}
-                    >
+                    <div className={`accordion__element-content`}>
                         <span>{trip.duration}</span>
                         <span>{trip.withWho}</span>
                         <span>{trip.details}</span>
                     </div>
                     {signingUp && (
-                        <div
-                            className={`${dynamicClass}__accordion__element-album`}
-                        >
+                        <div className={`accordion__element-album`}>
                             {trip.album[index].urls.map((url, index) => (
                                 <img
                                     key={

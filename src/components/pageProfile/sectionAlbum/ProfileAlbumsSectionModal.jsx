@@ -1,69 +1,43 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Typography from "@mui/material/Typography";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import MUIPicturesCarousel from "../../ui/MUIPicturesCarousel";
-
-const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-};
+import ModalUI from "../../ui/ModalUI";
+import ButtonUI from "../../ui/ButtonUI";
 
 const useProfileAlbumSectionModal = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
 
     return {
-        open,
+        isOpen,
         handleOpen,
         handleClose,
     };
 };
 
 const ProfileAlbumSectionModal = ({ album, index }) => {
-    const { open, handleOpen, handleClose } = useProfileAlbumSectionModal();
+    const { isOpen, handleOpen, handleClose } = useProfileAlbumSectionModal();
 
     return (
         <>
-            <div className="more-picture__div" onClick={handleOpen}>
-                <FaPlus />
-            </div>
-            <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={open}
-                onClose={handleClose}
+            <ButtonUI
+                buttonContent={<FaPlus />}
+                buttonHandler={handleOpen}
+                dynamicClass="more-picture__div"
+            />
+            <ModalUI
+                isOpen={isOpen}
+                closeModal={handleClose}
+                dynamicClass="album-modal"
+                portal="portal"
             >
-                <Fade in={open}>
-                    <Box sx={style} className="album-modal">
-                        <div className="album-modal__header">
-                            <Typography
-                                id="transition-modal-title"
-                                variant="h6"
-                                component="h2"
-                                className="album-modal__title"
-                            >
-                                {album.name}
-                            </Typography>
-                            <FaTimes onClick={handleClose} />
-                        </div>
-                        <MUIPicturesCarousel
-                            pictures={album.pictures}
-                            index={index}
-                        />
-                    </Box>
-                </Fade>
-            </Modal>
+                <div className="album-modal__header">
+                    <h2>{album.name}</h2>
+                    <FaTimes onClick={handleClose} />
+                </div>
+                <MUIPicturesCarousel pictures={album.pictures} index={index} />
+            </ModalUI>
         </>
     );
 };

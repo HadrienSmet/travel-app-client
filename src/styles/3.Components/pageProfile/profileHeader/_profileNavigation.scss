@@ -12,6 +12,13 @@
             width: calc((100vw - 216px) / 5);
             font-size: 16px;
             padding: 12px 0px;
+            transition: 0.3s ease-in-out;
+            &:hover {
+                background-color: $primary-color-05;
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
         }
         &-bar {
             width: calc((100vw - 216px) / 5);
@@ -61,9 +68,6 @@
         &:hover {
             border: none;
             transform: none;
-            &::after {
-                transform: scaleX(1);
-            }
         }
         &::after {
             content: "";
