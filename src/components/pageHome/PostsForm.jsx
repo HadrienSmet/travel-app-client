@@ -10,6 +10,8 @@ import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
 import MUIClassicLoader from "../ui/MUIClassicLoader";
 import ButtonUI from "../ui/ButtonUI";
 import TextareaUI from "../ui/TextareaUI";
+import { useButtonUI } from "../../utils/hooks/hooks";
+import { useEffect } from "react";
 
 const usePostForm = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -34,11 +36,12 @@ const usePostForm = () => {
             postFileUrl: URL.createObjectURL(e.target.files[0]),
         }));
     const resetPostState = () => {
-        setPostFormState({
+        setPostFormState((curr) => ({
+            ...curr,
             postText: "",
             postFile: "",
             postFileUrl: "",
-        });
+        }));
     };
 
     //This function handles the file that is meant to be posted
@@ -79,12 +82,13 @@ const usePostForm = () => {
     //The second (called by the first) is getting all the posts from the data base and places them in the redux store
     const handlePostSubmission = (e) => {
         e.preventDefault();
+        useButtonUI(e);
         let { userId, token } = getJwtToken();
         const post = handlePostFormData(userId);
+        resetPostState();
 
         setIsLoading((curr) => !curr);
         axiosCreatePost(post, token).then(() => {
-            resetPostState();
             axiosGetPosts(token)
                 .then((res) => {
                     setIsLoading((curr) => !curr);
@@ -93,6 +97,10 @@ const usePostForm = () => {
                 .catch((err) => console.log(err));
         });
     };
+
+    useEffect(() => {
+        console.log(postFormState);
+    }, [postFormState]);
 
     return {
         isLoading,

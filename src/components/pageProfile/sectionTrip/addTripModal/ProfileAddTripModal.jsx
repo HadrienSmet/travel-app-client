@@ -10,6 +10,7 @@ import ButtonUI from "../../../ui/ButtonUI";
 import ModalUI from "../../../ui/ModalUI";
 import AddTripModalHeader from "./AddTripModalHeader";
 import AddTripModalContent from "./AddTripModalContent";
+import { useButtonUI } from "../../../../utils/hooks/hooks";
 
 const useProfileAddTripModal = () => {
     const dispatch = useDispatch();
@@ -35,8 +36,14 @@ const useProfileAddTripModal = () => {
         setAddTripState((curr) => ({ ...curr, details: e.target.value }));
     const handleOpen = (boolean) =>
         setAddTripState((curr) => ({ ...curr, isOpen: boolean }));
+    const justClose = () => handleOpen(false);
 
-    const handleClose = () => {
+    const handleOpenModal = (e) => {
+        useButtonUI(e);
+        handleOpen(true);
+    };
+    const handleClose = (e) => {
+        useButtonUI(e);
         handleOpen(false);
         handlePreviousTripSubmission();
     };
@@ -53,7 +60,7 @@ const useProfileAddTripModal = () => {
         };
         axiosCreateTrip(userId, trip, token)
             .then((res) => {
-                setOpen(false);
+                handleOpen(false);
                 dispatch(pushTripInUserLoggedData(res.data.newTrip));
             })
             .catch((err) => console.log(err));
@@ -61,7 +68,8 @@ const useProfileAddTripModal = () => {
 
     return {
         addTripState,
-        handleOpen,
+        justClose,
+        handleOpenModal,
         handleClose,
         changeCountry,
         changeDuration,
@@ -74,7 +82,8 @@ const useProfileAddTripModal = () => {
 const ProfileAddTripModal = () => {
     const {
         addTripState,
-        handleOpen,
+        justClose,
+        handleOpenModal,
         handleClose,
         changeCountry,
         changeDuration,
@@ -93,7 +102,7 @@ const ProfileAddTripModal = () => {
                         <FaPlus />
                     </>
                 }
-                buttonHandler={() => handleOpen(true)}
+                buttonHandler={handleOpenModal}
                 dynamicClass="plain"
             />
             <ModalUI
@@ -102,7 +111,7 @@ const ProfileAddTripModal = () => {
                 dynamicClass="trip-modal"
                 portal="portal"
             >
-                <AddTripModalHeader handleOpen={handleOpen} />
+                <AddTripModalHeader handleOpen={justClose} />
                 <AddTripModalContent
                     changeCountry={changeCountry}
                     changeDuration={changeDuration}

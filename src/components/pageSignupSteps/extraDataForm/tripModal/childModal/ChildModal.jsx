@@ -8,6 +8,7 @@ import ChildModalHeader from "./ChildModalHeader";
 import ChildModalPicturesDisplayer from "./ChildModalPicturesDisplayer";
 import ButtonUI from "../../../../ui/ButtonUI";
 import ModalUI from "../../../../ui/ModalUI";
+import { useButtonUI } from "../../../../../utils/hooks/hooks";
 
 const useChildModal = () => {
     const [isChildOpen, setChildOpen] = useState(false);
@@ -61,7 +62,8 @@ const useChildModalData = ({
     //It gives the files to his parent components using the function herited by his grand-parent to change his state.
     //And it gives the name of the album and the urls of the blop links by the redux store.
     //And it also changes the state of the component in purpose to close the child modal.
-    const handleClose = () => {
+    const handleClose = (e) => {
+        useButtonUI(e);
         let album = {
             name: `album ${prevTripsData.destination} ${prevTripsData.year}`,
             urls: albumPictureUrl,

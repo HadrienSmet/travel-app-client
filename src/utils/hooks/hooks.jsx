@@ -64,3 +64,17 @@ export const useYears = () => {
 
     return { yearsArray };
 };
+
+export const useButtonUI = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const insideLeft = e.clientX - rect.left;
+    const insideTop = e.clientY - rect.top;
+    const ripples = document.createElement("div");
+    ripples.style.left = `${insideLeft}px`;
+    ripples.style.top = `${insideTop}px`;
+    ripples.classList.add("ripple");
+    e.target.appendChild(ripples);
+    setTimeout(() => {
+        e.target.removeChild(ripples);
+    }, 750);
+};

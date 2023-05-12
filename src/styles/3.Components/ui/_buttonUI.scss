@@ -1,4 +1,5 @@
 .mui-button {
+    position: relative;
     cursor: pointer;
     font-size: 1.2em;
     font-weight: 600;
@@ -7,6 +8,10 @@
     color: $primary-color;
     background-color: transparent;
     transition: 0.2s ease-in-out;
+    overflow: hidden;
+    .ripple {
+        background-color: $tertiary-color-1;
+    }
     &:hover {
         border: 2px solid darken($primary-color, 15);
         color: darken($primary-color, 15);
@@ -14,6 +19,13 @@
     }
     &:focus {
         border-color: $primary-color-8;
+    }
+    .ripple {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        animation: infiniteScale 0.8s ease-in-out;
     }
     &.plain {
         background-color: $primary-color;
@@ -23,11 +35,17 @@
             background-color: transparent;
             color: $primary-color;
         }
+        .ripple {
+            background-color: $primary-color-1;
+        }
     }
     &.plain-reverse {
         border: 2px solid $primary-color;
         background-color: transparent;
         color: $primary-color;
+        .ripple {
+            background-color: $white-op1;
+        }
         &:hover {
             background-color: $primary-color;
             color: $clr-1;
@@ -37,6 +55,9 @@
         border: 1px solid $black-op3;
         border-radius: 4px;
         color: $black-op4;
+        .ripple {
+            background-color: $tertiary-color-1;
+        }
         &:hover {
             border: 1px solid $tertiary-color;
             color: $tertiary-color;
@@ -44,6 +65,9 @@
     }
     &.nav {
         border: none;
+        .ripple {
+            background-color: $white-op1;
+        }
         &:hover {
             border: none;
             color: $clr-1;

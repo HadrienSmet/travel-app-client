@@ -100,6 +100,7 @@ const CrudSide = ({
         newText,
         setIsEditing,
     });
+
     return (
         <>
             {isLoading ? (

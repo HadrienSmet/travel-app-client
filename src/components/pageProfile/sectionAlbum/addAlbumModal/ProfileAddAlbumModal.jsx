@@ -13,6 +13,7 @@ import AlbumForm from "./AlbumForm";
 import MUIClassicLoader from "../../../ui/MUIClassicLoader";
 import ButtonUI from "../../../ui/ButtonUI";
 import ModalUI from "../../../ui/ModalUI";
+import { useButtonUI } from "../../../../utils/hooks/hooks";
 
 const useProfileAlbumModal = () => {
     const [addAlbumState, setAddAlbumState] = useState({
@@ -38,7 +39,10 @@ const useProfileAlbumModal = () => {
         setAddAlbumState((curr) => ({ ...curr, year }));
     const changeDestination = (destination) =>
         setAddAlbumState((curr) => ({ ...curr, destination }));
-    const handleOpen = () => changeIsOpen(true);
+    const handleOpen = (e) => {
+        useButtonUI(e);
+        changeIsOpen(true);
+    };
 
     const handleAlbumFormData = () => {
         const data = new FormData();
@@ -57,7 +61,8 @@ const useProfileAlbumModal = () => {
     //It gives the files to his parent components using the function herited by his grand-parent to change his state.
     //And it gives the name of the album and the urls of the blop links by the redux store.
     //And it also changes the state of the component in purpose to close the child modal.
-    const handleClose = () => {
+    const handleClose = (e) => {
+        useButtonUI(e);
         changeIsLoading(true);
         const data = handleAlbumFormData();
         axiosCreateAlbum(userId, data, token)

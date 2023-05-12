@@ -1,6 +1,7 @@
 import ButtonUI from "../ui/ButtonUI";
 import Globe3D from "../Globe3D";
 import { useSelector } from "react-redux";
+import { useButtonUI } from "../../utils/hooks/hooks";
 
 const HomeHeader = ({ changeSelectedCountry, fetchAllposts }) => {
     const userData = useSelector(
@@ -28,7 +29,7 @@ const HomeHeader = ({ changeSelectedCountry, fetchAllposts }) => {
                             Réinitialiser
                         </a>
                     }
-                    buttonHandler={undefined}
+                    buttonHandler={useButtonUI}
                     dynamicClass="plain"
                 />
             </div>

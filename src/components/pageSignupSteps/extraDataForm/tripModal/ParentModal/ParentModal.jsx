@@ -7,7 +7,7 @@ import ParentModalContent from "./ParentModalContent";
 import ParentModalButtonsRow from "./ParentModalButtonsRow";
 import ButtonUI from "../../../../ui/ButtonUI";
 import ModalUI from "../../../../ui/ModalUI";
-import { useWindowSize } from "../../../../../utils/hooks/hooks";
+import { useButtonUI, useWindowSize } from "../../../../../utils/hooks/hooks";
 
 const useParentModal = () => {
     const screenWidth = useWindowSize().width;
@@ -78,7 +78,8 @@ const useParentModalData = ({ changeTrips, closeModal }) => {
     };
     //This function changes the state of the component in order to close the parent modal
     //Then it calls a function that will handles the submission of the datas
-    const handleClose = () => {
+    const handleClose = (e) => {
+        useButtonUI(e);
         closeModal();
         handlePreviousTripSubmission();
     };

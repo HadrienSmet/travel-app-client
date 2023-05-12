@@ -1,3 +1,4 @@
+import { useButtonUI } from "../../../utils/hooks/hooks";
 import ButtonUI from "../../ui/ButtonUI";
 import { FaUserCog, FaUserEdit } from "react-icons/fa";
 
@@ -21,7 +22,7 @@ const UserBanner = ({ userProfile }) => {
                             <FaUserEdit />
                         </>
                     }
-                    buttonHandler={null}
+                    buttonHandler={useButtonUI}
                     dynamicClass="plain"
                 />
                 <ButtonUI
@@ -31,7 +32,7 @@ const UserBanner = ({ userProfile }) => {
                             <FaUserCog />
                         </>
                     }
-                    buttonHandler={null}
+                    buttonHandler={useButtonUI}
                     dynamicClass="plain"
                 />
             </div>

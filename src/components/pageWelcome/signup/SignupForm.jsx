@@ -7,6 +7,7 @@ import { setSignupData } from "../../../features/signupData.slice";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
 import ButtonUI from "../../ui/ButtonUI";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
 const useSignupForm = () => {
     const navigate = useNavigate();
@@ -31,6 +32,7 @@ const useSignupForm = () => {
     //After checking that all the fields have been well filled it creates an object called user and gives it to the redux store
     //And then this function redirects the user to the next step
     const handleSubmission = (e) => {
+        useButtonUI(e);
         e.preventDefault();
         if (authData.isEmailOk === true && authData.isPasswordOk === true) {
             let userData = {

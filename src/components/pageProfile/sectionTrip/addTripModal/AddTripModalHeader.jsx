@@ -4,7 +4,7 @@ const AddTripModalHeader = ({ handleOpen }) => {
     return (
         <div className="trip-modal__header">
             <h2>Ajouter un voyage</h2>
-            <BsXLg onClick={() => handleOpen(false)} />
+            <BsXLg onClick={handleOpen} />
         </div>
     );
 };

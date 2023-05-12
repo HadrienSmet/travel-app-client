@@ -75,19 +75,14 @@ const useSignupSteps = ({ parallax }) => {
     return {
         signStepState,
         changeProfilePicture,
-        changeStepState,
         changeUserPersonals,
     };
 };
 
 const SignupSteps = () => {
     const { parallax, elemParallax } = useSignupStepsParallax();
-    const {
-        signStepState,
-        changeProfilePicture,
-        changeStepState,
-        changeUserPersonals,
-    } = useSignupSteps({ parallax });
+    const { signStepState, changeProfilePicture, changeUserPersonals } =
+        useSignupSteps({ parallax });
     const { stepState, profilePicture, userPersonals } = signStepState;
 
     return (
@@ -103,8 +98,6 @@ const SignupSteps = () => {
                 <section className="signup-steps__content__form-container">
                     {stepState === "just-started" && (
                         <SignupPersonalDataForm
-                            signStepState={signStepState}
-                            changeStepState={changeStepState}
                             changeProfilePicture={changeProfilePicture}
                             changeUserPersonals={(data) =>
                                 changeUserPersonals(data)

@@ -14,8 +14,9 @@ import { useScrollTop } from "../utils/hooks/hooks";
 const useFriendProfile = () => {
     const [friendProfileState, setFriendProfileState] = useState("actuality");
 
-    const changeFriendProfileState = (state) => setFriendProfileState(state);
-    useScrollTop();
+    const changeFriendProfileState = (e) => {
+        setFriendProfileState(e.target.id);
+    };
 
     return {
         friendProfileState,
@@ -28,6 +29,7 @@ const FriendProfile = () => {
         (state) => state.friendDataStore.friendData
     );
     const { friendProfileState, changeFriendProfileState } = useFriendProfile();
+    useScrollTop();
 
     return (
         <main className="profile-section">

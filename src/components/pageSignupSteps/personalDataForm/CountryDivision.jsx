@@ -1,5 +1,5 @@
 import { FaCheck } from "react-icons/fa";
-import MuiSelect from "../../ui/SelectUI";
+import SelectUI from "../../ui/SelectUI";
 import { useCountry } from "../../../utils/hooks/hooks";
 
 const CountryDivision = ({ country, changeCountry }) => {
@@ -12,7 +12,7 @@ const CountryDivision = ({ country, changeCountry }) => {
                     <FaCheck className="personal-data-form__country-division__check-icon signup-perso-icon check" />
                 )}
             </div>
-            <MuiSelect
+            <SelectUI
                 dynamicClass="personal-data-form__input"
                 dynamicPlaceholder="Pays"
                 choices={countriesArray}

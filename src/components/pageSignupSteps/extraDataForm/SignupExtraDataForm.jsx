@@ -15,6 +15,7 @@ import PseudoDivision from "./PseudoDivision";
 import DescriptionDivision from "./DescriptionDivision";
 import DreamTripDivision from "./DreamTripDivision";
 import PreviousTripsDivision from "./PreviousTripsDivision";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
 const useExtraState = () => {
     const [extraData, setExtraData] = useState({
@@ -113,6 +114,7 @@ const useSignupExtraDataForm = ({
 
     const handleSubmission = (e) => {
         e.preventDefault();
+        useButtonUI(e);
         const { fileData } = handleSubmissionFormData();
         const { userAuth, userData } = userPersonals;
         const { email, password } = userAuth;

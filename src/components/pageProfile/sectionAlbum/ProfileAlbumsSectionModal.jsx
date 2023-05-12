@@ -3,11 +3,18 @@ import { FaPlus, FaTimes } from "react-icons/fa";
 import MUIPicturesCarousel from "../../ui/MUIPicturesCarousel";
 import ModalUI from "../../ui/ModalUI";
 import ButtonUI from "../../ui/ButtonUI";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
 const useProfileAlbumSectionModal = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const handleOpen = () => setIsOpen(true);
-    const handleClose = () => setIsOpen(false);
+    const handleOpen = (e) => {
+        useButtonUI(e);
+        setIsOpen(true);
+    };
+    const handleClose = (e) => {
+        useButtonUI(e);
+        setIsOpen(false);
+    };
 
     return {
         isOpen,

@@ -11,6 +11,7 @@ import MUIClassicLoader from "../../ui/MUIClassicLoader";
 import ButtonUI from "../../ui/ButtonUI";
 import EmailDivision from "./EmailDivision";
 import PasswordDivision from "./PasswordDivision";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
 const useSigninForm = () => {
     const [signinData, setSigninData] = useState({
@@ -55,23 +56,27 @@ const useSigninForm = () => {
     //It ends the loading animation and leads the user to the home page
     //If an error is caught, a message is injected on the DOM
     const handleSubmission = (e) => {
+        useButtonUI(e);
         e.preventDefault();
-        setIsLoading(true);
-        let data = {
-            email: mail,
-            password,
-        };
-        axiosSignIn(data)
-            .then((res) => {
-                if (res.status === 401) {
+        if (mail !== "" && password !== "") {
+            setIsLoading(true);
+            let data = {
+                email: mail,
+                password,
+            };
+            axiosSignIn(data)
+                .then((res) => {
+                    if (res.status === 401) {
+                        handleError();
+                    } else {
+                        handleSuccess(res);
+                    }
+                })
+                .catch(() => {
                     handleError();
-                } else {
-                    handleSuccess(res);
-                }
-            })
-            .catch(() => {
-                handleError();
-            });
+                });
+            setIsLoading(false);
+        }
     };
 
     return {

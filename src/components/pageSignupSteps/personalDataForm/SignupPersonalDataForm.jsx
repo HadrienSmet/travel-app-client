@@ -8,13 +8,10 @@ import LastnameDivision from "./LastnameDivision";
 import GenderDivision from "./GenderDivision";
 import CountryDivision from "./CountryDivision";
 import ButtonUI from "../../ui/ButtonUI";
+import { useRef } from "react";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
-const usePersonalData = ({
-    signStepState,
-    changeProfilePicture,
-    changeStepState,
-    changeUserPersonals,
-}) => {
+const usePersonalData = ({ changeProfilePicture, changeUserPersonals }) => {
     const userData = useSelector((state) => state.newSignupData.signupData);
     const [personalData, setPersonalData] = useState({
         age: "",
@@ -36,6 +33,7 @@ const usePersonalData = ({
         lastName,
         profilePictureUrl,
     } = personalData;
+
     const changeAge = (age) => setPersonalData({ ...personalData, age });
     const changeChoice = (gender) =>
         setPersonalData({ ...personalData, gender });
@@ -69,6 +67,7 @@ const usePersonalData = ({
     //If everything went fine it makes the second call to upload the picture in the back and to modificate the user to add the picture url
     const handleSubmission = (e) => {
         e.preventDefault();
+        useButtonUI(e);
         const { email, password } = userData;
         if (
             profilePictureUrl !== "" &&
@@ -113,8 +112,6 @@ const usePersonalData = ({
 };
 
 const SignupPersonalDataForm = ({
-    signStepState,
-    changeStepState,
     changeProfilePicture,
     changeUserPersonals,
 }) => {
@@ -130,9 +127,7 @@ const SignupPersonalDataForm = ({
         handleProfilePicture,
         handleSubmission,
     } = usePersonalData({
-        signStepState,
         changeProfilePicture,
-        changeStepState,
         changeUserPersonals,
     });
     const { age, country, firstName, gender, lastName, profilePictureUrl } =
@@ -171,6 +166,7 @@ const SignupPersonalDataForm = ({
                 </div>
             </div>
             <ButtonUI
+                dynamicClass=""
                 buttonContent="Continuer"
                 buttonHandler={handleSubmission}
             />

@@ -9,7 +9,7 @@ import ProfileInfosSection from "../components/pageProfile/sectionInfo/ProfileIn
 
 import ProfileHeader from "../components/pageProfile/profileHeader/ProfileHeader";
 import ProfileNavigation from "../components/pageProfile/profileHeader/ProfileNavigation";
-import { useScrollTop } from "../utils/hooks/hooks";
+import { useButtonUI, useScrollTop } from "../utils/hooks/hooks";
 import { getJwtToken } from "../utils/functions/tools/getJwtToken";
 
 const useProfile = () => {
@@ -17,7 +17,7 @@ const useProfile = () => {
     useScrollTop();
 
     const handleProfileState = (e) => {
-        console.log(e.target.id);
+        useButtonUI(e);
         setProfileState(e.target.id);
     };
 

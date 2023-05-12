@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PreviousTrips from "./PreviousTrips";
 import PlanTrip from "./PlanTrip";
+import { useButtonUI } from "../../../utils/hooks/hooks";
 
 const useProfileTripsSection = () => {
     const [selectedCountry, setSelectedCountry] = useState("");
@@ -9,7 +10,8 @@ const useProfileTripsSection = () => {
 
     const changeSelectedCountry = (country) => setSelectedCountry(country);
 
-    const handleFutureTrip = () => {
+    const handleFutureTrip = (e) => {
+        useButtonUI(e);
         console.log(selectedCountry);
         navigate(`/error-404`);
     };
