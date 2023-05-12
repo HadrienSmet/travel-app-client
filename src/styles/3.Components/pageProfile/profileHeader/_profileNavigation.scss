@@ -2,14 +2,27 @@
     .profile-section__navigation {
         padding: 0 100px;
         @include flexEndCenterY;
+        &__buttons-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            gap: 1px;
+        }
         div button {
-            width: calc((100vw - 200px) / 5);
+            width: calc((100vw - 216px) / 5);
             font-size: 16px;
-            padding: 6px 0px !important;
+            padding: 12px 0px;
+            transition: 0.3s ease-in-out;
+            &:hover {
+                background-color: $primary-color-05;
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
         }
         &-bar {
-            width: calc((100vw - 200px) / 5);
-            left: 84px;
+            width: calc((100vw - 216px) / 5);
+            left: 99px;
             top: 32px;
         }
     }
@@ -22,7 +35,7 @@
         div button {
             width: calc((100vw - 16px) / 5);
             font-size: 14px;
-            padding: 6px 0px !important;
+            padding: 6px 0px;
         }
         &-bar {
             width: calc((100vw - 16px) / 5);
@@ -38,7 +51,10 @@
         border-color: $primary-color !important;
     }
     div button {
+        position: relative;
+        border: none;
         color: $primary-color;
+        text-transform: uppercase;
         &:first-child::after {
             transform-origin: right;
         }
@@ -49,8 +65,9 @@
         &:last-child::after {
             transform-origin: left;
         }
-        &:hover::after {
-            transform: scaleX(1);
+        &:hover {
+            border: none;
+            transform: none;
         }
         &::after {
             content: "";
@@ -59,8 +76,18 @@
             background-color: $primary-color;
             position: absolute;
             bottom: 5px;
+            left: 2.5px;
             transition: 0.3s ease-in-out;
             transform: scaleX(0);
+        }
+        &:not(:last-of-type)::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            background-color: $primary-color;
         }
     }
     &-bar {

@@ -1,0 +1,72 @@
+@media screen and (min-width: 1025px) {
+    .start-form {
+        height: 65%;
+        form {
+            gap: 15px;
+            h2 {
+                font-size: clamp(22px, 3vh, 2rem);
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .start-form form {
+        button {
+            width: 50%;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .start-form form {
+        height: 400px;
+    }
+}
+
+.start-form {
+    padding: 20px;
+    padding-left: 40px;
+    width: calc(100% - 60px);
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    form {
+        height: 100%;
+        position: relative;
+        gap: 30px;
+        @include flexColumnAround;
+        align-items: center;
+        > div {
+            position: relative;
+            transform: translateX(200%);
+            animation: startFormAnim 0.3s ease-out forwards;
+        }
+        @for $i from 2 to 4 {
+            $delay: $i * 0.1s;
+            > div:nth-child(#{$i}) {
+                animation-delay: $delay;
+            }
+        }
+        h2 {
+            position: relative;
+            transform: translateX(200%);
+            animation: startFormAnim 0.3s 0.1s ease-out forwards;
+            text-transform: uppercase;
+            color: darken($primary-color, 15);
+        }
+        .mui-input-text {
+            height: 50px;
+            width: calc(100% - 4px);
+        }
+        button {
+            position: relative;
+            margin-top: 5px;
+            transform: translateX(240%);
+            animation: startFormAnim 0.3s 0.5s ease-in-out forwards;
+            height: 50px;
+            background-color: transparent;
+            text-transform: uppercase;
+            padding: 0 15px;
+            border-radius: 4px;
+        }
+    }
+}

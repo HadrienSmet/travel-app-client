@@ -1,0 +1,37 @@
+.popover-ui {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: $clr-1;
+    opacity: 0;
+    transform: translate(-100%, 60px) scale(0);
+    animation: scaleAndAppear 0.2s ease-in-out forwards;
+    box-shadow: 0px 1px 6px 0px $black-op2;
+    &.mobile-nav-popover .mui-button {
+        padding: 8px;
+        border: none;
+        color: $primary-color !important;
+        text-transform: uppercase;
+        animation: none;
+        transform: none;
+        opacity: 1;
+        a {
+            color: $primary-color !important;
+        }
+        &:hover {
+            border: none;
+        }
+        &:not(:last-of-type)::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 2px;
+            background-color: $primary-color;
+        }
+    }
+}

@@ -1,7 +1,8 @@
 @media screen and (min-width: 1025px) {
     .album-modal {
-        width: 70vw !important;
-        height: 80vh;
+        padding: 45px;
+        width: calc(70vw - 90px) !important;
+        height: calc(80vh - 90px);
     }
 }
 @media screen and (max-width: 1024px) {

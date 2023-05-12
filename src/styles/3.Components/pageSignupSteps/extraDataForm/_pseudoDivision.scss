@@ -1,0 +1,10 @@
+.extra-data-form__pseudo-division {
+    position: relative;
+    width: 100%;
+    div {
+        width: calc(100% - 2px);
+    }
+    svg {
+        left: -30px;
+    }
+}

@@ -1,23 +1,24 @@
-import { Button, Popover } from "@mui/material";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import ButtonUI from "../../ui/ButtonUI";
+import PopoverUI from "../../ui/PopoverUI";
 
 const useNavigationUserMobile = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
     const ref = useRef();
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    const handleClick = () => {
+        setIsOpen(true);
         ref.current.classList.add("active");
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setIsOpen(false);
         ref.current.classList.remove("active");
     };
 
     return {
-        anchorEl,
+        isOpen,
         ref,
         handleClick,
         handleClose,
@@ -25,50 +26,38 @@ const useNavigationUserMobile = () => {
 };
 
 const NavigationUserMobile = () => {
-    const { anchorEl, ref, handleClick, handleClose } =
-        useNavigationUserMobile();
-
-    const open = Boolean(anchorEl);
-    const id = open ? "simple-popover" : undefined;
+    const { isOpen, ref, handleClick, handleClose } = useNavigationUserMobile();
 
     return (
         <div className="user-mobile-nav">
-            <Button
-                aria-describedby={id}
-                variant="contained"
-                onClick={handleClick}
-            >
-                <div ref={ref} className="toggle-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </Button>
-            <Popover
-                className="mobile-user-popover"
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: "center",
-                    horizontal: "left",
-                }}
-                transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                }}
-            >
-                <Button onClick={() => handleClose()}>
-                    <Link to="/home">Accueil</Link>
-                </Button>
-                <Button onClick={() => handleClose()}>
-                    <Link to="/profile">Profil</Link>
-                </Button>
-                <Button onClick={() => handleClose()}>
-                    <Link to="/">Déconnexion</Link>
-                </Button>
-            </Popover>
+            <ButtonUI
+                buttonContent={
+                    <div ref={ref} className="toggle-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                }
+                buttonHandler={handleClick}
+                dynamicClass="mobile-nav-toggle"
+            />
+            <PopoverUI dynamicClass="mobile-nav-popover" isOpen={isOpen}>
+                <ButtonUI
+                    buttonContent={<Link to="/home">Accueil</Link>}
+                    buttonHandler={handleClose}
+                    dynamicClass=""
+                />
+                <ButtonUI
+                    buttonContent={<Link to="/profile">Profil</Link>}
+                    buttonHandler={handleClose}
+                    dynamicClass=""
+                />
+                <ButtonUI
+                    buttonContent={<Link to="/">Déconnexion</Link>}
+                    buttonHandler={handleClose}
+                    dynamicClass=""
+                />
+            </PopoverUI>
         </div>
     );
 };

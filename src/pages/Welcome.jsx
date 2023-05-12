@@ -8,8 +8,8 @@ import { setUserLoggedData } from "../features/userLoggedData.slice";
 import { resetAlbumObjectArray } from "../features/albumObjectArray.slice";
 import { setWelcomeState } from "../features/welcomeState.slice";
 
-import SignupForm from "../components/pageSignup/authentificationDataForm/SignupForm";
-import SigninForm from "../components/pageSignin/SigninForm";
+import SignupForm from "../components/pageWelcome/signup/SignupForm";
+import SigninForm from "../components/pageWelcome/signin/SigninForm";
 import imageDesktop from "../assets/images/home-desktop-bg.webp";
 import imageMobile from "../assets/images/home-mobile-bg.webp";
 

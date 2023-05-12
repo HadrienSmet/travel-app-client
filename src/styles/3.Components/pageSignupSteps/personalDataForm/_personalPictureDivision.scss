@@ -1,0 +1,60 @@
+@media screen and (min-width: 1025px) {
+    .personal-data-form__picture-area label:hover {
+        border: 2px solid $primary-color;
+        background-color: transparent;
+        color: $primary-color;
+    }
+}
+#signup-file {
+    display: none;
+}
+.personal-data-form {
+    &__picture-area {
+        padding: 10px;
+        border: 1px solid $black-op2;
+        border-radius: 4px;
+        width: calc(100% - 22px);
+        height: calc(100% - 71px);
+        margin-bottom: 15px;
+        gap: 25px;
+        @include flexColumnCenter;
+        label {
+            text-transform: uppercase;
+            font-size: 14px;
+            background-color: $primary-color;
+            color: $clr-1;
+            padding: 5px 8px;
+            border: 2px solid $primary-color;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+    }
+    &__picture-container {
+        width: 200px;
+        @include flexFullCenter;
+    }
+    &__profile-picture {
+        height: 150px;
+        width: 150px;
+        @include translateToCenter;
+    }
+    &__profile-picture-container {
+        height: 120px;
+        width: 120px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    &__icon-background {
+        height: 120px;
+        width: 120px;
+        background-color: $primary-color;
+        border-radius: 50%;
+        @include flexFullCenter;
+        svg {
+            font-size: 70px;
+            color: $secondary-color;
+        }
+    }
+}

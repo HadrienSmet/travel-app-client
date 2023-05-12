@@ -1,29 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { setCoverPictureInUserLoggedData } from "../../../features/userLoggedData.slice";
 
 import { getJwtToken } from "../../../utils/functions/tools/getJwtToken";
 import { axiosPutCoverPicture } from "../../../utils/functions/user/axiosPutCoverPicture";
-import { useEffect } from "react";
+
 import ProfileHeaderBackground from "./ProfileHeaderBackground";
 import BgButtonsArea from "./BgButtonsArea";
 import UserBanner from "./UserBanner";
 
 const useProfileHeader = ({ userProfile }) => {
-    const [coverPicture, setCoverPicture] = useState("");
-    const [coverPictureUrl, setCoverPictureUrl] = useState("");
-    const [isEditing, setIsEditing] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [defaultPicture, setDefaultPicture] = useState(true);
+    const [profileHeaderState, setProfileHeaderState] = useState({
+        coverPicture: "",
+        coverPictureUrl: "",
+        isEditing: false,
+        isLoading: false,
+        defaultPicture: true,
+    });
+
     let { token, userId } = getJwtToken();
     const dispatch = useDispatch();
 
-    const handleCoverPicture = (file) => setCoverPicture(file);
-    const handleCoverPictureUrl = (url) => setCoverPictureUrl(url);
-    const handleIsEditing = (boolean) => setIsEditing(boolean);
-    const handleDefaultPicture = (boolean) => setDefaultPicture(boolean);
-
+    const handleCoverPicture = (file) =>
+        setProfileHeaderState((curr) => ({ ...curr, coverPicture: file }));
+    const handleCoverPictureUrl = (url) =>
+        setProfileHeaderState((curr) => ({ ...curr, coverPictureUrl: url }));
+    const handleIsEditing = (boolean) =>
+        setProfileHeaderState((curr) => ({ ...curr, isEditing: boolean }));
+    const handleDefaultPicture = (boolean) =>
+        setProfileHeaderState((curr) => ({ ...curr, defaultPicture: boolean }));
+    const handleIsLoading = (boolean) =>
+        setProfileHeaderState((curr) => ({ ...curr, isLoading: boolean }));
     //This function handles the picture provided by the user
     //@Params { type: Object } => the param of the onChange event listening the input files
     //The first local state contains the file that will be send to the data base
@@ -37,29 +45,25 @@ const useProfileHeader = ({ userProfile }) => {
 
     //This function is here to send the file to the data base
     //An object is made with the constructor FormData() to handle the file
-    const handleEditCoverPicture = (checkRef, timesRef) => {
+    const handleEditCoverPicture = () => {
         const data = new FormData();
-        data.append("file", coverPicture);
-        setIsLoading((curr) => !curr);
+        data.append("file", profileHeaderState.coverPicture);
+        handleIsLoading(true);
         axiosPutCoverPicture(userId, data, token)
             .then((res) => {
                 dispatch(
                     setCoverPictureInUserLoggedData(res.data.coverPicture)
                 );
+                handleIsLoading(false);
                 handleIsEditing(false);
-                setIsLoading((curr) => !curr);
-                checkRef.current.classList.remove("active");
-                timesRef.current.classList.remove("active");
             })
             .catch((err) => console.log(err));
     };
 
-    const handleCancelCoverPicture = (checkRef, timesRef) => {
+    const handleCancelCoverPicture = () => {
         handleCoverPicture("");
         handleCoverPictureUrl("");
         handleIsEditing(false);
-        checkRef.current.classList.remove("active");
-        timesRef.current.classList.remove("active");
     };
 
     useEffect(() => {
@@ -69,11 +73,7 @@ const useProfileHeader = ({ userProfile }) => {
     }, [userProfile.coverPicture]);
 
     return {
-        isLoading,
-        isEditing,
-        coverPicture,
-        coverPictureUrl,
-        defaultPicture,
+        profileHeaderState,
         startEditCoverPicture,
         handleCancelCoverPicture,
         handleEditCoverPicture,
@@ -82,14 +82,13 @@ const useProfileHeader = ({ userProfile }) => {
 
 const ProfileHeader = ({ userProfile }) => {
     const {
-        isLoading,
-        isEditing,
-        coverPictureUrl,
-        defaultPicture,
+        profileHeaderState,
         startEditCoverPicture,
         handleCancelCoverPicture,
         handleEditCoverPicture,
     } = useProfileHeader({ userProfile });
+    const { coverPictureUrl, isEditing, isLoading, defaultPicture } =
+        profileHeaderState;
 
     return (
         <div className="profile-section__header">

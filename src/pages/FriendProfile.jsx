@@ -7,7 +7,7 @@ import ProfileAlbumsSection from "../components/pageProfile/sectionAlbum/Profile
 import ProfileTripsSection from "../components/pageProfile/sectionTrip/ProfileTripsSection";
 import ProfileFriendsSection from "../components/pageProfile/sectionFriends/ProfileFriendsSection";
 import ProfileInfosSection from "../components/pageProfile/sectionInfo/ProfileInfosSection";
-import FriendProfileHeader from "../components/pageFriendProfile/FriendProfileHeader";
+import FriendProfileHeader from "../components/friendProfileHeader/FriendProfileHeader";
 import ProfileNavigation from "../components/pageProfile/profileHeader/ProfileNavigation";
 import { useScrollTop } from "../utils/hooks/hooks";
 

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import countryList from "react-select-country-list";
 
 export const useWindowSize = () => {
     const isClient = typeof window === "object";
@@ -33,4 +34,33 @@ export const useScrollTop = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+};
+
+export const useCountry = () => {
+    const options = useMemo(() => countryList().getData(), []);
+    const fillCountryArray = () => {
+        let countries = [];
+        for (let i = 0; i < options.length; i++) {
+            countries.push(options[i].label);
+        }
+        return countries;
+    };
+    const countriesArray = fillCountryArray();
+
+    return { countriesArray };
+};
+
+export const useYears = () => {
+    const fillYearsArray = () => {
+        const today = new Date();
+        const thisYear = today.getFullYear();
+        const options = [];
+        for (let i = 1950; i < thisYear + 1; i++) {
+            options.push(i);
+        }
+        return options;
+    };
+    const yearsArray = fillYearsArray();
+
+    return { yearsArray };
 };

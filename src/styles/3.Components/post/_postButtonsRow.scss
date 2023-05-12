@@ -43,6 +43,17 @@
                 transform: scale(0.9) translateY(3px);
             }
         }
+        &__crud-side {
+            display: flex;
+            gap: 10px;
+            button {
+                border: none;
+                &:hover {
+                    border: none;
+                    transform: scale(1.1) translateY(-3px);
+                }
+            }
+        }
     }
     &__delete-div svg {
         z-index: 5;

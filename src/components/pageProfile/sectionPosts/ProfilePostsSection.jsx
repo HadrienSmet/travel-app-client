@@ -61,7 +61,7 @@ const ProfilePostsSection = ({ userId }) => {
 
     return (
         <section className="profile__posts-section">
-            <h2>Posté dernièrement</h2>
+            <h1>Posté dernièrement</h1>
             <div className="profile__posts-section__posts-div">
                 {userPosts !== undefined &&
                     postsArray

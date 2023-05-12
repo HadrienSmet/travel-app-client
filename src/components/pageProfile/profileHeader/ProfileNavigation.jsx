@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { Button, ButtonGroup } from "@mui/material";
 import { useWindowSize } from "../../../utils/hooks/hooks";
+import ButtonUI from "../../ui/ButtonUI";
 
 const useProfileNavigation = ({ profileState }) => {
     const screenWidth = useWindowSize().width;
@@ -39,42 +39,38 @@ const ProfileNavigation = ({ profileState, handleProfileState }) => {
     const { ref } = useProfileNavigation({ profileState });
     return (
         <nav className="profile-section__navigation">
-            <ButtonGroup
-                className="profile-section__navigation__buttons-container"
-                variant="text"
-                aria-label="text button group"
-            >
-                <Button
-                    id="actuality"
-                    onClick={(e) => handleProfileState(e.target.id)}
-                >
-                    Actu
-                </Button>
-                <Button
-                    id="albums"
-                    onClick={(e) => handleProfileState(e.target.id)}
-                >
-                    Albums
-                </Button>
-                <Button
-                    id="trips"
-                    onClick={(e) => handleProfileState(e.target.id)}
-                >
-                    Trips
-                </Button>
-                <Button
-                    id="friends"
-                    onClick={(e) => handleProfileState(e.target.id)}
-                >
-                    Amis
-                </Button>
-                <Button
-                    id="infos"
-                    onClick={(e) => handleProfileState(e.target.id)}
-                >
-                    Infos
-                </Button>
-            </ButtonGroup>
+            <div className="profile-section__navigation__buttons-container">
+                <ButtonUI
+                    buttonContent="Actu"
+                    buttonHandler={handleProfileState}
+                    dynamicClass="sober"
+                    dynamicId="actuality"
+                />
+                <ButtonUI
+                    buttonContent="Albums"
+                    buttonHandler={handleProfileState}
+                    dynamicClass="sober"
+                    dynamicId="albums"
+                />
+                <ButtonUI
+                    buttonContent="Trips"
+                    buttonHandler={handleProfileState}
+                    dynamicClass="sober"
+                    dynamicId="trips"
+                />
+                <ButtonUI
+                    buttonContent="Amis"
+                    buttonHandler={handleProfileState}
+                    dynamicClass="sober"
+                    dynamicId="friends"
+                />
+                <ButtonUI
+                    buttonContent="Infos"
+                    buttonHandler={handleProfileState}
+                    dynamicClass="sober"
+                    dynamicId="infos"
+                />
+            </div>
             <span ref={ref} className="profile-section__navigation-bar"></span>
         </nav>
     );

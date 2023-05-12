@@ -1,0 +1,13 @@
+#signup-album-creation-btn {
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding-left: 30px;
+    padding-right: 20px;
+    &:hover {
+        color: $primary-color;
+        background-color: transparent;
+    }
+    span {
+        cursor: pointer;
+    }
+}

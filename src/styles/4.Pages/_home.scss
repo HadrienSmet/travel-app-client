@@ -1,122 +1,21 @@
 @media screen and (min-width: 1025px) {
-    .home__content {
-        &__header {
-            width: calc(100% - 60px);
-            padding: 30px;
-            @include flexBetween;
-            &__intro-and-btn-area {
-                width: 35%;
-            }
-            &__profile-division__img-container {
-                height: 150px;
-                width: 150px;
-                img {
-                    height: 185px;
-                    width: 185px;
-                }
-            }
-            &__globe-area {
-                width: 65%;
-            }
-        }
-        &__posts-division {
-            width: 45%;
-        }
+    .home__posts-division {
+        width: 45%;
     }
 }
 @media screen and (max-width: 1024px) {
-    .home__content {
-        &__header {
-            width: 100%;
-            @include flexColumnCenter;
-            &__intro-and-btn-area {
-                width: 100%;
-                gap: 15px;
-            }
-        }
-        &__posts-division {
-            width: 100%;
-        }
-    }
-    @media screen and (min-width: 768px) {
-        .home__content {
-            &__header {
-                &__profile-division {
-                    height: 150px !important;
-                    position: relative;
-                    justify-content: center;
-                    gap: 55px !important;
-                    &__img-container {
-                        height: 125px;
-                        width: 125px;
-                        img {
-                            height: 155px;
-                            width: 155px;
-                        }
-                    }
-                    h1 {
-                        font-size: 4vw;
-                    }
-                }
-            }
-        }
+    .home__posts-division {
+        width: 100%;
     }
 }
 @media screen and (min-width: 768px) {
-    .home__content {
+    .home {
         padding: 20px 50px !important;
     }
 }
-@media screen and (max-width: 767px) {
-    .home__content__header__profile-division {
-        h1 {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: calc(100% - 115px);
-        }
-        &__img-container {
-            width: 100px;
-            height: 100px;
-            img {
-                height: 120px;
-                width: 120px;
-            }
-        }
-    }
-}
-.home__content {
+.home {
     padding: 15px;
     position: relative;
-    &__header {
-        position: relative;
-        gap: 20px;
-        border-radius: 15px;
-        margin-bottom: 15px;
-        &__intro-and-btn-area {
-            position: relative;
-            @include flexColumnBetween;
-        }
-        &__profile-division {
-            height: 100px;
-            width: 100%;
-            gap: 15px;
-            @include flexCenterY;
-            &__img-container {
-                border-radius: 50%;
-                overflow: hidden;
-                @include flexFullCenter;
-            }
-        }
-        &__globe-area {
-            width: 100%;
-            text-align: right;
-            h2 {
-                font-size: clamp(30px, 4vh, 3rem);
-                text-transform: uppercase;
-                font-weight: 600;
-            }
-        }
-    }
     &__main {
         width: 100%;
         @include flexColumnCenterX;

@@ -59,6 +59,7 @@
             height: 1200px;
         }
         &-main-content {
+            width: calc(100vw - 80px);
             max-height: 1070px;
             &-intro {
                 width: 55vw;
@@ -76,7 +77,6 @@
     }
     &-main-content {
         text-align: center;
-        width: calc(90vw - 80px);
         min-height: 60vh;
         padding: 70px 40px;
         position: absolute;

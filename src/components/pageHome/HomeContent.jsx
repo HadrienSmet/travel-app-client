@@ -1,10 +1,11 @@
 import Post from "../post/Post";
+import MUIClassicLoader from "../ui/MUIClassicLoader";
 import PostsForm from "./PostsForm";
 
 const HomeContent = ({ noResult, dataArrayForSort }) => {
     return (
-        <div id="home_anchor" className="home__content__main">
-            <div className="home__content__posts-division">
+        <div id="home_anchor" className="home__main">
+            <div className="home__posts-division">
                 <PostsForm />
                 {noResult && (
                     <h3>Aucuns posts n'a encore été créé dans ce pays</h3>

@@ -1,51 +1,56 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
+
 import { useDispatch } from "react-redux";
-import { getJwtToken } from "../../../../utils/functions/tools/getJwtToken";
 import { pushAlbumInUserLoggedData } from "../../../../features/userLoggedData.slice";
+
+import { getJwtToken } from "../../../../utils/functions/tools/getJwtToken";
 import { axiosCreateAlbum } from "../../../../utils/functions/user/axiosCreateAlbum";
 
 import { FaPlus } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
-import { Button, Modal, Box } from "@mui/material";
-import MUIGradientBorder from "../../../mui/MUIGradientBorder";
-import MUIClassicLoader from "../../../mui/MUIClassicLoader";
-import AlbumForm from "./AlbumForm";
 
-const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-};
+import AlbumForm from "./AlbumForm";
+import MUIClassicLoader from "../../../ui/MUIClassicLoader";
+import ButtonUI from "../../../ui/ButtonUI";
+import ModalUI from "../../../ui/ModalUI";
 
 const useProfileAlbumModal = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [albumPicture, setAlbumPicture] = useState(undefined);
-    const [albumPictureUrl, setAlbumPictureUrl] = useState(undefined);
-    const [year, setYear] = useState("");
-    const [destination, setDestination] = useState("");
+    const [addAlbumState, setAddAlbumState] = useState({
+        isLoading: false,
+        isOpen: false,
+        albumPicture: undefined,
+        albumPictureUrl: undefined,
+        year: "",
+        destination: "",
+    });
     const dispatch = useDispatch();
     let { userId, token } = getJwtToken();
 
+    const changeIsLoading = (boolean) =>
+        setAddAlbumState((curr) => ({ ...curr, isLoading: boolean }));
+    const changeIsOpen = (boolean) =>
+        setAddAlbumState((curr) => ({ ...curr, isOpen: boolean }));
+    const changeAlbumPicture = (pictureArr) =>
+        setAddAlbumState((curr) => ({ ...curr, albumPicture: pictureArr }));
+    const changeAlbumPictureUrl = (urlArr) =>
+        setAddAlbumState((curr) => ({ ...curr, albumPictureUrl: urlArr }));
+    const changeYear = (year) =>
+        setAddAlbumState((curr) => ({ ...curr, year }));
+    const changeDestination = (destination) =>
+        setAddAlbumState((curr) => ({ ...curr, destination }));
+    const handleOpen = () => changeIsOpen(true);
+
     const handleAlbumFormData = () => {
         const data = new FormData();
-        data.append("name", `album ${destination} ${year}`);
-        albumPicture.forEach((picture) => {
+        data.append(
+            "name",
+            `album ${addAlbumState.destination} ${addAlbumState.year}`
+        );
+        addAlbumState.albumPicture.forEach((picture) => {
             data.append("file", picture);
         });
 
         return data;
-    };
-
-    //This function change the state of the component in purpose to open the child modal.
-    const handleOpen = () => {
-        setOpen(true);
     };
 
     //This function handles the submission of the child modal (the creation of an album).
@@ -53,27 +58,15 @@ const useProfileAlbumModal = () => {
     //And it gives the name of the album and the urls of the blop links by the redux store.
     //And it also changes the state of the component in purpose to close the child modal.
     const handleClose = () => {
-        setIsLoading((curr) => !curr);
+        changeIsLoading(true);
         const data = handleAlbumFormData();
         axiosCreateAlbum(userId, data, token)
             .then((res) => {
-                setIsLoading((curr) => !curr);
-                setOpen(false);
+                changeIsLoading(false);
+                changeIsOpen(false);
                 dispatch(pushAlbumInUserLoggedData(res.data.newAlbum));
             })
             .catch((err) => console.log(err));
-    };
-    //This function is here to allow a children component to change the local state of this component.
-    //@Params { type: Number } => the value of the onChange event listening the input of type numbers
-    //The value refers the year where the pictures were made
-    const changeNumber = (year) => {
-        setYear(year);
-    };
-    //This function is here to allow a children component to change the local state of this component.
-    //@Params { type: String } => the value of the onChange event listening the input containing a list of each country
-    //The value refers the country where the pictures were made
-    const changeCountry = (country) => {
-        setDestination(country);
     };
 
     //This function fills two differents array when the input files suffer a change
@@ -84,32 +77,28 @@ const useProfileAlbumModal = () => {
     const handleAlbumPicture = (e) => {
         let albumArrayUrl;
         let albumArray;
-        if (albumPictureUrl === undefined) {
+        if (addAlbumState.albumPictureUrl === undefined) {
             albumArrayUrl = [URL.createObjectURL(e.target.files[0])];
         } else {
             albumArrayUrl = [
-                ...albumPictureUrl,
+                ...addAlbumState.albumPictureUrl,
                 URL.createObjectURL(e.target.files[0]),
             ];
         }
-        if (albumPicture === undefined) {
+        if (addAlbumState.albumPicture === undefined) {
             albumArray = [e.target.files[0]];
         } else {
-            albumArray = [...albumPicture, e.target.files[0]];
+            albumArray = [...addAlbumState.albumPicture, e.target.files[0]];
         }
-        setAlbumPictureUrl(albumArrayUrl);
-        setAlbumPicture(albumArray);
+        changeAlbumPictureUrl(albumArrayUrl);
+        changeAlbumPicture(albumArray);
     };
 
     return {
-        isLoading,
-        open,
-        destination,
-        year,
-        albumPictureUrl,
-        setOpen,
-        changeCountry,
-        changeNumber,
+        addAlbumState,
+        changeIsOpen,
+        changeDestination,
+        changeYear,
         handleOpen,
         handleClose,
         handleAlbumPicture,
@@ -118,64 +107,64 @@ const useProfileAlbumModal = () => {
 
 const ProfileAlbumModal = () => {
     const {
-        isLoading,
-        open,
-        destination,
-        year,
-        albumPictureUrl,
-        setOpen,
-        changeCountry,
-        changeNumber,
+        addAlbumState,
+        changeIsOpen,
+        changeDestination,
+        changeYear,
         handleOpen,
         handleClose,
         handleAlbumPicture,
     } = useProfileAlbumModal();
+    const { isLoading, isOpen, albumPictureUrl, year, destination } =
+        addAlbumState;
 
     return (
-        <Fragment>
-            <Button
-                id="add-album-modal__toggle-btn"
-                variant="outlined"
-                onClick={handleOpen}
+        <>
+            <ButtonUI
+                buttonContent={
+                    <>
+                        <span>Créer un nouvel album</span>
+                        <FaPlus />
+                    </>
+                }
+                buttonHandler={handleOpen}
+                dynamicClass=""
+                dynamicId="add-album-modal__toggle-btn"
+            />
+            <ModalUI
+                isOpen={isOpen}
+                closeModal={handleClose}
+                dynamicClass="add-album-modal"
+                portal="portal"
             >
-                Créer un nouvel album
-                <FaPlus />
-            </Button>
-            <Modal
-                hideBackdrop
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="child-modal-title"
-                aria-describedby="child-modal-description"
-            >
-                <Box sx={{ ...style, width: 200 }} className="add-album-modal">
-                    <div className="add-album-modal__header">
-                        <h2 className="add-album-modal-title">
-                            Album {destination} {year}
-                        </h2>
-                        <BsXLg onClick={() => setOpen(false)} />
-                    </div>
-                    <h3 id="add-album-modal-description">
-                        Partagez-nous des souvenirs de votre voyage!
-                    </h3>
-                    <AlbumForm
-                        changeCountry={changeCountry}
-                        changeNumber={changeNumber}
-                        handleAlbumPicture={handleAlbumPicture}
-                        albumPictureUrl={albumPictureUrl}
-                        destination={destination}
-                        year={year}
+                <div className="add-album-modal__header">
+                    <h2 className="add-album-modal-title">
+                        Album {destination} {year}
+                    </h2>
+                    <BsXLg onClick={() => changeIsOpen(false)} />
+                </div>
+                <h3 id="add-album-modal-description">
+                    Partagez-nous des souvenirs de votre voyage!
+                </h3>
+                <AlbumForm
+                    changeCountry={changeDestination}
+                    changeNumber={changeYear}
+                    handleAlbumPicture={handleAlbumPicture}
+                    albumPictureUrl={albumPictureUrl}
+                    destination={destination}
+                    year={year}
+                />
+                {isLoading ? (
+                    <MUIClassicLoader dynamicId="add-album-loader" />
+                ) : (
+                    <ButtonUI
+                        buttonContent="Confirmer"
+                        buttonHandler={handleClose}
+                        dynamicClass="plain"
                     />
-                    {isLoading ? (
-                        <MUIClassicLoader dynamicId="add-album-loader" />
-                    ) : (
-                        <MUIGradientBorder onClick={handleClose}>
-                            <span onClick={handleClose}>Confirmer</span>
-                        </MUIGradientBorder>
-                    )}
-                </Box>
-            </Modal>
-        </Fragment>
+                )}
+            </ModalUI>
+        </>
     );
 };
 

@@ -7,10 +7,9 @@ import { getJwtToken } from "../utils/functions/tools/getJwtToken";
 import { axiosGetPostsFromCountry } from "../utils/functions/posts/axiosGetPostsFromCountry";
 import { axiosGetPosts } from "../utils/functions/posts/axiosGetPosts";
 
-import Globe3D from "../components/Globe3D";
-import MUIGradientBorder from "../components/mui/MUIGradientBorder";
 import HomeContent from "../components/pageHome/HomeContent";
 import { useScrollTop } from "../utils/hooks/hooks";
+import HomeHeader from "../components/pageHome/HomeHeader";
 
 const useHome = () => {
     const [dataArrayForSort, setDataArrayForSort] = useState([]);
@@ -183,48 +182,14 @@ const Home = () => {
         setSpecifiedLoadPost,
     });
 
-    const userData = useSelector(
-        (state) => state.userLoggedDataStore.userLoggedData
-    );
-
     return (
         <main>
             <div id="go-on-top" className="fake-margin-replacing-header"></div>
-            <section className="home__content">
-                <div className="home__content__header">
-                    <div className="home__content__header__intro-and-btn-area">
-                        <div className="home__content__header__profile-division">
-                            <div className="home__content__header__profile-division__img-container">
-                                <img
-                                    src={userData.profilePicture}
-                                    alt={
-                                        "photo de profil de " + userData.pseudo
-                                    }
-                                />
-                            </div>
-                            <h1>Bonjour {userData.pseudo}</h1>
-                        </div>
-                        <MUIGradientBorder>
-                            <a
-                                href="#home_anchor"
-                                className="home__content__header__reset-btn"
-                                onClick={() => fetchAllposts()}
-                            >
-                                Réinitialiser
-                            </a>
-                        </MUIGradientBorder>
-                    </div>
-                    <div className="home__content__header__globe-area">
-                        <h2>Venez voir ce qu'il se passe ailleurs</h2>
-                        <Globe3D
-                            dynamicClassName="home"
-                            changeSelectedCountry={(value) =>
-                                changeSelectedCountry(value)
-                            }
-                            forHome={true}
-                        />
-                    </div>
-                </div>
+            <section className="home">
+                <HomeHeader
+                    changeSelectedCountry={changeSelectedCountry}
+                    fetchAllposts={fetchAllposts}
+                />
                 <HomeContent
                     noResult={noResult}
                     dataArrayForSort={dataArrayForSort}

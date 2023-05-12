@@ -1,14 +1,15 @@
 @media screen and (min-width: 1025px) {
     .add-album-modal {
-        width: 50vw !important;
-        height: 85vh !important;
+        padding: 30px 45px;
+        width: calc(60vw - 90px);
+        height: calc(85vh - 60px);
         @include flexAroundColumnCenter;
     }
 }
 @media screen and (max-width: 1024px) {
     .add-album-modal {
-        width: calc(90vw - 64px) !important;
-        height: calc(95vh - 64px) !important;
+        width: calc(90vw - 64px);
+        height: calc(95vh - 64px);
         overflow-y: auto;
         display: flex;
         align-items: center;
@@ -18,12 +19,14 @@
 }
 .add-album-modal {
     z-index: 2600;
-    border: none !important;
+    border: none;
     border-radius: 10px;
-    background-color: $clr-1 !important;
+    background-color: $clr-1;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    .gradient-container {
+    button {
+        padding: 10px 0;
+        border-radius: 4px;
         width: 80%;
         text-transform: uppercase;
         font-style: 26px;
@@ -40,5 +43,14 @@
     &__header {
         width: 100%;
         @include flexBetweenCentered;
+        svg {
+            font-size: 30px;
+            color: $primary-color;
+            cursor: pointer;
+            &:hover {
+                color: $tertiary-color;
+                transform: scale(1.05);
+            }
+        }
     }
 }

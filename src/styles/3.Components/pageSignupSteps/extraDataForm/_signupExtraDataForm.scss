@@ -1,0 +1,79 @@
+@media screen and (min-width: 1025px) {
+    .extra-data-form {
+        &__fields-displayer {
+            display: flex;
+            justify-content: space-between !important;
+            flex-direction: row-reverse !important;
+            height: calc(70vh - 140.5px) !important;
+            gap: 35px;
+            &__left-column {
+                width: 45%;
+                height: 100%;
+                justify-content: space-between !important;
+            }
+        }
+        &__btn-submit {
+            width: 35% !important;
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .extra-data-form__fields-displayer__left-column {
+        margin-bottom: 15px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .extra-data-form__fields-displayer {
+        width: calc(100% - 40px);
+    }
+}
+@media screen and (max-width: 767px) {
+    .extra-data-form__fields-displayer {
+        width: 100%;
+    }
+}
+.extra-data-form {
+    position: relative;
+    height: calc(100% - 35px);
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    &__fields-displayer {
+        @include flexColumnCenter;
+        &__left-column {
+            width: 90%;
+            gap: 10px;
+            @include flexColumnCenter;
+        }
+    }
+    > button {
+        width: calc((100% - 40px) * 0.75);
+        height: 35px;
+        background-color: transparent;
+        color: $primary-color !important;
+        border: 2px solid $primary-color !important;
+        text-transform: uppercase;
+        @include standardTransi;
+        &:hover {
+            color: $secondary-color !important;
+            background-color: $primary-color !important;
+        }
+    }
+}
+.text-centralizer {
+    position: relative;
+    top: -10px;
+    width: 100%;
+    height: calc(100% - 10px);
+    @include flexFullCenter;
+}
+.last-step-icon {
+    position: absolute;
+    top: 20px;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
