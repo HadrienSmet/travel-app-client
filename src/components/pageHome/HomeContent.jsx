@@ -1,5 +1,4 @@
 import Post from "../post/Post";
-import MUIClassicLoader from "../ui/MUIClassicLoader";
 import PostsForm from "./PostsForm";
 
 const HomeContent = ({ noResult, dataArrayForSort }) => {

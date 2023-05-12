@@ -6,7 +6,9 @@ const NavigationUserDesktop = () => {
         <div className="guest-navigation__buttons-container">
             <ButtonUI
                 buttonContent={
-                    window.location.href.split("3001/")[1] === "home" ? (
+                    window.location.href.split(
+                        process.env.VITE_REACT_DOMAIN_END
+                    )[1] === "home" ? (
                         <a href="#go-on-top">Accueil</a>
                     ) : (
                         <Link to="/home">Accueil</Link>
