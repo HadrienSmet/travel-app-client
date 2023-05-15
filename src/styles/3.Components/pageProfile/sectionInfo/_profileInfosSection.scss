@@ -30,6 +30,23 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .profile-infos-section {
+        &__left-column span {
+            max-width: calc(100vw - 50px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &__right-column span {
+            max-width: calc(100vw - 50px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &__dream-trips-div {
+            flex-direction: column;
+        }
+    }
+}
 .profile-infos-section {
     margin-bottom: 25px;
     width: 90%;
