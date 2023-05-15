@@ -43,6 +43,16 @@
         }
     }
 }
+@media screen and (min-width: 768px) {
+    .trip-modal-album {
+        padding: 5px 25px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .trip-modal-album {
+        padding: 5px 10px;
+    }
+}
 .trip-modal {
     &__content {
         height: 100%;
@@ -89,7 +99,6 @@
     &-album {
         margin: 5px 0;
         height: unset !important;
-        padding: 5px 25px;
         background-color: $black-op1;
         border: 2px solid $black-op5;
         border-radius: 10px;

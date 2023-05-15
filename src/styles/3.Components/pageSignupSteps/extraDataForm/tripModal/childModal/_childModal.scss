@@ -52,6 +52,10 @@
         overflow-y: scroll;
         justify-content: flex-start;
         gap: 25px;
+        padding: 10px;
+        width: calc(95vw - 20px);
+        height: unset;
+        max-height: calc(95vh - 20px);
         &::-webkit-scrollbar {
             width: 16px;
             background-color: transparent;
@@ -73,9 +77,6 @@
                 background-color: lighten(hsl(0, 0%, 67%), 5);
             }
         }
-        p {
-            text-align: center;
-        }
         button {
             width: calc(90% - 4px);
         }
@@ -89,19 +90,6 @@
     background-color: $clr-1;
     backdrop-filter: blur(10px);
     @include flexColumnCenterX;
-    &__header {
-        width: 100%;
-        color: $primary-color;
-        @include flexBetween;
-        svg {
-            font-size: 30px;
-            cursor: pointer;
-            @include standardTransi;
-            &:hover {
-                color: $black-op5;
-            }
-        }
-    }
     h4,
     p,
     button {
@@ -110,12 +98,8 @@
     }
     button {
         padding: 8px 0;
-        height: 60px;
+        min-height: 60px;
         border-radius: 4px;
         border: 2px solid $primary-color;
-    }
-    &__same-row {
-        width: 85%;
-        @include flexBetween;
     }
 }

@@ -1,34 +1,44 @@
 @media screen and (min-width: 1025px) {
     .album-modal {
         padding: 45px;
-        width: calc(70vw - 90px) !important;
+        width: calc(70vw - 90px);
         height: calc(80vh - 90px);
     }
 }
 @media screen and (max-width: 1024px) {
     .album-modal {
-        width: calc(90vw - 64px) !important;
-        height: calc(95vh - 64px) !important;
+        width: calc(90vw - 64px);
+        height: calc(95vh - 64px);
     }
 }
 @media screen and (min-width: 768px) {
-    .album-modal__pictures-displayer img {
-        width: 250px;
-        height: 250px;
-    }
-}
-@media screen and (max-width: 767px) {
-    .album-modal__pictures-displayer {
-        position: relative;
-        img {
-            width: 100%;
+    .album-modal {
+        &__header svg {
+            transform: translate(100%, -100%);
+        }
+        &__pictures-displayer img {
+            width: 250px;
             height: 250px;
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .album-modal {
+        padding: 12px;
+        width: calc(95vw - 24px);
+        height: calc(95vh - 24px);
+        &__pictures-displayer {
+            position: relative;
+            img {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    }
+}
 .album-modal {
-    border: none !important;
-    background-color: $clr-1 !important;
+    border: none;
+    background-color: $clr-1;
     gap: 20px;
     border-radius: 8px;
     @include flexColumnCenterX;
@@ -41,7 +51,6 @@
         svg {
             color: $tertiary-color;
             font-size: 25px;
-            transform: translate(100%, -100%);
             cursor: pointer;
         }
     }
@@ -52,6 +61,6 @@
     }
 }
 .btn-toggle-full-album-modal {
-    background-color: transparent !important;
-    border: none !important;
+    background-color: transparent;
+    border: none;
 }

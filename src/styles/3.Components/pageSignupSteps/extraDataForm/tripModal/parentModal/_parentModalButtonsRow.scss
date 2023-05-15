@@ -1,12 +1,26 @@
-@media screen and (max-width: 1024px) {
-    @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+    .trip-modal__buttons-row {
+        width: 80%;
+        button {
+            height: calc(100% - 4px);
+        }
+    }
+    @media screen and (max-width: 1024px) {
         .trip-modal__buttons-row button {
             width: 45% !important;
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .trip-modal__buttons-row {
+        width: 100%;
+        button {
+            padding: 5px 0;
+        }
+    }
+}
+
 .trip-modal__buttons-row {
-    width: 80%;
     height: 70px;
     @include flexFullCenter;
     button {
@@ -16,7 +30,6 @@
         color: $primary-color;
         font-weight: 600;
         letter-spacing: 2px;
-        height: calc(100% - 4px);
         &:hover {
             background-color: $primary-color;
             color: $secondary-color;

@@ -48,8 +48,13 @@
         }
         &__buttons-container {
             .mui-button {
-                font-size: 12px;
+                font-size: 30px;
                 letter-spacing: normal;
+                border-radius: 50%;
+                padding: 15px;
+                span {
+                    display: none;
+                }
             }
         }
     }

@@ -1,53 +1,61 @@
 @media screen and (min-width: 1025px) {
-    header nav div button {
-        overflow: visible !important;
-        padding: 5px;
-        text-transform: uppercase;
-        font-weight: 100 !important;
-        font-size: 0.95em !important;
-        line-height: 1.5;
-        transition: 0.4s ease-in-out;
-        &::before {
-            content: "";
-            position: absolute;
-            right: -3px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: $clr-1;
-        }
-        &:last-of-type::before {
-            display: none;
-        }
-        &:hover {
-            background-color: $white-op1;
-            &::after {
-                animation: navRodAnim 0.1s 0.1s ease-in-out forwards;
+    header nav {
+        .guest-mobile-nav .toggle-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            span {
+                background-color: $primary-color;
             }
         }
-        &:nth-child(1) {
-            animation-delay: 0.4s;
-            &::after {
-                transform-origin: right;
-                left: 2px;
+        div button {
+            overflow: visible !important;
+            padding: 5px;
+            text-transform: uppercase;
+            font-weight: 100 !important;
+            font-size: 0.95em !important;
+            line-height: 1.5;
+            transition: 0.4s ease-in-out;
+            &::before {
+                content: "";
+                position: absolute;
+                right: -3px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: $clr-1;
             }
-        }
-        &:nth-child(2) {
-            animation-delay: 0.6s;
-            &::after {
-                transform-origin: left;
-                left: 2px;
+            &:last-of-type::before {
+                display: none;
             }
-        }
-        &::after {
-            content: "";
-            width: calc(100% - 5px);
-            height: 2px;
-            background-color: $clr-1;
-            position: absolute;
-            bottom: 4px;
-            transition: 0.3s ease-in-out;
-            transform: scaleX(0);
+            &:hover {
+                background-color: $white-op1;
+                &::after {
+                    animation: navRodAnim 0.1s 0.1s ease-in-out forwards;
+                }
+            }
+            &:nth-child(1) {
+                animation-delay: 0.4s;
+                &::after {
+                    transform-origin: right;
+                    left: 2px;
+                }
+            }
+            &:nth-child(2) {
+                animation-delay: 0.6s;
+                &::after {
+                    transform-origin: left;
+                    left: 2px;
+                }
+            }
+            &::after {
+                content: "";
+                width: calc(100% - 5px);
+                height: 2px;
+                background-color: $clr-1;
+                position: absolute;
+                bottom: 4px;
+                transition: 0.3s ease-in-out;
+                transform: scaleX(0);
+            }
         }
     }
 }
@@ -96,12 +104,6 @@ header nav {
             @include flexColumnCenter;
             justify-content: center;
             gap: 5px;
-            &:hover {
-                transform: scale(1.1) translateY(-2px);
-                span {
-                    background-color: $primary-color;
-                }
-            }
             span {
                 height: 5px;
                 width: 35px;

@@ -26,6 +26,7 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .welcome {
         &-main-content {
+            padding: 70px 40px;
             width: 80vw;
             min-height: 70vh !important;
             &-intro {
@@ -59,11 +60,9 @@
             height: 1200px;
         }
         &-main-content {
-            width: calc(100vw - 80px);
+            width: calc(100vw - 30px);
             max-height: 1070px;
-            &-intro {
-                width: 55vw;
-            }
+            padding: 40px 15px;
             &__paralaxed-element {
                 top: 650px;
             }
@@ -78,7 +77,6 @@
     &-main-content {
         text-align: center;
         min-height: 60vh;
-        padding: 70px 40px;
         position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);

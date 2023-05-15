@@ -6,12 +6,12 @@
             overflow: visible !important;
         }
     }
-    .thumbs.animated {
+    .thumbs {
         width: calc((70vw - 64px) * 0.8) !important;
     }
 }
 @media screen and (max-width: 1024px) {
-    .thumbs.animated {
+    .thumbs {
         width: calc(90vw - 64px) !important;
     }
     @media screen and (min-width: 768px) {
@@ -28,7 +28,7 @@
     }
 }
 @media screen and (min-width: 768px) {
-    .thumbs.animated {
+    .thumbs {
         li {
             cursor: pointer;
             width: 110px !important;
@@ -49,13 +49,13 @@
     .carousel {
         &-root {
             height: calc(95vh - 148px);
-            width: calc(90vw - 64px);
+            width: calc(95vw - 35px);
         }
         &-slider {
             height: calc(95vh - 247px);
         }
     }
-    .thumbs.animated li img {
+    .thumbs li img {
         height: 80px;
         width: 70px;
     }
@@ -82,9 +82,20 @@
     }
 }
 .thumbs {
-    .animated li img {
-        height: 80px;
+    display: flex;
+    > li {
+        border-radius: 50%;
+        position: relative;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
         width: 70px;
+        img {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+        }
     }
     &-wrapper {
         width: 100%;

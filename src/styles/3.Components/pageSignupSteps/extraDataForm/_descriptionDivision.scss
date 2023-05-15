@@ -8,6 +8,22 @@
         height: 200px;
     }
 }
+@media screen and (min-width: 768px) {
+    .extra-data-form__description-division__icons-container {
+        left: -30px;
+        width: 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .extra-data-form__description-division__icons-container {
+        left: -15px;
+        width: 15px;
+        svg {
+            font-size: 10px !important;
+            left: 0px;
+        }
+    }
+}
 .extra-data-form {
     &__description-division {
         width: 100%;
@@ -15,8 +31,6 @@
         display: flex;
         &__icons-container {
             position: absolute;
-            left: -30px;
-            width: 30px;
             height: 100%;
         }
     }

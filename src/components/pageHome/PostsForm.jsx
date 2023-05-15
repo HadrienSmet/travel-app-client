@@ -6,12 +6,12 @@ import { setPostsData } from "../../features/postsData.slice";
 import { getJwtToken } from "../../utils/functions/tools/getJwtToken";
 import { axiosCreatePost } from "../../utils/functions/posts/axiosCreatePost";
 import { axiosGetPosts } from "../../utils/functions/posts/axiosGetPosts";
+import { useButtonUI, useWindowSize } from "../../utils/hooks/hooks";
 
 import MUIClassicLoader from "../ui/MUIClassicLoader";
 import ButtonUI from "../ui/ButtonUI";
 import TextareaUI from "../ui/TextareaUI";
-import { useButtonUI } from "../../utils/hooks/hooks";
-import { useEffect } from "react";
+import { FaFileImage, FaPaperPlane } from "react-icons/fa";
 
 const usePostForm = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -98,10 +98,6 @@ const usePostForm = () => {
         });
     };
 
-    useEffect(() => {
-        console.log(postFormState);
-    }, [postFormState]);
-
     return {
         isLoading,
         userData,
@@ -113,6 +109,7 @@ const usePostForm = () => {
 };
 
 const PostsForm = () => {
+    const screenWidth = useWindowSize().width;
     const {
         isLoading,
         userData,
@@ -137,7 +134,13 @@ const PostsForm = () => {
             />
             <div className="posts-form__buttons-row">
                 {postFileUrl === "" ? (
-                    <label htmlFor="post-file">Ajouter une image</label>
+                    <label htmlFor="post-file">
+                        {screenWidth > 768 ? (
+                            <span>Ajouter une image</span>
+                        ) : (
+                            <FaFileImage />
+                        )}
+                    </label>
                 ) : (
                     <img
                         src={postFileUrl}
@@ -155,7 +158,13 @@ const PostsForm = () => {
                     <MUIClassicLoader dynamicId="posts-loader" />
                 ) : (
                     <ButtonUI
-                        buttonContent="Poster"
+                        buttonContent={
+                            screenWidth > 768 ? (
+                                <span>Poster</span>
+                            ) : (
+                                <FaPaperPlane />
+                            )
+                        }
                         buttonHandler={handlePostSubmission}
                         dynamicClass="posts-form__buttons-row-post"
                     />

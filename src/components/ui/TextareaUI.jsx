@@ -4,7 +4,6 @@ const useTextareaUI = ({ value }) => {
     const labelRef = useRef(null);
     const textareaRef = useRef(null);
     useEffect(() => {
-        value;
         if (value !== "") {
             labelRef.current?.classList.add("filled");
         } else {
@@ -35,11 +34,10 @@ const TextareaUI = ({
             <textarea
                 ref={textareaRef}
                 name={dynamicName}
+                defaultValue={value}
                 onChange={changeHandler}
                 onBlur={blurHandler}
-            >
-                {value}
-            </textarea>
+            ></textarea>
             <label ref={labelRef} htmlFor={dynamicName}>
                 {dynamicLabel}
             </label>

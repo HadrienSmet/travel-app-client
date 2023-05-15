@@ -28,9 +28,37 @@
         }
     }
 }
+@media screen and (min-width: 768px) {
+    .personal-data-form {
+        background-color: $white-op6;
+        &__fields-displayer {
+            width: 90%;
+        }
+        > button {
+            width: 50%;
+        }
+    }
+}
 @media screen and (max-width: 767px) {
-    .personal-data-form h1 {
-        text-align: center;
+    .personal-data-form {
+        h1 {
+            text-align: center;
+        }
+        &__fields-displayer {
+            width: 100%;
+        }
+        &__left-column {
+            width: 100%;
+        }
+        &__inputs-container {
+            width: 100%;
+        }
+        > button {
+            width: 90%;
+        }
+    }
+    .signup-perso-icon {
+        display: none;
     }
 }
 .personal-data-form {
@@ -38,7 +66,6 @@
     padding: 15px 0;
     width: 100%;
     height: calc(100% - 30px);
-    background-color: $white-op6;
     border-radius: 15px;
     gap: 10px;
     @include flexAroundColumnCenter;
@@ -47,7 +74,6 @@
         font-size: 20px;
     }
     &__fields-displayer {
-        width: 90%;
         height: 65%;
         gap: 15px;
         @include flexColumnCenter;
@@ -97,7 +123,6 @@
         position: relative;
     }
     > button {
-        width: 50%;
         position: relative;
         top: -10px;
         padding: 5px 0;

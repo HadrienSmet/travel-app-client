@@ -1,6 +1,21 @@
+@media screen and (min-width: 768px) {
+    .child-modal__header svg {
+        font-size: 30px;
+    }
+}
 @media screen and (max-width: 767px) {
-    .child-modal p {
-        text-align: center;
+    .child-modal {
+        &__header {
+            h4 {
+                font-size: 0.9em;
+            }
+            svg {
+                font-size: 20px;
+            }
+        }
+        p {
+            text-align: center;
+        }
     }
 }
 .child-modal {
@@ -9,7 +24,6 @@
         color: $primary-color;
         @include flexBetween;
         svg {
-            font-size: 30px;
             cursor: pointer;
             @include standardTransi;
             &:hover {

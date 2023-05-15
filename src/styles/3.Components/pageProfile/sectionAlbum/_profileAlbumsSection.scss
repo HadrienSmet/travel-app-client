@@ -58,7 +58,8 @@
 }
 @media screen and (max-width: 767px) {
     .profile-albums-section {
-        button {
+        > button {
+            border-radius: 4px;
             width: 90%;
         }
         &__pictures-container {
@@ -99,8 +100,7 @@
 }
 .more-picture__div {
     border: none;
-
-    position: absolute;
+    position: absolute !important;
     @include flexFullCenter;
     button {
         position: absolute;

@@ -1,3 +1,11 @@
+@media screen and (min-width: 1025px) {
+    .user-navigation .user-mobile-nav .toggle-btn:hover {
+        transform: scale(1.1) translateY(-2px);
+        span {
+            background-color: $primary-color;
+        }
+    }
+}
 @media screen and (max-width: 767px) {
     .mobile-user-popover > div:nth-child(3) {
         transform: none !important;
@@ -42,12 +50,6 @@
             @include flexColumnCenter;
             justify-content: center;
             gap: 5px;
-            &:hover {
-                transform: scale(1.1) translateY(-2px);
-                span {
-                    background-color: $primary-color;
-                }
-            }
             span {
                 height: 5px;
                 width: 35px;

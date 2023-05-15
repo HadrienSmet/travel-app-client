@@ -16,14 +16,29 @@
         }
     }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .signup-steps {
-        &__content {
-            top: 20vh;
-            &__form-container {
-                width: 100%;
+@media screen and (min-width: 768px) {
+    .signup-steps__content {
+        padding: 40px;
+        width: calc(100% - 80px);
+        &__form-container {
+            border: 3px solid $primary-color;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        .signup-steps {
+            &__content {
+                top: 20vh;
+                &__form-container {
+                    width: 100%;
+                }
             }
         }
+    }
+}
+@media screen and (max-width: 767px) {
+    .signup-steps__content {
+        padding: 10px;
+        width: calc(100% - 20px);
     }
 }
 
@@ -36,8 +51,6 @@
     &__content {
         position: absolute;
         top: 180px;
-        padding: 40px;
-        width: calc(100% - 80px);
         background-color: $white-op7;
         transform: translateY(-50%);
         gap: 20px;
@@ -46,7 +59,6 @@
             position: relative;
             height: 100%;
             border-radius: 15px;
-            border: 3px solid $primary-color;
             @include flexFullCenter;
         }
     }

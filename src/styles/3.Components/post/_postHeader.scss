@@ -8,8 +8,17 @@
     }
 }
 @media screen and (max-width: 767px) {
-    .post-header__data-side__mobile-date {
-        display: inline-block !important;
+    .post-header {
+        align-items: flex-start !important;
+        &__data-side {
+            p {
+                font-size: 0.6em;
+            }
+            &__mobile-date {
+                display: inline-block !important;
+                font-size: 0.6em;
+            }
+        }
     }
 }
 

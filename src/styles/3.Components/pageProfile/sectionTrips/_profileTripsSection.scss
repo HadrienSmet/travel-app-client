@@ -29,6 +29,13 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .profile-trips-section__previous-trips-container {
+        min-height: unset;
+        max-height: unset;
+        height: calc(50vh - 188.5px);
+    }
+}
 .profile-trips-section {
     width: 90%;
     margin-bottom: 25px;
@@ -44,6 +51,7 @@
         span {
             cursor: pointer;
             height: 100%;
+            font-size: 0.8em;
             @include flexFullCenter;
             margin-right: 15px;
         }

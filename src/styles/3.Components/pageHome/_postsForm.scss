@@ -1,3 +1,20 @@
+@media screen and (min-width: 768px) {
+    .posts-form__buttons-row {
+        height: 95px;
+        label {
+            border-radius: 4px;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .posts-form__buttons-row {
+        height: 42px;
+        label,
+        button {
+            border-radius: 50%;
+        }
+    }
+}
 .posts-form {
     width: 100%;
     position: relative;
@@ -35,14 +52,12 @@
     &__buttons-row {
         position: relative;
         width: 100%;
-        height: 95px;
         label {
             left: 0;
             position: absolute;
             font-size: 1.1em;
             font-weight: 400;
             padding: 8px 12px;
-            border-radius: 4px;
             cursor: pointer;
             color: $secondary-color;
             background-color: $primary-color;
