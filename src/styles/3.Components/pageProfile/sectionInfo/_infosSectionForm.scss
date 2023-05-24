@@ -1,0 +1,35 @@
+.infos-section__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    &-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .mui-textarea {
+            height: 56px;
+            padding: 0;
+        }
+    }
+    > div > div {
+        display: flex;
+        gap: 10px;
+        strong {
+            width: 120px;
+        }
+        > div {
+            width: 100%;
+            .mui-input-text {
+                height: 54px !important;
+                border: 1px solid $black-op3;
+            }
+        }
+    }
+    button {
+        height: 54px;
+        width: 20%;
+        border-radius: 4px;
+    }
+}

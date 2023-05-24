@@ -6,6 +6,7 @@ import userLoggedReducer from "../features/userLoggedData.slice";
 import albumObjectReducer from "../features/albumObjectArray.slice";
 import postsDataReducer from "../features/postsData.slice";
 import friendDataReducer from "../features/friendData.slice";
+import editingProfileReducer from "../features/editingProfile.slice";
 
 export default configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
         albumObjectArrayStore: albumObjectReducer,
         postsDataStore: postsDataReducer,
         friendDataStore: friendDataReducer,
+        editingProfileState: editingProfileReducer,
     },
 });
